@@ -12,5 +12,5 @@
   <title><?php echo $title;?></title>
 </head>
 
-<body>
+<body class="min-vh-100 d-flex flex-column">
 <?php require('partials/navbar.php')?>
