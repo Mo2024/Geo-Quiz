@@ -1,11 +1,13 @@
 <?php $title = "Sign Up"; require('partials/boilerplate.php')?>
+
+
 <div class="container d-flex justify-content-center align-items-center my-5">
     <div class="row">
         <div class="col-xl-12">
             <div class="bg-color border card border-color-form shadow">
                 <div class="card-body">
                     <h5 class="card-title text-secondary">Sign Up</h5>
-                    <form action="/register" class="validated-form" method="POST" novalidate>
+                    <form class="validated-form" method="POST" novalidate>
                         <div class="row">
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="email">Email</label>
@@ -13,7 +15,7 @@
                             </div>
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="username">Username</label>
-                                <input class="form-control" type="text" name="username" id="username" required>
+                                <input class="form-control" type="username" name="username" id="username" required>
                             </div>
                         </div>
                         <div class="row">
@@ -44,11 +46,13 @@
                         </div>
             
          
-                        <button class="btn btn-success btn-block">Submit</button>
+                        <button type="submit" class="btn btn-success btn-block">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<?php require('controllers/signup.php')?>
 <?php require('partials/footer.php')?>
