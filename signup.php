@@ -36,6 +36,12 @@
                                 <input class="form-control" type="pnum" name="pnum" id="pnum" required>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label class="form-label" for="birth">Birthdate</label>
+                                <input class="form-control" type="date" name="birth" id="birth" required>
+                            </div>
+                        </div>
             
          
                         <button class="btn btn-success btn-block">Submit</button>
