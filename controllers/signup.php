@@ -11,19 +11,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     require("partials/regex.php");
 
-    if(preg_match($usernameReg, $username) && preg_match($emailReg, $email)
-    && preg_match($passwordReg, $password) && preg_match($nameReg, $firstname)
-    && preg_match($nameReg, $lastname) && preg_match($pnumberReg, $pnumber) && preg_match($dateReg, $birth)){
-        echo "true";
-        $sql = "INSERT INTO user (username, email, hash, firstname, lastname, birthdate, phonenumber, type) 
-        VALUES('$username', '$email', '$password', '$firstname', '$lastname', '$birth', '$pnumber', '$type')";
+    // if(preg_match($usernameReg, $username) && preg_match($emailReg, $email)
+    // && preg_match($passwordReg, $password) && preg_match($nameReg, $firstname)
+    // && preg_match($nameReg, $lastname) && preg_match($pnumberReg, $pnumber) && preg_match($dateReg, $birth)){
+    //     $hash = password_hash($pass, PASSWORD_DEFAULT);
+        $sql = "SELECT * FROM user WHERE username = '$username'";
+        
+        // $sql = "INSERT INTO user (username, email, hash, firstname, lastname, birthdate, phonenumber, type) 
+        //         VALUES('$username', '$email', '$hash', '$firstname', '$lastname', '$birth', '$pnumber', '$type')";
         $rs = $db->query($sql);
-    }else{
-        echo "false";
-    }
+ 
+        // header("Location: mainpage.php?signup=success");
+        // die();
 
-    echo $birth;
-
+    // }else{
+    //     echo "false";
+    // }
 
 }
 ?>
