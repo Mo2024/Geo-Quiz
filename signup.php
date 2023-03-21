@@ -34,14 +34,18 @@
                                 <input class="form-control" type="password" name="password" id="password" required>
                             </div>
                             <div class="mb-3 col-6">
-                                <label class="form-label" for="pnum">Phone Number</label>
-                                <input class="form-control" type="pnum" name="pnum" id="pnum" required>
+                                <label class="form-label" for="password">Confirm Password</label>
+                                <input class="form-control" type="password" name="password2" id="password2" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="birth">Birthdate</label>
                                 <input class="form-control" type="date" name="birth" id="birth" required>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label class="form-label" for="pnum">Phone Number</label>
+                                <input class="form-control" type="pnum" name="pnum" id="pnum" required>
                             </div>
                         </div>
             

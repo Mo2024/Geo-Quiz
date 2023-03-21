@@ -3,6 +3,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $password2 = $_POST['password2'];
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $birth = $_POST['birth'];
@@ -22,31 +23,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if(preg_match($usernameReg, $username) && preg_match($emailReg, $email)
-    && preg_match($passwordReg, $password) && preg_match($nameReg, $firstname)
+    && preg_match($passwordReg, $password) && preg_match($passwordReg, $password2) && preg_match($nameReg, $firstname)
     && preg_match($nameReg, $lastname) && preg_match($pnumberReg, $pnumber) && preg_match($dateReg, $birth)){
+
+        if($password != $password2){
+            echo '
+            <div class="container mt-5">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Passwords do not match
+                </div>
+            </div>
+            ';
+        }else{
+
+            $usernameQuery = "SELECT * FROM user WHERE username = '$username'";
+            $emailQuery = "SELECT * FROM user WHERE email = '$email'";
+    
+            $usernameResult = ($db->query($usernameQuery)->rowCount());
+            $emailResult = ($db->query($emailQuery)->rowCount());
+    
+            //Cecks if username or email already exist, else it inserts the values into the database
+            if($usernameResult>0){
+                echoExists("Username");
+            }
+            else if($emailResult>0){
+                echoExists("Email");
+            }
+            else{
+                $hash = password_hash($pass, PASSWORD_DEFAULT);
+                $sql = "INSERT INTO user (username, email, hash, firstname, lastname, birthdate, phonenumber, type) 
+                        VALUES('$username', '$email', '$hash', '$firstname', '$lastname', '$birth', '$pnumber', '$type')";
+                $result = $db->query($sql);
+         
+                header("Location: mainpage.php?signup=success");
+                die();        
+            }
+        }
         
-        $usernameQuery = "SELECT * FROM user WHERE username = '$username'";
-        $emailQuery = "SELECT * FROM user WHERE email = '$email'";
-
-        $usernameResult = ($db->query($usernameQuery)->rowCount());
-        $emailResult = ($db->query($emailQuery)->rowCount());
-
-        //Cecks if username or email already exist, else it inserts the values into the database
-        if($usernameResult>0){
-            echoExists("Username");
-        }
-        else if($emailResult>0){
-            echoExists("Email");
-        }
-        else{
-            $hash = password_hash($pass, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO user (username, email, hash, firstname, lastname, birthdate, phonenumber, type) 
-                    VALUES('$username', '$email', '$hash', '$firstname', '$lastname', '$birth', '$pnumber', '$type')";
-            $result = $db->query($sql);
-     
-            header("Location: mainpage.php?signup=success");
-            die();        
-        }
+       
     
 
     }else{
@@ -62,6 +76,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
             ';
+
+
 
     }
 
