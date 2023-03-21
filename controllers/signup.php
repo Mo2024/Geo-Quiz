@@ -23,8 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if(preg_match($usernameReg, $username) && preg_match($emailReg, $email)
-    && preg_match($passwordReg, $password) && preg_match($passwordReg, $password2) && preg_match($nameReg, $firstname)
-    && preg_match($nameReg, $lastname) && preg_match($pnumberReg, $pnumber) && preg_match($dateReg, $birth)){
+    && preg_match($passwordReg, $password) && preg_match($passwordReg, $password2)
+    && preg_match($nameReg, $firstname) && preg_match($nameReg, $lastname)
+    && preg_match($pnumberReg, $pnumber) && preg_match($dateReg, $birth)){
 
         if($password != $password2){
             echo '
@@ -59,10 +60,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 die();        
             }
         }
-        
-       
-    
-
     }else{
         echo '
             <div class="container mt-5">
@@ -76,9 +73,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
             ';
-
-
-
     }
 
 }
