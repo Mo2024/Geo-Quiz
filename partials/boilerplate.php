@@ -15,4 +15,4 @@
 
 <body class="min-vh-100 d-flex flex-column">
   <?php require("connection.php") ?>
-<?php require('partials/navbar.php')?>
+  <?php require('partials/navbar.php')?>
