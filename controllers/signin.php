@@ -4,15 +4,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     require("partials/regex.php");
-    // if($uid == '' || $password == ''){
-    //     echo '
-    //     <div class="container mt-5">
-    //         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    //             Username/Email or Password field are empty
-    //         </div>
-    //     </div>
-    //     ';
-    // }
+    if($uid == '' || $password == ''){
+        echo '
+        <div class="container mt-5">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                Username/Email or Password field are empty
+            </div>
+        </div>
+        ';
+    }
     if(preg_match($emailReg, $uid)){
         $emailQuery = "SELECT * FROM user WHERE email = '$uid'";
         $result = $db->query($emailQuery);
