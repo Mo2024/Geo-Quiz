@@ -15,17 +15,17 @@
                             </div>
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="username">Username</label>
-                                <input class="form-control" type="username" name="username" id="username" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $username ?>" required>
+                                <input class="form-control" type="text" name="username" id="username" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $username ?>" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="firstname">First Name</label>
-                                <input class="form-control" type="firstname" name="firstname" id="firstname" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $firstname ?>" required>
+                                <input class="form-control" type="text" name="firstname" id="firstname" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $firstname ?>" required>
                             </div>
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="lastname">Last Name</label>
-                                <input class="form-control" type="lastname" name="lastname" id="lastname" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $lastname ?>" required>
+                                <input class="form-control" type="text" name="lastname" id="lastname" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $lastname ?>" required>
                             </div>
                         </div>
                         <div class="row">
@@ -45,7 +45,7 @@
                             </div>
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="pnum">Phone Number</label>
-                                <input class="form-control" type="pnum" name="pnum" id="pnum" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $pnumber ?>" required>
+                                <input class="form-control" type="number" name="pnum" id="pnum" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $pnumber ?>" required>
                             </div>
                         </div>
             

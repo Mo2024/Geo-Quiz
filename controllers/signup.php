@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echoExists("Email");
             }
             else{
-                $hash = password_hash($pass, PASSWORD_DEFAULT);
+                $hash = password_hash($password, PASSWORD_DEFAULT);
                 $sql = "INSERT INTO user (username, email, hash, firstname, lastname, birthdate, phonenumber, type) 
                         VALUES('$username', '$email', '$hash', '$firstname', '$lastname', '$birth', '$pnumber', '$type')";
                 $result = $db->query($sql);
