@@ -1,4 +1,4 @@
-<?php $title = "Homepage"; require('partials/boilerplate.php')?>
+<?php $title = "Homepage"; require('partials/boilerplate.inc.php')?>
 
 <?php 
     if(isset($_GET['signup']) && $_GET['signup'] == "success"){

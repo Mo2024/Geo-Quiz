@@ -1,5 +1,5 @@
-<?php $title = "Sign Up"; require('partials/boilerplate.php')?>
-<?php require('controllers/signup.php')?>
+<?php $title = "Sign Up"; require('partials/boilerplate.inc.php')?>
+<?php require('controllers/signup.inc.php')?>
 
 <div class="container d-flex justify-content-center align-items-center my-5">
     <div class="row">
@@ -57,4 +57,4 @@
         </div>
     </div>
 </div>
-<?php require('partials/footer.php')?>
+<?php require('partials/footer.inc.php')?>

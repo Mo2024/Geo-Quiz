@@ -15,5 +15,5 @@
 
 <body class="min-vh-100 d-flex flex-column">
   <?php session_start(); ?>
-  <?php require("connection.php") ?>
-  <?php require('partials/navbar.php')?>
+  <?php require("connection.inc.php") ?>
+  <?php require('partials/navbar.inc.php')?>

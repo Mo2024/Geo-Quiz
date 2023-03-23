@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pnumber = $_POST['pnum'];
     $type = "user";
     
-    require("partials/regex.php");
+    require("partials/regex.inc.php");
 
     function echoExists($type){
             echo '

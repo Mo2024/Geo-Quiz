@@ -3,7 +3,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $uid = $_POST['uid'];
     $password = $_POST['password'];
 
-    require("partials/regex.php");
+    require("partials/regex.inc.php");
     if($uid == '' || $password == ''){
         echo '
         <div class="container mt-5">
