@@ -1,7 +1,11 @@
 <?php
-$servername = "mysql:host=localhost;dbname=itcs333group3;charset=utf8";
-$username = "root";
-$password = "";
+use Dotenv\Dotenv;
+$dotenv = Dotenv::createImmutable(__DIR__.'/../');
+$dotenv->load();
+
+$servername = $_ENV['servername'];
+$username = $_ENV['username'];
+$password = $_ENV['password'];
 $db = new PDO($servername, $username, $password );
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
  ?>

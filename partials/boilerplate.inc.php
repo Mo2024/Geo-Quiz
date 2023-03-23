@@ -14,11 +14,7 @@
 </head>
 
 <body class="min-vh-100 d-flex flex-column">
-  <?php
-  require_once(realpath(dirname(__FILE__) . '/../vendor/autoload.php'));
-  \Dotenv\Dotenv::create(__DIR__)->load();
-  // var_dump($_ENV);
-  ?>
+  <?php require_once(realpath(__DIR__ . '/../vendor/autoload.php'));?>
   <?php session_start(); ?>
   <?php require("connection.inc.php") ?>
   <?php require('partials/navbar.inc.php')?>
