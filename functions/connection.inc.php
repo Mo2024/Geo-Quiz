@@ -1,12 +1,7 @@
 <?php
-require_once(realpath(__DIR__ . '/../vendor/autoload.php'));
-use Dotenv\Dotenv;
-$dotenv = Dotenv::createImmutable(__DIR__.'/../');
-$dotenv->load();
-
 $servername = $_ENV['servername'];
 $username = $_ENV['username'];
 $password = $_ENV['password'];
 $db = new PDO($servername, $username, $password );
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
- ?>
+?>
