@@ -14,7 +14,13 @@
 </head>
 
 <body class="min-vh-100 d-flex flex-column">
-  <?php require_once(realpath(__DIR__ . '/../vendor/autoload.php'));?>
-  <?php session_start(); ?>
-  <?php require("connection.inc.php") ?>
-  <?php require('partials/navbar.inc.php')?>
+  <?php 
+    require_once(realpath(__DIR__ . '/../vendor/autoload.php'));
+    use Dotenv\Dotenv;
+    $dotenv = Dotenv::createImmutable(__DIR__.'/../');
+    $dotenv->load();
+
+    session_start();
+    require(__DIR__ ."/../functions/connection.inc.php")
+  ?>
+  <?php require(__DIR__ .'/../partials/navbar.inc.php')?>

@@ -20,8 +20,8 @@
     $mail->isHTML(true);                  
     $verificationCode = substr(number_format(time() * rand(), 0, '', ''), 0, 6);                
     $mail->Subject = 'Email verification';
-    $href = $url.'functions/verify.inc.php?code='.$verificationCode;
-    $mail->Body    = '<p>Click this <a href="'.$href.'">link</a> to cerify</p>';
+    $href = $url.'functions/verifyEmail.inc.php?code='.$verificationCode;
+    $mail->Body    = '<p>Click this <a href="'.$href.'">link</a> to verify your email</p>';
     $mail->send();
 
 ?>

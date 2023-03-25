@@ -2,7 +2,7 @@
 
 <?php 
     $keysAsValues = array_flip($_GET);
-    if(isset($keysAsValues['success']) && (isset($_GET['Signup'])||isset($_GET['Signout'])||isset($_GET['Signin']))){
+    if(isset($keysAsValues['success']) && (isset($_GET['Signup'])||isset($_GET['Signout'])||isset($_GET['Signin'])||isset($_GET['Verification']))){
         echo '
             <div class="container mt-5">
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
