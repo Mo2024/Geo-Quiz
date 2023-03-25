@@ -48,13 +48,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 
                 $notVerified = false;
                 $hash = password_hash($password, PASSWORD_DEFAULT);
+
                 $sql = "INSERT INTO user (username, email, hash, firstname, lastname, birthdate, phonenumber, type, verificationCode, Verified) 
                         VALUES('$username', '$email', '$hash', '$firstname', '$lastname', '$birth', '$pnumber', '$type', '$verificationCode', '$notVerified')";
                 $result = $db->query($sql);
          
                 $_SESSION["userId"] = $db->lastInsertId();
-                $_SESSION["username"] = $username;   
-                header("Location: mainpage.php?Signup=success");
+                $_SESSION["username"] = $username;
+                if(!isset($_COOKIE["redirect"])){
+                    header("Location: mainpage.php?Signup=success");
+                }else{
+                    header("Location: ".$_COOKIE["redirect"]);
+                    setcookie ("redirect", "", time() - 3600);
+                }
                 die();        
             }
         }

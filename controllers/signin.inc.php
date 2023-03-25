@@ -4,25 +4,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     require("partials/regex.inc.php");
 
     $uid = $_POST['uid'];
-    $password = $_POST['password'];
+    $formPassword = $_POST['password'];
 
-    if($uid == '' || $password == ''){
+    if($uid == '' || $formPassword == ''){
         echoAlertDanger('Username/Email or Password field are empty');
     }
     else if(preg_match($emailReg, $uid) || preg_match($usernameReg, $uid)){
         $uidQuery = "SELECT * FROM user WHERE email = '$uid' OR username = '$uid'";
         $result = $db->query($uidQuery);
         if ($row = $result->fetch()) {
-            if (password_verify($password, $row[3])) {
+            if (password_verify($formPassword, $row[3])) {
                 //password match and login in user
                 session_start();
                 $_SESSION["userId"] = $row[0];
                 $_SESSION["username"] = $row[1];            
-                header("Location: mainpage.php?Signin=success");
+                if(!isset($_COOKIE["redirect"])){
+                    header("Location: mainpage.php?Signin=success");
+                }else{
+                    header("Location: ".$_COOKIE["redirect"]);
+                    setcookie ("redirect", "", time() - 3600);
+                }
                 die();  
             }
             else{
                 //Incorrect password
+                echo $row[3];
                 echoAlertDanger('Incorrect Password');
             }
         }
