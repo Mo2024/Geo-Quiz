@@ -1,6 +1,8 @@
 <?php 
+
+require_once(realpath(__DIR__ . '/../vendor/autoload.php'));
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    require('functions.inc.php');
+    require('functions/functions.inc.php');
     require("partials/regex.inc.php");
 
     $username = $_POST['username'];
@@ -42,9 +44,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 echoAlertDanger("Email already exists");
             }
             else{
+                require('functions/phpmailer.inc.php');
+                
+                $notVerified = false;
                 $hash = password_hash($password, PASSWORD_DEFAULT);
-                $sql = "INSERT INTO user (username, email, hash, firstname, lastname, birthdate, phonenumber, type) 
-                        VALUES('$username', '$email', '$hash', '$firstname', '$lastname', '$birth', '$pnumber', '$type')";
+                $sql = "INSERT INTO user (username, email, hash, firstname, lastname, birthdate, phonenumber, type, verificationCode, Verified) 
+                        VALUES('$username', '$email', '$hash', '$firstname', '$lastname', '$birth', '$pnumber', '$type', '$verificationCode', '$notVerified')";
                 $result = $db->query($sql);
          
                 $_SESSION["userId"] = $db->lastInsertId();

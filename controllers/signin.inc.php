@@ -1,6 +1,6 @@
 <?php 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    require('functions.inc.php');
+    require('functions/functions.inc.php');
     require("partials/regex.inc.php");
 
     $uid = $_POST['uid'];
@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     if($uid == '' || $password == ''){
         echoAlertDanger('Username/Email or Password field are empty');
     }
-    if(preg_match($emailReg, $uid) || preg_match($usernameReg, $uid)){
+    else if(preg_match($emailReg, $uid) || preg_match($usernameReg, $uid)){
         $uidQuery = "SELECT * FROM user WHERE email = '$uid' OR username = '$uid'";
         $result = $db->query($uidQuery);
         if ($row = $result->fetch()) {
