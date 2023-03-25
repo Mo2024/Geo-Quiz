@@ -33,13 +33,26 @@
           <?php 
             if(!isset($_SESSION['userId']) && !isset($_SESSION['username'])){
               echo '
-              <a href="/ITCS333-Project/signup.php" class="nav-link">sign up</a>
-              <a href="/ITCS333-Project/signin.php" class="nav-link">sign in</a>
+              <a href="/ITCS333-Project/auth/signup.php" class="nav-link">sign up</a>
+              <a href="/ITCS333-Project/auth/signin.php" class="nav-link">sign in</a>
               ';
             }else{
               echo '
               <a href="/ITCS333-Project/controllers/signout.inc.php" class="nav-link">Sign out</a>
-              <a href="/ITCS333-Project/profile.php" class="nav-link">Profile</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Profile
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="/ITCS333-Project/profile.php">Edit profile</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
               ';          
             }
           ?>

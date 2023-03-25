@@ -1,7 +1,7 @@
 <?php 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    require('functions/functions.inc.php');
-    require("partials/regex.inc.php");
+    require(__DIR__ .'/../functions/functions.inc.php');
+    require(__DIR__ ."/../partials/regex.inc.php");
 
     $uid = $_POST['uid'];
     $formPassword = $_POST['password'];
@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 $_SESSION["userId"] = $row[0];
                 $_SESSION["username"] = $row[1];            
                 if(!isset($_COOKIE["redirect"])){
-                    header("Location: mainpage.php?Signin=success");
+                    header("Location: /ITCS333-Project/mainpage.php?Signin=success");
                 }else{
                     header("Location: ".$_COOKIE["redirect"]);
                     setcookie ("redirect", "", time() - 3600);

@@ -6,7 +6,7 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
 }else{
     $url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
     setcookie("redirect", $url,);
-    header("Location: /ITCS333-Project/signin.php");
+    header("Location: /ITCS333-Project/auth/signin.php");
     
 }
 

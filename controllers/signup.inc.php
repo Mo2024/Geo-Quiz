@@ -2,8 +2,8 @@
 
 require_once(realpath(__DIR__ . '/../vendor/autoload.php'));
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    require('functions/functions.inc.php');
-    require("partials/regex.inc.php");
+    require(__DIR__ .'/../functions/functions.inc.php');
+    require(__DIR__ ."/../partials/regex.inc.php");
 
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 echoAlertDanger("Email already exists");
             }
             else{
-                require('functions/phpmailer.inc.php');
+                require(__DIR__ .'/../functions/phpmailer.inc.php');
                 
                 $notVerified = false;
                 $hash = password_hash($password, PASSWORD_DEFAULT);
@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 $_SESSION["userId"] = $db->lastInsertId();
                 $_SESSION["username"] = $username;
                 if(!isset($_COOKIE["redirect"])){
-                    header("Location: mainpage.php?Signup=success");
+                    header("Location: /ITCS333-Project/mainpage.php?Signup=success");
                 }else{
                     header("Location: ".$_COOKIE["redirect"]);
                     setcookie ("redirect", "", time() - 3600);
