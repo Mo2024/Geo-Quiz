@@ -2,8 +2,8 @@
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
 
-    $smtpEmail = $_ENV['email'];
-    $password = $_ENV['password'];
+    $smtpEmail = $_ENV['smtpEmail'];
+    $password = $_ENV['smtpPassword'];
     $url = $_ENV['url'];
 
     $mail = new PHPMailer(true);
