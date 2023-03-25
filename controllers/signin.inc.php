@@ -1,5 +1,5 @@
 <?php 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $uid = $_POST['uid'];
     $password = $_POST['password'];
 
@@ -29,6 +29,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $db->query($userQuery);
         if ($row = $result->fetch()) {
             if (password_verify($password, $row[3])) {
+                session_start();
+                $_SESSION["userId"] = $row[0];
+                $_SESSION["usernameId"] = $row[1];
                 //password match
             }
         }

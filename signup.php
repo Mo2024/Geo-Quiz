@@ -50,7 +50,7 @@
                         </div>
             
          
-                        <button type="submit" class="btn btn-success btn-block">Submit</button>
+                        <button type="submit" class="btn btn-success btn-block" name="submit">Submit</button>
                     </form>
                 </div>
             </div>

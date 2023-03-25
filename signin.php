@@ -15,7 +15,7 @@
                                 <label class="form-label" for="password">Password</label>
                                 <input class="form-control" type="password" name="password" id="password" required>
                             </div>
-                        <button type="submit" class="btn btn-success btn-block">Submit</button>
+                        <button type="submit" class="btn btn-success btn-block" name="submit">Submit</button>
                     </form>
                 </div>
             </div>
