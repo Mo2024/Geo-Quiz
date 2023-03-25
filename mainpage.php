@@ -14,4 +14,4 @@
     }
 ?>
 
-<!-- <?php require('partials/footer.php')?> -->
+<?php require('partials/footer.inc.php')?>
