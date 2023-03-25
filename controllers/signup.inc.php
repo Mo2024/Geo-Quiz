@@ -1,5 +1,8 @@
 <?php 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+    require('functions.inc.php');
+    require("partials/regex.inc.php");
+
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -9,18 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $birth = $_POST['birth'];
     $pnumber = $_POST['pnum'];
     $type = "user";
-    
-    require("partials/regex.inc.php");
-
-    function echoExists($type){
-            echo '
-                <div class="container mt-5">
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">'
-                        .$type. ' already exists
-                    </div>
-                </div>
-                ';
-    }
 
     if(preg_match($usernameReg, $username) && preg_match($emailReg, $email)
     && preg_match($passwordReg, $password) && preg_match($passwordReg, $password2)
@@ -45,10 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     
             //Cecks if username or email already exist, else it inserts the values into the database
             if($usernameResult>0){
-                echoExists("Username");
+                echoAlertDanger("Username already exists");
             }
             else if($emailResult>0){
-                echoExists("Email");
+                echoAlertDanger("Email already exists");
             }
             else{
                 $hash = password_hash($password, PASSWORD_DEFAULT);
@@ -56,23 +47,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                         VALUES('$username', '$email', '$hash', '$firstname', '$lastname', '$birth', '$pnumber', '$type')";
                 $result = $db->query($sql);
          
-                header("Location: mainpage.php?signup=success");
+                $_SESSION["userId"] = $db->lastInsertId();
+                $_SESSION["username"] = $username;   
+                header("Location: mainpage.php?Signup=success");
                 die();        
             }
         }
     }else{
-        echo '
-            <div class="container mt-5">
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    Please make sure that:
-                    <ul>
-                        <li>Username is 4 to 20 characters long, only contains alphabet letters and 0 to 9 numerics </li>
-                        <li>Email, name and birthdate are enetered properly</li>
-                        <li>Password has one special character, one small letter, one capital letter and at least 8 characters long</li>
-                    </ul>
-                </div>
-            </div>
-            ';
+        echoAlertDanger(
+            "Please make sure that:
+            <ul>
+                <li>Username is 4 to 20 characters long, only contains alphabet letters and 0 to 9 numerics </li>
+                <li>Email, name and birthdate are enetered properly</li>
+                <li>Password has one special character, one small letter, one capital letter and at least 8 characters long</li>
+            </ul>"
+        );
     }
 
 }

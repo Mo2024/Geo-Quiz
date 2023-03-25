@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light color">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="/ITCS333-Project/mainpage.php">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -28,6 +28,23 @@
             </ul>
           </li>
         </ul>
+
+        <div class="navbar-nav ms-auto">
+          <?php 
+            if(!isset($_SESSION['userId']) && !isset($_SESSION['username'])){
+              echo '
+              <a href="/ITCS333-Project/signup.php" class="nav-link">sign up</a>
+              <a href="/ITCS333-Project/signin.php" class="nav-link">sign in</a>
+              ';
+            }else{
+              echo '
+              <a href="/ITCS333-Project/controllers/signout.inc.php" class="nav-link">Sign out</a>
+              <a href="/ITCS333-Project/profile.php" class="nav-link">Profile</a>
+              ';          
+            }
+          ?>
+        </div>
+
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>

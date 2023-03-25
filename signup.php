@@ -11,31 +11,31 @@
                         <div class="row">
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="email">Email</label>
-                                <input class="form-control" type="email" name="email" id="email" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $email ?>" required autofocus>
+                                <input class="form-control" placeholder="Email" type="email" name="email" id="email" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $email ?>" required autofocus>
                             </div>
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="username">Username</label>
-                                <input class="form-control" type="text" name="username" id="username" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $username ?>" required>
+                                <input class="form-control" placeholder="Username" type="text" name="username" id="username" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $username ?>" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="firstname">First Name</label>
-                                <input class="form-control" type="text" name="firstname" id="firstname" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $firstname ?>" required>
+                                <input class="form-control" placeholder="First Name" type="text" name="firstname" id="firstname" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $firstname ?>" required>
                             </div>
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="lastname">Last Name</label>
-                                <input class="form-control" type="text" name="lastname" id="lastname" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $lastname ?>" required>
+                                <input class="form-control" placeholder="Last Name" type="text" name="lastname" id="lastname" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $lastname ?>" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="password">Password</label>
-                                <input class="form-control" type="password" name="password" id="password" required>
+                                <input class="form-control" placeholder="Password" type="password" name="password" id="password" required>
                             </div>
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="password">Confirm Password</label>
-                                <input class="form-control" type="password" name="password2" id="password2" required>
+                                <input class="form-control" placeholder="Password" type="password" name="password2" id="password2" required>
                             </div>
                         </div>
                         <div class="row">
@@ -45,7 +45,7 @@
                             </div>
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="pnum">Phone Number</label>
-                                <input class="form-control" type="number" name="pnum" id="pnum" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $pnumber ?>" required>
+                                <input class="form-control" type="number" placeholder="Phone Number" name="pnum" id="pnum" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $pnumber ?>" required>
                             </div>
                         </div>
             

@@ -1,11 +1,12 @@
 <?php $title = "Homepage"; require('partials/boilerplate.inc.php')?>
 
 <?php 
-    if(isset($_GET['signup']) && $_GET['signup'] == "success"){
+    $keysAsValues = array_flip($_GET);
+    if(isset($keysAsValues['success']) && (isset($_GET['Signup'])||isset($_GET['Signout'])||isset($_GET['Signin']))){
         echo '
             <div class="container mt-5">
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    Sign Up Successful!
+                    '.$keysAsValues['success'].' Successful!
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             </div>

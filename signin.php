@@ -13,7 +13,7 @@
                                 <input placeholder="Email or Username" class="form-control" type="text" name="uid" id="uid" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $uid ?>" required autofocus>
 
                                 <label class="form-label" for="password">Password</label>
-                                <input class="form-control" type="password" name="password" id="password" required>
+                                <input placeholder="Password" class="form-control" type="password" name="password" id="password" required>
                             </div>
                         <button type="submit" class="btn btn-success btn-block" name="submit">Submit</button>
                     </form>
