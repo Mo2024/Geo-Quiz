@@ -21,6 +21,6 @@
     $dotenv->load();
 
     session_start();
-    require(__DIR__ ."/../functions/connection.inc.php")
+    require(__DIR__ ."/../functions/connection.inc.php");
   ?>
   <?php require(__DIR__ .'/../partials/navbar.inc.php')?>

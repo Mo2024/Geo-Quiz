@@ -45,7 +45,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             }
             else{
                 require(__DIR__ .'/../functions/phpmailer.inc.php');
-                
+                $verificationCode = substr(number_format(time() * rand(), 0, '', ''), 0, 6);                
+                $mail->addAddress($email);    
+                $mail->Subject = 'Email verification';
+                $href = $url.'functions/verifyEmail.inc.php?code='.$verificationCode;
+                $mail->Body    = '<p>Click this <a href="'.$href.'">link</a> to verify your email</p>';
+                $mail->send();
+
                 $notVerified = false;
                 $hash = password_hash($password, PASSWORD_DEFAULT);
 

@@ -45,8 +45,8 @@
                   Profile
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="/ITCS333-Project/profile.php">Edit profile</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="/ITCS333-Project/profile/profile.php">Edit profile</a></li>
+                  <li><a class="dropdown-item" href="/ITCS333-Project/profile/updatepassword.php">Update password</a></li>
                   <li>
                     <hr class="dropdown-divider">
                   </li>
