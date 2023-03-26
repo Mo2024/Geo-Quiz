@@ -28,7 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             }
             else{
                 //Incorrect password
-                echo $row[3];
                 echoAlertDanger('Incorrect Password');
             }
         }
