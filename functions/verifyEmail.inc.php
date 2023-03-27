@@ -6,9 +6,8 @@ $idQuery = "SELECT * FROM user WHERE id = '$id'";
 $result = $db->query($idQuery);
 $row = $result->fetch();
 $verifiedEmail = true;
-$nullVar = NULL;
 if($verificationCode == $row[9]){
-    $updateQuery = "UPDATE user SET verified = '$verifiedEmail', verificationCode = '$nullVar' WHERE id = '$id'";
+    $updateQuery = "UPDATE user SET verified = '$verifiedEmail', verificationCode = NULL WHERE id = '$id'";
     $result = $db->query($updateQuery);
     header("Location: /ITCS333-Project/mainpage.php?Verification=success");
     die(); 

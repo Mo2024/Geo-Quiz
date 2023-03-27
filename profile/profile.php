@@ -5,8 +5,16 @@
         <div class="col-xl-12">
             <div class="bg-color border card border-color-form shadow">
                 <div class="card-body">
-                    <h5 class="card-title text-secondary">Edit Profile</h5>
+                    <h5 class="card-title text-secondary">Edit Profile </h5>
                     <form class="validated-form" method="POST" novalidate>
+                        <?php if(!$row[10]){ ?>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <a href="/ITCS333-Project/profile/profile.php?verification=sent">Click to verify your account</a>
+                                <?php if(isset($_GET['verification']) && $_GET['verification'] == 'sent') echo 'Check you email';?>
+                            </div>
+                        </div>
+                        <?php } ?>
                         <div class="row">
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="email">Email</label>
