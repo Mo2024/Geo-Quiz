@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <h5 class="card-title text-secondary">Edit Profile </h5>
                     <form class="validated-form" method="POST" novalidate>
-                        <?php if(!$row[10]){ ?>
+                        <?php if(!$row['verified']){ ?>
                         <div class="row">
                             <div class="mb-3 col-6">
                                 <a href="/ITCS333-Project/profile/profile.php?verification=sent">Click to verify your account</a>
@@ -33,16 +33,6 @@
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="lastname">Last Name</label>
                                 <input class="form-control" placeholder="Last Name" type="text" name="lastname" id="lastname" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $lastname ?>" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="mb-3 col-6">
-                                <label class="form-label" for="password">Password</label>
-                                <input class="form-control" placeholder="Password" type="password" name="password" id="password" required>
-                            </div>
-                            <div class="mb-3 col-6">
-                                <label class="form-label" for="password">Confirm Password</label>
-                                <input class="form-control" placeholder="Password" type="password" name="password2" id="password2" required>
                             </div>
                         </div>
                         <div class="row">

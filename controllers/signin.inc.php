@@ -13,11 +13,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         $uidQuery = "SELECT * FROM user WHERE email = '$uid' OR username = '$uid'";
         $result = $db->query($uidQuery);
         if ($row = $result->fetch()) {
-            if (password_verify($formPassword, $row[3])) {
+            if (password_verify($formPassword, $row['hash'])) {
                 //password match and login in user
                 session_start();
-                $_SESSION["userId"] = $row[0];
-                $_SESSION["username"] = $row[1];            
+                $_SESSION["userId"] = $row['id'];
+                $_SESSION["username"] = $row['username'];            
                 if(!isset($_COOKIE["redirect"])){
                     header("Location: /ITCS333-Project/mainpage.php?Signin=success");
                 }else{

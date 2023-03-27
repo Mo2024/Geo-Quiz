@@ -21,13 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     && preg_match($pnumberReg, $pnumber) && preg_match($dateReg, $birth)){
 
         if($password != $password2){
-            echo '
-            <div class="container mt-5">
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    Passwords do not match
-                </div>
-            </div>
-            ';
+            echoAlertDanger('Passwords do not match');
         }else{
 
             $usernameQuery = "SELECT * FROM user WHERE username = '$username'";
@@ -55,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 $notVerified = false;
                 $hash = password_hash($password, PASSWORD_DEFAULT);
 
-                $sql = "INSERT INTO user (username, email, hash, firstname, lastname, birthdate, phonenumber, type, verificationCode, Verified) 
+                $sql = "INSERT INTO user (username, email, hash, firstname, lastname, birthdate, phonenumber, type, verificationCode, verified) 
                         VALUES('$username', '$email', '$hash', '$firstname', '$lastname', '$birth', '$pnumber', '$type', '$verificationCode', '$notVerified')";
                 $result = $db->query($sql);
          

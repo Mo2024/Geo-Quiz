@@ -23,7 +23,7 @@
     function sendVerCode($row, $id, $db){
             require(__DIR__ .'/../functions/phpmailer.inc.php');
             $verificationCode = substr(number_format(time() * rand(), 0, '', ''), 0, 6);   
-            $mail->addAddress($row[2]);                 
+            $mail->addAddress($row['email']);                 
             $mail->Subject = 'Forget Password Verification';
             $mail->Body    = '<p>Your verification code is <b>'.$verificationCode.'</b></p>';
         
@@ -50,4 +50,5 @@
             echoAlertDanger('Make sure that Password has one special character, one small letter, one capital letter and at least 8 characters long');
         }
     }
+
 ?>

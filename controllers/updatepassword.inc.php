@@ -21,7 +21,7 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
                     echoAlertDanger('Verification Code field is empty');
                 }else{
                     $vCode = $_POST['VerificationCode'];
-                    if($row[11]==$vCode){
+                    if($row['verificationCode']==$vCode){
                         updatePassword($passwordReg, $newPwd, $confirmPwd, $id, $db);
                     }else{
                         echoAlertDanger("Invalid verification code");
@@ -34,7 +34,7 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
                     echoAlertDanger('Current Password field is empty');
                 }else{
                     $currentPwd = $_POST['currentPwd'];
-                    if (password_verify($currentPwd, $row[3])) {
+                    if (password_verify($currentPwd, $row['hash'])) {
                         updatePassword($passwordReg, $newPwd, $confirmPwd, $id, $db);
                     }else{
                         echoAlertDanger("Invalid current password");
@@ -44,7 +44,7 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
             } 
         }
     }else if(isset($_GET['status']) && $_GET['status'] == 'forget'){
-        if(is_null($row[11])){
+        if(is_null($row['pwdVerificationCode'])){
             sendVerCode($row, $id, $db);
             echoAlertSuccess('Verification code sent to email');
         }
