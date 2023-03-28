@@ -18,31 +18,31 @@
                         <div class="row">
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="email">Email</label>
-                                <input class="form-control" placeholder="Email" type="email" name="email" id="email" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $email ?>" required autofocus>
+                                <input class="form-control" placeholder="Email" type="email" name="email" id="email" value="<?php echo $row['email'] ?>" required autofocus>
                             </div>
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="username">Username</label>
-                                <input class="form-control" placeholder="Username" type="text" name="username" id="username" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $username ?>" required>
+                                <input class="form-control" placeholder="Username" type="text" name="username" id="username" value="<?php echo $row['username'] ?>" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="firstname">First Name</label>
-                                <input class="form-control" placeholder="First Name" type="text" name="firstname" id="firstname" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $firstname ?>" required>
+                                <input class="form-control" placeholder="First Name" type="text" name="firstname" id="firstname" value="<?php echo $row['firstname'] ?>" required>
                             </div>
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="lastname">Last Name</label>
-                                <input class="form-control" placeholder="Last Name" type="text" name="lastname" id="lastname" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $lastname ?>" required>
+                                <input class="form-control" placeholder="Last Name" type="text" name="lastname" id="lastname" value="<?php echo $row['lastname'] ?>" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="birth">Birthdate</label>
-                                <input class="form-control" type="date" name="birth" id="birth" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $birth ?>" required>
+                                <input class="form-control" type="date" name="birth" id="birth" value="<?php echo $row['birthdate'] ?>" required>
                             </div>
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="pnum">Phone Number</label>
-                                <input class="form-control" type="number" placeholder="Phone Number" name="pnum" id="pnum" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $pnumber ?>" required>
+                                <input class="form-control" type="number" placeholder="Phone Number" name="pnum" id="pnum" value="<?php echo $row['phonenumber'] ?>" required>
                             </div>
                         </div>
             
