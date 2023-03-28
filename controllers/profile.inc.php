@@ -4,9 +4,7 @@ require(__DIR__ ."/../partials/regex.inc.php");
 
 if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
     $id = $_SESSION['userId'];
-    $idQuery = "SELECT * FROM user WHERE id = '$id'";
-    $result = $db->query($idQuery);
-    $row = $result->fetch();
+    $row = selectUser($id, $db);
     
     if(isset($_GET['verification']) && $_GET['verification'] == 'sent' && $_SERVER["REQUEST_METHOD"] == "GET"){
         if(is_null($row[9]) && $row[10]){
@@ -62,7 +60,8 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
                 $updateQuery = "UPDATE user SET username = '$username', email = '$email', firstname = '$firstname',
                 lastname = '$lastname', birthdate = '$birth',phonenumber = '$pnumber', verificationCode = ".(is_null($verificationCode) ? "NULL" : "'$verificationCode'").", verified = '$verificationStatus' WHERE id = '$id'";
                 $result = $db->query($updateQuery);
-         
+
+                $row = selectUser($_SESSION['userId'], $db);
                 echoAlertSuccess('User profile updated');
             }
         }else{

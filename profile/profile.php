@@ -42,7 +42,7 @@
                             </div>
                             <div class="mb-3 col-6">
                                 <label class="form-label" for="pnum">Phone Number</label>
-                                <input class="form-control" type="number" placeholder="Phone Number" name="pnum" id="pnum" value="<?php echo $row['phonenumber'] ?>" required>
+                                <input class="form-control" type="tel" placeholder="Phone Number" name="pnum" id="pnum" value="<?php echo $row['phonenumber'] ?>" required>
                             </div>
                         </div>
             

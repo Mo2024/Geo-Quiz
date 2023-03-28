@@ -51,4 +51,10 @@
         }
     }
 
+    function selectUser($id, $db){
+        $idQuery = "SELECT * FROM user WHERE id = '$id'";
+        $result = $db->query($idQuery);
+        return $result->fetch();
+    }
+
 ?>
