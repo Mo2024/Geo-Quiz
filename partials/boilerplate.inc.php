@@ -9,7 +9,8 @@
   <link rel="stylesheet" href="/ITCS333-Project/public/css/bootstrap.min.css">
   <script src="/ITCS333-Project/public/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="/ITCS333-Project/public/css/main.css">
-
+  
+  <script src="/ITCS333-Project/public/js/main.js"></script>
   <title><?php echo $title;?></title>
 </head>
 
@@ -22,8 +23,9 @@
 
     session_start();
     require(__DIR__ ."/../functions/connection.inc.php");
-    // if(!isset($_COOKIE['session'])){
-    //   session_destroy();
-    // }
+    //Extends cookie's duration if the user is constantly using it
+    if(isset($_SESSION['username'])){
+      setcookie("session", password_hash($_SESSION["username"], PASSWORD_DEFAULT),time() + 604800 ,'/');
+    }
   ?>
   <?php require(__DIR__ .'/../partials/navbar.inc.php')?>

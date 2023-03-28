@@ -57,13 +57,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 $_SESSION["username"] = $username;
 
                 if(isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'rememberMe'){
-                    setcookie("session", password_hash($username),time() + 60 ,'/');
-                }
+                    setcookie("session", password_hash($username, PASSWORD_DEFAULT),time() + 604800 ,'/');
+                }else{
+                    //cookie that deletes on browser close
+                    setcookie("session", password_hash($username, PASSWORD_DEFAULT),0 ,'/');
+                }     
+
                 if(!isset($_COOKIE["redirect"])){
                     header("Location: /ITCS333-Project/mainpage.php?Signup=success");
                 }else{
                     header("Location: ".$_COOKIE["redirect"]);
-                    setcookie ("redirect", "", time() - 3600);
+                    setcookie ("redirect", $redirectUrl, time() - 3600,'/');
                 }
                 die();        
             }

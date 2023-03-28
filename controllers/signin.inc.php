@@ -17,9 +17,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 //password match and login in user
                 
                 if(isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'rememberMe'){
-                    setcookie("session", password_hash($row["username"], PASSWORD_DEFAULT),time() + 60 ,'/');
+                    setcookie("session", password_hash($row["username"], PASSWORD_DEFAULT),time() + 604800 ,'/');
                 } else{
-                    session_set_cookie_params(0);
+                    //cookie that deletes on browser close
+                    setcookie("session", password_hash($row["username"], PASSWORD_DEFAULT),0 ,'/');
                 }      
 
                 session_start();
@@ -30,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                     header("Location: /ITCS333-Project/mainpage.php?Signin=success");
                 }else{
                     header("Location: ".$_COOKIE["redirect"]);
-                    setcookie ("redirect", "", time() - 3600);
+                    setcookie ("redirect", $redirectUrl, time() - 3600,'/');
                 }
                 die();  
             }
