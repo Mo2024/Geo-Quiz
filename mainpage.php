@@ -12,11 +12,6 @@
             </div>
             ';
     }
-    $id = $_SESSION['userId'];
-    $idQuery = "SELECT * FROM user WHERE id = '$id'";
-    $result = $db->query($idQuery);
-    $row = $result->fetch();
-    if (is_null($row['verificationCode'])) {echo 'hehe';}
 ?>
 
 <?php require('partials/footer.inc.php')?>
