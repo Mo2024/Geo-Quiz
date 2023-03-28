@@ -22,5 +22,8 @@
 
     session_start();
     require(__DIR__ ."/../functions/connection.inc.php");
+    // if(!isset($_COOKIE['session'])){
+    //   session_destroy();
+    // }
   ?>
   <?php require(__DIR__ .'/../partials/navbar.inc.php')?>

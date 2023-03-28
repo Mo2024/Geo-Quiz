@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2023 at 12:32 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.0.14
+-- Generation Time: Mar 28, 2023 at 11:24 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `itcs333group2test`
+-- Database: `itcs333group2`
 --
 
 -- --------------------------------------------------------
@@ -41,7 +41,7 @@ CREATE TABLE `user` (
   `verified` tinyint(1) NOT NULL,
   `profileimage` varchar(2083) NOT NULL,
   `passworedCode` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
@@ -67,7 +67,7 @@ INSERT INTO `user` (`id`, `username`, `email`, `hash`, `firstname`, `lastname`, 
 (41, 'wqwsdds', 'jhwdf@d.com', '$2y$10$AE/LEQ00DOnzR6RgpMjC/uaKLc9rMX4BGOTNom1CWRDYBAukr5rjO', 'qw', 'qw', '2023-03-22', '12', 'user', '189148', 0, '', ''),
 (42, 'wqwsdds1', 'jhwdf@d.comsas', '$2y$10$bZP0tcM5zVYkxsrLWj0C/.pMcVXORiDLjE2hXPAhyplFaotnq2nJG', 'qw', 'qw', '2023-03-22', '12', 'user', '370760', 0, '', ''),
 (43, 'ddsaasd', 'sdfdsf@d.com', '$2y$10$x91VzBvIWPq0rw70Ohiv.eAe/ZutXEFKJlgpphX2kimTP4dBJjazK', 'a', 'a', '2023-02-28', '22', 'user', '792760', 0, '', ''),
-(44, 'adfdsds', 'mohdosama2025@gmail.com', '$2y$10$.lDteu20BivKo4VmfnrHN.nnCjWSoMCYUCgP5uDDGpT9x90xr7Z.O', 'ad', 'da', '2023-03-23', '222', 'user', NULL, 1, '', ''),
+(44, 'ali9743', 'mohdosama2025@gmail.com', '$2y$10$.lDteu20BivKo4VmfnrHN.nnCjWSoMCYUCgP5uDDGpT9x90xr7Z.O', 'adwddw', 'dae', '2023-03-16', '25372', 'user', NULL, 1, '', ''),
 (45, 'adafs', 'adkshjg@gmail.com', '$2y$10$PdP2y4OzAdMlLQQ4KIjujewDX9No8Yi3J40ifwZS6Gyt4a07Z3fOW', 'ds', 'sda', '2023-03-15', '323', 'user', '174214', 0, '', ''),
 (46, 'sasas', 'as@gmail.com', '$2y$10$5p3iTZxZVOhZfqRAjz1JduP2TdAnAD9cRhpa2o9q7l9qVrjDTMJxa', 'as', 'a', '2023-03-02', '2', 'user', '504340', 0, '', ''),
 (47, 'sas2', 'aas@gmail.com', '$2y$10$aMRNyqUhTdSD8BuVMoyPye9zLVOUqzYNCxGz7s5/lslbLu5E.5B2G', 'as', 'a', '2023-03-02', '2', 'user', '169695', 0, '', '');

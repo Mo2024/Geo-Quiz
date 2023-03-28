@@ -15,6 +15,12 @@
                                 <label class="form-label" for="password">Password</label>
                                 <input placeholder="Password" class="form-control" type="password" name="password" id="password" required>
                             </div>
+                            <div class="mb-3">
+                                <input class="form-check-input" name="rememberMe" type="checkbox" value="rememberMe" id="flexCheckChecked">
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    Remember me?
+                                </label>
+                            </div>
                         <button type="submit" class="btn btn-success btn-block" name="submit">Submit</button>
                     </form>
                 </div>

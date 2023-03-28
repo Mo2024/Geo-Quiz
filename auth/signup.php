@@ -48,8 +48,14 @@
                                 <input class="form-control" type="number" placeholder="Phone Number" name="pnum" id="pnum" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $pnumber ?>" required>
                             </div>
                         </div>
-            
-         
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <input class="form-check-input" name="rememberMe" type="checkbox" value="rememberMe" id="flexCheckChecked">
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    Remember me?
+                                </label>
+                            </div>
+                        </div>
                         <button type="submit" class="btn btn-success btn-block" name="submit">Submit</button>
                     </form>
                 </div>

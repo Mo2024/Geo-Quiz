@@ -15,9 +15,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         if ($row = $result->fetch()) {
             if (password_verify($formPassword, $row['hash'])) {
                 //password match and login in user
+                
+                if(isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'rememberMe'){
+                    setcookie("session", password_hash($row["username"], PASSWORD_DEFAULT),time() + 60 ,'/');
+                } else{
+                    session_set_cookie_params(0);
+                }      
+
                 session_start();
                 $_SESSION["userId"] = $row['id'];
-                $_SESSION["username"] = $row['username'];            
+                $_SESSION["username"] = $row['username'];
+
                 if(!isset($_COOKIE["redirect"])){
                     header("Location: /ITCS333-Project/mainpage.php?Signin=success");
                 }else{

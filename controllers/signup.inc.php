@@ -55,6 +55,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
          
                 $_SESSION["userId"] = $db->lastInsertId();
                 $_SESSION["username"] = $username;
+
+                if(isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'rememberMe'){
+                    setcookie("session", password_hash($username),time() + 60 ,'/');
+                }
                 if(!isset($_COOKIE["redirect"])){
                     header("Location: /ITCS333-Project/mainpage.php?Signup=success");
                 }else{
