@@ -6,19 +6,6 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
     $id = $_SESSION['userId'];
     $row = selectUser($id, $db);
     
-    if(isset($_GET['verification']) && $_GET['verification'] == 'sent' && $_SERVER["REQUEST_METHOD"] == "GET"){
-        if(is_null($row[9]) && $row[10]){
-            echoAlertSuccess("Email verified");
-        }
-        else{
-            require(__DIR__ .'/../functions/phpmailer.inc.php');
-            $mail->addAddress($row[2]);    
-            $mail->Subject = 'Email verification';
-            $href = $url.'functions/verifyEmail.inc.php?code='.$row[9];
-            $mail->Body    = '<p>Click this <a href="'.$href.'">link</a> to verify your email</p>';
-            $mail->send();
-        }
-    }
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])){
         $username = $_POST['username'];
         $email = $_POST['email'];
@@ -45,20 +32,12 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
                 echoAlertDanger("Email already exists");
             }
             else{
-                $verificationStatus = $row['verified'];
-                $verificationCode = $row['verificationCode'];
-                
+                $verificationStatus = $row['verified'];                
                 if ($row['email'] != $email){
-                    require(__DIR__ .'/../functions/phpmailer.inc.php');
-                    $verificationCode = substr(number_format(time() * rand(), 0, '', ''), 0, 6);                
-                    $mail->addAddress($email);    
-                    $mail->Subject = 'Email verification';
-                    $href = $url.'functions/verifyEmail.inc.php?code='.$verificationCode;
-                    $mail->Body    = '<p>Click this <a href="'.$href.'">link</a> to verify your email</p>';
-                    $mail->send();
+                    $verificationStatus = false;
                 }
                 $updateQuery = "UPDATE user SET username = '$username', email = '$email', firstname = '$firstname',
-                lastname = '$lastname', birthdate = '$birth',phonenumber = '$pnumber', verificationCode = ".(is_null($verificationCode) ? "NULL" : "'$verificationCode'").", verified = '$verificationStatus' WHERE id = '$id'";
+                lastname = '$lastname', birthdate = '$birth', phonenumber = '$pnumber',  verified = '$verificationStatus' WHERE id = '$id'";
                 $result = $db->query($updateQuery);
 
                 $row = selectUser($_SESSION['userId'], $db);
@@ -76,6 +55,19 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
         }
 
     } 
+    if(isset($_GET['verification']) && $_GET['verification'] == 'sent' && $_SERVER["REQUEST_METHOD"] == "GET"){
+        if(is_null($row['verificationCode']) && $row['verified']){
+            echoAlertSuccess("Email verified");
+        }
+        else{
+            require(__DIR__ .'/../functions/phpmailer.inc.php');
+            $mail->addAddress($row['email']);    
+            $mail->Subject = 'Email verification';
+            $href = $url.'functions/verifyEmail.inc.php?code='.$row['verificationCode'];
+            $mail->Body    = '<p>Click this <a href="'.$href.'">link</a> to verify your email</p>';
+            $mail->send();
+        }
+    }
 }else{
     $url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
     setcookie("redirect", $url,0,'/');
