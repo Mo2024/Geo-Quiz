@@ -12,6 +12,16 @@
             </div>
             ';
     }
+    if(isset($_GET['access']) && $_GET['access'] == 'unauthorized'){
+        echo '
+            <div class="container mt-5">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Access unauthorized
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+            ';
+    }
 ?>
 
 <?php require('partials/footer.inc.php')?>

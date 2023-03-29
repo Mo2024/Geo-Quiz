@@ -8,5 +8,6 @@
     $nameReg = "/^[a-zA-Z]{1,}$/";
     $pnumberReg = "/^[0-9]{1,100}$/";
     $dateReg = "/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/";
+    $userTypeReg = "/^(admin|manager|user)$/"
 
 ?>
