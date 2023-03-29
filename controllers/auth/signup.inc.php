@@ -1,9 +1,7 @@
 <?php 
-
-require_once(realpath(__DIR__ . '/../vendor/autoload.php'));
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    require(__DIR__ .'/../functions/functions.inc.php');
-    require(__DIR__ ."/../partials/regex.inc.php");
+    require('../functions/functions.inc.php');
+    require("../partials/regex.inc.php");
 
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -38,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 echoAlertDanger("Email already exists");
             }
             else{
-                require(__DIR__ .'/../functions/phpmailer.inc.php');
+                require('../functions/phpmailer.inc.php');
                 $verificationCode = substr(number_format(time() * rand(), 0, '', ''), 0, 6);                
                 $mail->addAddress($email);    
                 $mail->Subject = 'Email verification';

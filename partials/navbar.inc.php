@@ -74,7 +74,7 @@
               ';
             }else{
               echo '
-              <a href="/ITCS333-Project/controllers/signout.inc.php" class="nav-link">Sign out</a>
+              <a href="/ITCS333-Project/controllers/auth/signout.inc.php" class="nav-link">Sign out</a>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                   aria-expanded="false">

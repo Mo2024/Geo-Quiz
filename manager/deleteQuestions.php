@@ -1,5 +1,5 @@
-<?php $title = "Add Questions"; require(__DIR__ .'/../partials/boilerplate.inc.php')?>
-<?php //require(__DIR__ .'/../controllers/deleteQuestions.inc.php')?>
+<?php $title = "Delete Quiestions"; require('../partials/boilerplate.inc.php')?>
+<?php //require('../controllers/manager/deleteQuestions.inc.php')?>
 
 <section class="container d-flex justify-content-center align-items-center my-5">
 
@@ -29,10 +29,10 @@
             </div>
 
             <div class="mb-3">
-                <button class="btn btn-success">Delete Quiz</button>
+                <button class="btn btn-success">Delete Questions</button>
             </div>
         </form>
     </div>
 </section>
 
-<?php require(__DIR__ .'/../partials/footer.inc.php')?>
+<?php require('../partials/footer.inc.php')?>

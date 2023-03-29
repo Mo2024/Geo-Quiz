@@ -1,7 +1,7 @@
 <?php 
 if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
-    require(__DIR__ .'/../functions/functions.inc.php');
-    require(__DIR__ ."/../partials/regex.inc.php");
+    require('../functions/functions.inc.php');
+    require("../partials/regex.inc.php");
 
     $id = $_SESSION['userId'];
     $idQuery = "SELECT * FROM user WHERE id = '$id'";

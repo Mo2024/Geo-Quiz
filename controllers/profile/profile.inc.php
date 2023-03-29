@@ -1,6 +1,6 @@
 <?php 
-require(__DIR__ .'/../functions/functions.inc.php');
-require(__DIR__ ."/../partials/regex.inc.php");
+require('../functions/functions.inc.php');
+require("../partials/regex.inc.php");
 
 if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
     $id = $_SESSION['userId'];
@@ -60,7 +60,7 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
             echoAlertSuccess("Email verified");
         }
         else{
-            require(__DIR__ .'/../functions/phpmailer.inc.php');
+            require('../functions/phpmailer.inc.php');
             $mail->addAddress($row['email']);    
             $mail->Subject = 'Email verification';
             $href = $url.'functions/verifyEmail.inc.php?code='.$row['verificationCode'];

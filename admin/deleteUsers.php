@@ -1,5 +1,5 @@
-<?php $title = "Delete Users"; require(__DIR__ .'/../partials/boilerplate.inc.php')?>
-<?php //require(__DIR__ .'/../controllers/deleteUsers.inc.php')?>
+<?php $title = "Delete Users"; require('../partials/boilerplate.inc.php')?>
+<?php //require('../controllers/admin/deleteUsers.inc.php')?>
 
 <section class="container d-flex justify-content-center align-items-center my-5">
     <div class="col-lg-6">
@@ -24,4 +24,4 @@
     </div>
 </section>
 
-<?php require(__DIR__ .'/../partials/footer.inc.php')?>
+<?php require('../partials/footer.inc.php')?>

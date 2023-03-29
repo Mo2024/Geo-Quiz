@@ -1,7 +1,7 @@
 <?php 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    require(__DIR__ .'/../functions/functions.inc.php');
-    require(__DIR__ ."/../partials/regex.inc.php");
+    require('../functions/functions.inc.php');
+    require('../partials/regex.inc.php');
 
     $uid = $_POST['uid'];
     $formPassword = $_POST['password'];

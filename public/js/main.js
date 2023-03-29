@@ -7,7 +7,7 @@ function checkCookie() {
         .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {});
 
     if (typeof cookiesObject.session === 'undefined') {
-        const url = "http://localhost/ITCS333-Project/controllers/signout.inc.php";
+        const url = "http://localhost/ITCS333-Project/controllers/auth/signout.inc.php";
         const options = {
             method: "POST",
             headers: {

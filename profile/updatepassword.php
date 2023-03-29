@@ -1,5 +1,5 @@
-<?php $title = "Update Password"; require(__DIR__ .'/../partials/boilerplate.inc.php')?>
-<?php require(__DIR__ .'/../controllers/updatepassword.inc.php')?>
+<?php $title = "Update Password"; require('../partials/boilerplate.inc.php')?>
+<?php require('../controllers/profile/updatepassword.inc.php')?>
 <div class="container d-flex justify-content-center align-items-center my-5">
     <div class="row">
         <div class="col-xl-12">
@@ -39,4 +39,4 @@
     </div>
 </div>
 
-<?php require(__DIR__ .'/../partials/footer.inc.php')?>
+<?php require('../partials/footer.inc.php')?>
