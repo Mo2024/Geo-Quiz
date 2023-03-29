@@ -24,7 +24,7 @@
     session_start();
     require(__DIR__ ."/../functions/connection.inc.php");
     //Extends cookie's duration if the user is constantly using it
-    if(isset($_SESSION['username'])){
+    if(isset($_COOKIE['session'])){
       setcookie("session", password_hash($_SESSION["username"], PASSWORD_DEFAULT),time() + 604800 ,'/');
     }
   ?>
