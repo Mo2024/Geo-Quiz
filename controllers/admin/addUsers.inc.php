@@ -63,6 +63,13 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
                 }
             }else{
                 //excel sheet upload
+                $ext = pathinfo($_FILES['excel']['name'], PATHINFO_EXTENSION);
+                if($ext == 'xls' || $ext == 'xlsx'){
+
+                    
+                }else{ 
+                    echoAlertDanger("Only .xls and .xlsx file types are allowed");
+                }
             }
         }
 
