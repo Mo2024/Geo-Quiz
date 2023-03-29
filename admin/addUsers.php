@@ -1,5 +1,5 @@
 <?php $title = "Add Users"; require(__DIR__ .'/../partials/boilerplate.inc.php')?>
-<?php require(__DIR__ .'/../controllers/addUsers.inc.php')?>
+<?php //require(__DIR__ .'/../controllers/addUsers.inc.php')?>
 
 <section class="container d-flex justify-content-center align-items-center my-5">
     <div class="col-lg-6">
