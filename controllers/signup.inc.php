@@ -55,6 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
          
                 $_SESSION["userId"] = $db->lastInsertId();
                 $_SESSION["username"] = $username;
+                $_SESSION["userType"] = $type;
 
                 if(isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'rememberMe'){
                     setcookie("session", password_hash($username, PASSWORD_DEFAULT),time() + 604800 ,'/');

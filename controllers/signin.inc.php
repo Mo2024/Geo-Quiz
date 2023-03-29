@@ -26,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 session_start();
                 $_SESSION["userId"] = $row['id'];
                 $_SESSION["username"] = $row['username'];
+                $_SESSION["userType"] = $row['type'];
 
                 if(!isset($_COOKIE["redirect"])){
                     header("Location: /ITCS333-Project/mainpage.php?Signin=success");
