@@ -16,7 +16,7 @@
 
 <body class="min-vh-100 d-flex flex-column">
   <?php 
-    require_once(realpath('../vendor/autoload.php'));
+    require_once(realpath(__DIR__.'/../vendor/autoload.php'));
     use Dotenv\Dotenv;
     $dotenv = Dotenv::createImmutable(__DIR__.'/../');
     $dotenv->load();
@@ -29,4 +29,4 @@
       setcookie("session", password_hash($_SESSION["username"], PASSWORD_DEFAULT),time() + 604800 ,'/');
     }
   ?>
-  <?php require('../partials/navbar.inc.php')?>
+  <?php require(__DIR__.'/../partials/navbar.inc.php')?>
