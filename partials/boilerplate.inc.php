@@ -16,12 +16,15 @@
 
 <body class="min-vh-100 d-flex flex-column">
   <?php 
+    session_start();
+    var_dump($_SESSION);
+    echo "Session ID: " . session_id() . "<br>";
+
     require_once(realpath(__DIR__.'/../vendor/autoload.php'));
     use Dotenv\Dotenv;
     $dotenv = Dotenv::createImmutable(__DIR__.'/../');
     $dotenv->load();
 
-    session_start();
     require(__DIR__ ."/../functions/connection.inc.php");
     $brandName = $_ENV['brandName'];
     //Extends cookie's duration if the user is constantly using it

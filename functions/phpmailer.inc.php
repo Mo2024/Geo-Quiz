@@ -1,20 +1,14 @@
 <?php
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
+// create a new SwiftMailer instance
+$transport = new Swift_SmtpTransport('smtp.gmail.com', 587, 'tls');
+$smtpEmail = $_ENV['smtpEmail'];
+$url = $_ENV['url'];
+$transport->setUsername($smtpEmail);
+$transport->setPassword($_ENV['smtpPassword']);
 
-    $smtpEmail = $_ENV['smtpEmail'];
-    $smtpPassword = $_ENV['smtpPassword'];
-    $url = $_ENV['url'];
+$mailer = new Swift_Mailer($transport);
 
-    $mail = new PHPMailer(true);
-    $mail->isSMTP();
-    $mail->SMTPAuth = true;                       
-    $mail->Host       = 'smtp.gmail.com';    
-    $mail->SMTPAuth   = true;               
-    $mail->Username   = $smtpEmail;     
-    $mail->Password   = $smtpPassword;         
-    $mail->SMTPSecure = 'tls';              
-    $mail->Port       = 587;
-    $mail->setFrom($smtpEmail, 'ITCS333 G-2');           
-    $mail->isHTML(true);                  
+// create a new SwiftMailer message
+$message = new Swift_Message();
+$message->setFrom([$smtpEmail => 'ITCS333 G-2']);                
 ?>

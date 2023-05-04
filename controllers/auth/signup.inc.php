@@ -1,5 +1,6 @@
 <?php 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+    
     require('../functions/functions.inc.php');
     require("../partials/regex.inc.php");
 
@@ -13,11 +14,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $pnumber = $_POST['pnum'];
     $type = "user";
 
-    if(preg_match($usernameReg, $username) && preg_match($emailReg, $email)
-    && preg_match($passwordReg, $password) && preg_match($passwordReg, $password2)
-    && preg_match($nameReg, $firstname) && preg_match($nameReg, $lastname)
-    && preg_match($pnumberReg, $pnumber) && preg_match($dateReg, $birth)){
-
+    if(!preg_match($usernameReg, $username)){
+        echoAlertDanger("Please make sure that Username is 4 to 20 characters long, only contains alphabet letters and 0 to 9 numerics");
+   
+    }
+    else if(!preg_match($emailReg, $email)){
+        echoAlertDanger("Please make sure that the entered email is valid");
+    }
+    else if(!preg_match($passwordReg, $password) && preg_match($passwordReg, $password2)){
+        echoAlertDanger("Please make sure that the entered password has one special character, one small letter, one capital letter and at least 8 characters long");
+    }
+    else if(!preg_match($nameReg, $firstname) ){
+        echoAlertDanger("Please make sure that the entered first name is entered properly");
+    }
+    else if(!preg_match($nameReg, $lastname)){
+        echoAlertDanger("Please make sure that the entered last name is entered properly");
+    }
+    else if(!preg_match($pnumberReg, $pnumber)){
+        echoAlertDanger("Please make sure that the entered number is valid");
+    }
+    else if(!preg_match($dateReg, $birth)){
+        echoAlertDanger("Please make sure that the entered birthdate is valid");
+    }
+    else{
         if($password != $password2){
             echoAlertDanger('Passwords do not match');
         }else{
@@ -36,13 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 echoAlertDanger("Email already exists");
             }
             else{
-                require('../functions/phpmailer.inc.php');
                 $verificationCode = substr(number_format(time() * rand(), 0, '', ''), 0, 6);                
-                $mail->addAddress($email);    
-                $mail->Subject = 'Email verification';
-                $href = $url.'functions/verifyEmail.inc.php?code='.$verificationCode;
-                $mail->Body    = '<p>Click this <a href="'.$href.'">link</a> to verify your email</p>';
-                $mail->send();
 
                 $notVerified = false;
                 $active = true;
@@ -55,32 +68,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 $_SESSION["userId"] = $db->lastInsertId();
                 $_SESSION["username"] = $username;
                 $_SESSION["userType"] = $type;
-
+                
                 if(isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'rememberMe'){
                     setcookie("session", password_hash($username, PASSWORD_DEFAULT),time() + 604800 ,'/');
                 }else{
                     //cookie that deletes on browser close
                     setcookie("session", password_hash($username, PASSWORD_DEFAULT),0 ,'/');
                 }     
-
+                var_dump($_SESSION);
+                
                 if(!isset($_COOKIE["redirect"])){
                     header("Location: /ITCS333-Project/mainpage.php?Signup=success");
                 }else{
                     header("Location: ".$_COOKIE["redirect"]);
                     setcookie ("redirect", $redirectUrl, time() - 3600,'/');
                 }
-                die();        
+                // die();        
             }
         }
-    }else{
-        echoAlertDanger(
-            "Please make sure that:
-            <ul>
-                <li>Username is 4 to 20 characters long, only contains alphabet letters and 0 to 9 numerics </li>
-                <li>Email, name and birthdate are enetered properly</li>
-                <li>Password has one special character, one small letter, one capital letter and at least 8 characters long</li>
-            </ul>"
-        );
     }
 
 }

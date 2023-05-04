@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                     setcookie("session", password_hash($row["username"], PASSWORD_DEFAULT),0 ,'/');
                 }      
 
-                session_start();
+                // session_start();
                 $_SESSION["userId"] = $row['id'];
                 $_SESSION["username"] = $row['username'];
                 $_SESSION["userType"] = $row['type'];
