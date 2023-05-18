@@ -17,9 +17,6 @@
 <body class="min-vh-100 d-flex flex-column">
   <?php 
     session_start();
-    var_dump($_SESSION);
-    echo "Session ID: " . session_id() . "<br>";
-
     require_once(realpath(__DIR__.'/../vendor/autoload.php'));
     use Dotenv\Dotenv;
     $dotenv = Dotenv::createImmutable(__DIR__.'/../');

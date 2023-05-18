@@ -6,11 +6,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $uid = $_POST['uid'];
     $formPassword = $_POST['password'];
 
-    if($uid == '' || $formPassword == ''){
-        echoAlertDanger('Username/Email or Password field are empty');
+    if($formPassword == ''){
+        echoAlertDanger('Password field are empty');
+    } else if($uid == ''){
+        echoAlertDanger('Username/Email');
     }
     else if(preg_match($emailReg, $uid) || preg_match($usernameReg, $uid)){
-        $uidQuery = "SELECT * FROM user WHERE email = '$uid' OR username = '$uid'";
+        $uidQuery = "SELECT * FROM users WHERE email = '$uid' OR username = '$uid'";
         $result = $db->query($uidQuery);
         if ($row = $result->fetch()) {
             if (password_verify($formPassword, $row['hash'])) {
@@ -26,7 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 // session_start();
                 $_SESSION["userId"] = $row['id'];
                 $_SESSION["username"] = $row['username'];
-                $_SESSION["userType"] = $row['type'];
 
                 if(!isset($_COOKIE["redirect"])){
                     header("Location: /ITCS333-Project/mainpage.php?Signin=success");
