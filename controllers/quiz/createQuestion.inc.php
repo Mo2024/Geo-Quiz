@@ -4,7 +4,7 @@ require("../partials/regex.inc.php");
 
 if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
     $uid = $_SESSION['userId'];
-
+    $quizId = $_SESSION['noOfQuestions'];
     try{
         if($_SESSION['quizId']){
             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])){
@@ -14,6 +14,23 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
                 $questions = $_POST['questions'];
                 $answers = $_POST['answers'];
                 $images = $_POST['images'];
+                $options = $_POST['options'];
+                
+                $mcqCounter = 0;
+
+                for($i=0; $i < $_SESSION['noOfQuestions']; $i++){
+                    if($qTypes[i]=="MCQ"){
+                        $sql = $db->prepare("insert into questions (quizId,type,score,question,answer) values ('".$quizId."', '".$qTypes[i]."', '".$marks[i]."', '".$questions[i]."', '".$answers[i]."')");
+                        $sql->execute();
+                        $questionId = $db->lastInsertId();
+                        for($i=0; $i < 4; $i++){
+                            $sql = $db->prepare("insert into choices (choice,questionId) values ('".$options[mcqCounter]."', '".$questionId."')");
+                            $sql->execute();
+                            $mcqCounter++;
+                        }
+                    }
+
+                }
 
             }
         }else{

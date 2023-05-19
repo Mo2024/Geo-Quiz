@@ -90,7 +90,7 @@
                 let questionType = document.getElementsByClassName('qTypePosition')[divPosition];
                 questionType.innerHTML = 
                 `<label class="form-label mt-1 fw-bold" for="answer${divPosition}">Choose the correct answer</label>
-                <select class="form-select my-select w-50">
+                <select name="answers[]" class="form-select my-select w-50">
                     <option selected value="">Please select an answer</option>
                     <option value="true">True</option>
                     <option value="false">False</option>
