@@ -57,4 +57,10 @@
         return $result->fetch();
     }
 
+    function selectQuiz($id, $db){
+        $idQuery = "SELECT * FROM quiz WHERE id = '$id'";
+        $result = $db->query($idQuery);
+        return $result->fetch();
+    }
+
 ?>

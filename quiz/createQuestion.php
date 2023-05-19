@@ -1,5 +1,12 @@
-<?php $title = "Sign Up"; require('../partials/boilerplate.inc.php')?>
-<?php require('../controllers/auth/signup.inc.php')?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
 
 <div class="container d-flex justify-content-center align-items-center my-5">
     <div class="row">
@@ -30,17 +37,17 @@
                         <div class="row">
                             <div class="mb-3 col-sm-6">
                                 <label class="form-label" for="noOfQuestions">Number of Questions</label>
-                                <input class="form-control" placeholder="Number of Questions" type="number" name="noOfQuestions" id="noOfQuestions" value="<?php if (isset($_POST["submit"] )) echo $noOfQuestions ?>" required>
+                                <input class="form-control" placeholder="Number of Questions" type="number" name="noOfQuestions" id="noOfQuestions" required>
                             </div>
                             <div class="mb-3 col-sm-6">
                                 <label class="form-label" for="color">Color Display Box</label>
-                                <input style="height: 38px;" class="form-control w-25" placeholder="Color" type="color" name="color" id="color" value="<?php if (isset($_POST["submit"] )) echo $color ?>"  required>
+                                <input style="height: 38px;" class="form-control w-25" placeholder="Color" type="color" name="color" id="color" value="#ff0000" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="mb-3 col-sm-12">
                                 <label class="form-label" for="description">Description</label>
-                                <textarea class="form-control" placeholder="Description" rows="5" name="description" id="description" value="<?php if (isset($_POST["submit"] )) echo $description ?>" required>
+                                <textarea class="form-control" placeholder="Description" rows="5" name="description" id="description" value="<?php if (isset($_POST["submit"] )) echo $fullname ?>" required>
                             </textarea>
                             </div>
                         </div>
@@ -52,4 +59,23 @@
     </div>
 </div>
 
-<?php require('../partials/footer.inc.php')?>
+
+
+
+
+
+
+
+
+
+    
+    <?php 
+    
+        for($i=0; $i < $row['nQuestions']; $i++){
+
+        }
+    
+    ?>
+    
+</body>
+</html>
