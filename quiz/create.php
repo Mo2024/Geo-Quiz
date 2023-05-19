@@ -33,22 +33,15 @@
                                 <input class="form-control" placeholder="Number of Questions" type="number" name="noOfQuestions" id="noOfQuestions" required>
                             </div>
                             <div class="mb-3 col-sm-6">
-                                <label class="form-label" for="password">Confirm Password</label>
-                                <input class="form-control" placeholder="Password" type="password" name="password2" id="password2" required>
+                                <label class="form-label" for="color">Color Display Box</label>
+                                <input style="height: 38px;" class="form-control w-25" placeholder="Color" type="color" name="color" id="color" value="#ff0000" required>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="mb-3 col-sm-6">
-                                <label class="form-label" for="fullName">Full Name</label>
-                                <input class="form-control" placeholder="Full Name" type="text" name="fullname" id="fullname" value="<?php if (isset($_POST["submit"] )) echo $fullname ?>" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="mb-3 col-sm-6">
-                                <input class="form-check-input" name="rememberMe" type="checkbox" value="rememberMe" id="flexCheckChecked">
-                                <label class="form-check-label" for="flexCheckChecked">
-                                    Remember me?
-                                </label>
+                            <div class="mb-3 col-sm-12">
+                                <label class="form-label" for="description">Description</label>
+                                <textarea class="form-control" placeholder="Description" rows="5" name="description" id="description" value="<?php if (isset($_POST["submit"] )) echo $fullname ?>" required>
+                            </textarea>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block" name="submit">Submit</button>

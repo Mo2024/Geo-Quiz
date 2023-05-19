@@ -13,7 +13,7 @@
               <a class="nav-link active h3 px-5" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link h3 px-5" href="#">Create Quiz</a>
+              <a class="nav-link h3 px-5" href="/ITCS333-Project/quiz/create.php">Create Quiz</a>
             </li>
             <li class="nav-item">
               <a class="nav-link h3 px-5" href="#">Quizzes</a>

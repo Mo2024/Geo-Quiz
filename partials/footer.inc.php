@@ -1,5 +1,5 @@
 
-    <footer class="text-center text-lg-start text-white" style="background-color: #3C486b">
+    <footer class="text-center text-lg-start text-white mt-auto" style="background-color: #3C486b">
 
       <div class="containerr p-4 pb-0">
 
@@ -33,7 +33,7 @@
                   <a href="#!" class="text-white">Terms and Conditions</a>
                 </li>
               </ul>
-                            <br>
+              <br>
             </div>
 
 
