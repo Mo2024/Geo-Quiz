@@ -2,7 +2,7 @@
 
       <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#F9D949;">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img style="margin-top:-11px;"width="170px" src="/ITCS333-Project/333 Icons-Fonts-Colors/Screenshot_2023-05-06_at_3.23.41_PM-removebg-preview.png" alt="Logo for website">
+        <a class="navbar-brand" href="#"><img style="margin-top:-11px;"width="170px" src="/ITCS333-Project/public/333 Icons-Fonts-Colors/Screenshot_2023-05-06_at_3.23.41_PM-removebg-preview.png" alt="Logo for website">
     </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -13,7 +13,7 @@
               <a class="nav-link active h3 px-5" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link h3 px-5" href="/ITCS333-Project/quiz/create.php">Create Quiz</a>
+              <a class="nav-link h3 px-5" href="/ITCS333-Project/quiz/createQuiz.php">Create Quiz</a>
             </li>
             <li class="nav-item">
               <a class="nav-link h3 px-5" href="#">Quizzes</a>
