@@ -1,5 +1,5 @@
 <?php $title = "Sign Up"; require('../partials/boilerplate.inc.php')?>
-<?php require('../controllers/auth/signup.inc.php')?>
+<?php require('../controllers/quiz/createQuiz.inc.php')?>
 
 <div class="container d-flex justify-content-center align-items-center my-5">
     <div class="row">
@@ -40,8 +40,7 @@
                         <div class="row">
                             <div class="mb-3 col-sm-12">
                                 <label class="form-label" for="description">Description</label>
-                                <textarea class="form-control" placeholder="Description" rows="5" name="description" id="description" value="<?php if (isset($_POST["submit"] )) echo $description ?>" required>
-                            </textarea>
+                                <textarea class="form-control" placeholder="Description" rows="5" name="description" id="description" required><?php if (isset($_POST["submit"] )) echo $description ?></textarea>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block" name="submit">Submit</button>

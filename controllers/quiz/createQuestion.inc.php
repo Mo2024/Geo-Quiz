@@ -6,23 +6,23 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
     $uid = $_SESSION['userId'];
 
     try{
-        $quizRow = selectQuiz($_GET['quizID'], $db);
-        if(isset($_GET['quizId']) && intval($_GET['quizId']) != 0){
+        if($_SESSION['quizId']){
             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])){
-                if($quizRow['uid'] == $uid){
+                //code here
+                $qTypes = $_POST['qTypes'];
+                $marks = $_POST['marks'];
+                $questions = $_POST['questions'];
+                $answers = $_POST['answers'];
+                $images = $_POST['images'];
 
-                    //code here
-
-                }else{
-                    echoAlertDanger("You don't have authorization to add questions to this quizz");
-                }
-                    
             }
         }else{
-            echoAlertDanger("You don't have authorization to add questions to this quizz");
+            //redirect
+            // echoAlertDanger("You don't have authorization to add questions to this quizz");
         }
     }catch(e){
-        echoAlertDanger('Error');
+        // redirect
+        // echoAlertDanger('Error');
     }
 
 }else{

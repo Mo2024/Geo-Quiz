@@ -52,13 +52,13 @@
     }
 
     function selectUser($id, $db){
-        $idQuery = "SELECT * FROM user WHERE id = '$id'";
+        $idQuery = "SELECT * FROM users WHERE uid = '$id'";
         $result = $db->query($idQuery);
         return $result->fetch();
     }
 
     function selectQuiz($id, $db){
-        $idQuery = "SELECT * FROM quiz WHERE id = '$id'";
+        $idQuery = "SELECT * FROM quiz WHERE quizid = '$id'";
         $result = $db->query($idQuery);
         return $result->fetch();
     }
