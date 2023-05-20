@@ -25,27 +25,4 @@
     <?php }?>
 </div>
 
-
-   <script>
-    const div = document.getElementById('box1');
-    const backgroundColor = window.getComputedStyle(div).backgroundColor;
-
-    // Convert the background color to RGB values
-    const rgb = backgroundColor.match(/\d+/g);
-    const r = parseInt(rgb[0]);
-    const g = parseInt(rgb[1]);
-    const b = parseInt(rgb[2]);
-
-    // Calculate the luminance to determine if the text should be black or white
-    const luminance = (r * 0.299 + g * 0.587 + b * 0.114) / 255;
-
-    // Set the text color based on the luminance value
-    if (luminance > 0.5) {
-    div.style.color = '#000000'; // Black
-    } else {
-    div.style.color = '#ffffff'; // White
-    }
-   </script>
-
-
 <?php require('../partials/footer.inc.php')?>

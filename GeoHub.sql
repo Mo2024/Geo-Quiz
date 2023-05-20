@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2023 at 03:33 AM
+-- Generation Time: May 20, 2023 at 11:54 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -41,7 +41,19 @@ INSERT INTO `choices` (`choiceId`, `choice`, `questionId`) VALUES
 (21, '1', 42),
 (22, '2', 42),
 (23, '3', 42),
-(24, '4', 42);
+(24, '4', 42),
+(25, 'dsaasd', 47),
+(26, 'adsads', 47),
+(27, 'asd', 47),
+(28, 'asd', 47),
+(29, 'adsads', 50),
+(30, 'asdads', 50),
+(31, 'asdads', 50),
+(32, 'asddas', 50),
+(33, '2', 54),
+(34, '2', 54),
+(35, '2', 54),
+(36, '2', 54);
 
 -- --------------------------------------------------------
 
@@ -65,7 +77,20 @@ CREATE TABLE `questions` (
 INSERT INTO `questions` (`questionId`, `quizId`, `type`, `score`, `question`, `answer`) VALUES
 (41, 24, 'FITB', 4, 'what is bahrain', 'twoo sdlkjnff'),
 (42, 24, 'MCQ', 4, 'sadsa', '3'),
-(43, 24, 'TF', 4, 'ewdqdqww', 'true');
+(43, 24, 'TF', 4, 'ewdqdqww', 'true'),
+(44, 25, 'FITB', 0, '', ''),
+(45, 25, 'FITB', 0, '', ''),
+(46, 25, 'FITB', 0, '', ''),
+(47, 26, 'MCQ', 3, 'adsasd', 'asd'),
+(48, 26, 'FITB', 4, 'ads', 'asd'),
+(49, 26, 'TF', 2, 'dsadsa', 'true'),
+(50, 27, 'MCQ', 3, 'adsasd', 'asd'),
+(51, 27, 'TF', 4, 'adsasd', 'true'),
+(52, 27, 'FITB', 5, 'dsaasd', 'asdsad'),
+(53, 48, 'FITB', 3, 'TEST', 'TEST ANSWER'),
+(54, 48, 'MCQ', 4, 'QUESTION ', '4'),
+(55, 48, 'TF', 4, 'HGS', 'true'),
+(56, 48, 'FITB', 4, 'dskljnckjs', 'dfadsfsa');
 
 -- --------------------------------------------------------
 
@@ -78,7 +103,6 @@ CREATE TABLE `quiz` (
   `title` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `nQuestions` int(11) NOT NULL,
-  `boxColor` varchar(255) NOT NULL,
   `totalTime` int(11) NOT NULL,
   `uid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -87,8 +111,12 @@ CREATE TABLE `quiz` (
 -- Dumping data for table `quiz`
 --
 
-INSERT INTO `quiz` (`quizid`, `title`, `description`, `nQuestions`, `boxColor`, `totalTime`, `uid`) VALUES
-(24, 'Middle east quiz', 'Middle east quiz lolz\r\n', 3, '#deabab', 300, 1);
+INSERT INTO `quiz` (`quizid`, `title`, `description`, `nQuestions`, `totalTime`, `uid`) VALUES
+(24, 'Middle east quiz', 'Middle east quiz lolz\r\n', 3, 300, 1),
+(25, 'deew', 'adsasd', 3, 600, 2),
+(26, 'TESTTTT', 'sdaadsasd', 3, 300, 2),
+(27, 'TEST 222', 'asddsaads', 3, 600, 2),
+(48, 'TEST QUIZ 100', 'TEST TES T 4', 4, 300, 2);
 
 -- --------------------------------------------------------
 
@@ -126,7 +154,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`uid`, `username`, `email`, `fName`, `hash`, `verified`, `vcode`, `pcode`) VALUES
-(1, 'faisal', 'aksak@gmail.com', 'asdasd', '$2y$10$jIOzK76n0kMnjDTP2TtA9uaoJkapgT3FnH.hKgsj9jjJnTmrLE7Ya', 0, '0', '0');
+(1, 'faisal', 'aksak@gmail.com', 'asdasd', '$2y$10$jIOzK76n0kMnjDTP2TtA9uaoJkapgT3FnH.hKgsj9jjJnTmrLE7Ya', 0, '0', '0'),
+(2, 'mohd', 'asxsax@gmail.com', 'ssadasd', '$2y$10$TWA0MPHFhPskak7Nj.vdoODiJnE/TzyyRgaX3UCVUMlkVcIRqiLGO', 0, '0', '0');
 
 --
 -- Indexes for dumped tables
@@ -175,19 +204,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `choices`
 --
 ALTER TABLE `choices`
-  MODIFY `choiceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `choiceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `questionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `questionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `quizid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `quizid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `results`
@@ -199,7 +228,7 @@ ALTER TABLE `results`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
