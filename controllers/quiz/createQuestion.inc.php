@@ -19,10 +19,6 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
                 $marks = $_POST['marks'];
                 $questions = $_POST['questions'];
                 $answers = $_POST['answers'];
-                var_dump($qTypes).'<br/>';
-                var_dump($marks).'<br/>';
-                var_dump($questions).'<br/>';
-                var_dump($answers).'<br/>';
                 // $images = $_POST['images'];
                 if(isset($_POST['options'])){
                     
@@ -45,7 +41,7 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
 
                 }
                 $db->commit();
-                // header("Location: /ITCS333-Project/mainpage.php");
+                header("Location: /ITCS333-Project/mainpage.php");
 
 
 
