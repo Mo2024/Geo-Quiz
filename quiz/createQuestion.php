@@ -14,7 +14,7 @@
                             for($i=0; $i < $newQuiz['noOfQuestions']; $i++){
                                 $nonIndex = $i + 1;
                                 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit']) && !$valid){
-                                    ?>                       
+                        ?>                       
                                     <div class="row mt-2">
                                         <div class=" col-sm-6">
                                             <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $i ?>" aria-expanded="false" aria-controls="collapseExample<?php echo $i?>">
@@ -54,57 +54,50 @@
             
                                                 <label class="form-label mt-1 fw-bold" for="question<?php echo $i ?>">Write your question here</label>
                                                 <textarea class="form-control" placeholder="Question" rows="1" name="questions[]" id="question<?php echo $i ?>" required><?php echo $questions[$i] ?></textarea>
-                                    <?php
-                                    if($qTypes[$i] == 'MCQ'){
-                                        ?>                       
+                                    <?php if($qTypes[$i] == 'MCQ'){?>                       
                                         <div class="qTypePosition">
                                                     <h3 class="form-label mt-1 fw-bold">Write your options below</h3>
-                                                    <label class="form-label mt-1 fw-bold" for="option1#<?php echo $i ?>">Option 1</label>
-                                                    <input placeholder="Option 1" class="form-control" type="text" name="options[]" required autofocus>
-                                                    
-                                                    <label class="form-label mt-1 fw-bold" for="option2#<?php echo $i ?>">Option 2</label>
-                                                    <input placeholder="Option 2" class="form-control" type="text" name="options[]" required autofocus>
-                                        
-                                                    <label class="form-label mt-1 fw-bold" for="option3#<?php echo $i ?>">Option 3</label>
-                                                    <input placeholder="Option 3" class="form-control" type="text" name="options[]" required autofocus>
-                                                    
-                                                    <label class="form-label mt-1 fw-bold" for="option3#<?php echo $i ?>">Option 4</label>
-                                                    <input placeholder="Option 4" class="form-control" type="text" name="options[]" required autofocus>
+                                                    <?php
+                                                        for($j=0; $j < $newQuiz['noOfQuestions']; $j++){
+                                                            $optionsCounter = $i+1 ?>
+                                                            <label class="form-label mt-1 fw-bold" for="option<?php echo $j ?>#<?php echo $optionsCounter ?>">Option <?php echo $optionsCounter ?></label>
+                                                            <input placeholder="Option <?php echo $optionsCounter ?>" value="<?php echo $options[$i] ?>" class="form-control" type="text" name="options[]" required autofocus>
+                                                    <?php $mcqChoices; ?>
+                                                    <?php } ?>
                                                     
                                                         
                                                     <label class="form-label mt-1 fw-bold" for="answer<?php echo $i ?>">Write your answer here</label>
                                                     <input placeholder="Correct Answer" class="form-control" type="text" name="answers[]" value="<?php echo $marks[$i] ?>" id="answer<?php echo $i ?>" required autofocus> 
                                                 </div>
-                                    <?php
-                                    }else if($qTypes[$i] == 'FITB'){
-                                        ?>                       
+                                    <?php }else if($qTypes[$i] == 'FITB'){?>                       
                                         <div class="qTypePosition">
-                                                    <label class="form-label mt-1 fw-bold" for="answer<?php echo $i ?>">Write your answer here</label>
-                                                    <input placeholder="Correct Answer" class="form-control" type="text" name="answers[]" value="<?php echo $answers[$i] ?>" id="answer<?php echo $i ?>" required autofocus> 
-                                                </div>
-                                    <?php
-                                    }else if($qTypes[$i] == 'TF'){
-                                        ?>                       
-                                        <div class="qTypePosition">
-                                                    <label class="form-label mt-1 fw-bold" for="answer<?php echo $i ?>">Choose the correct answer</label>
-                                                    <select name="answers[]" class="form-select my-select w-50">
-                                                        <option selected value="">Please select an answer</option>
-                                                        <option value="true">True</option>
+                                            <label class="form-label mt-1 fw-bold" for="answer<?php echo $i ?>">Write your answer here</label>
+                                            <input placeholder="Correct Answer" class="form-control" type="text" name="answers[]" value="<?php echo $answers[$i] ?>" id="answer<?php echo $i ?>" required autofocus> 
+                                        </div>
+                                    <?php }else if($qTypes[$i] == 'TF'){?>                       
+                                            <div class="qTypePosition">
+                                                <label class="form-label mt-1 fw-bold" for="answer<?php echo $i ?>">Choose the correct answer</label>
+                                                <select name="answers[]" class="form-select my-select w-50">
+                                                    <?php if($answers[$i] == 'true'){?>
+                                                        <option value="">Please select an answer</option>
+                                                        <option selected value="true">True</option>
                                                         <option value="false">False</option>
-                                                    </select>
-                                                </div>
-                                    <?php } ?>
+                                                    <?php } else if($answers[$i] == 'false') {?>     
+                                                        <option value="">Please select an answer</option>
+                                                        <option value="true">True</option>
+                                                        <option selected value="false">False</option>
+                                                    <?php } ?>
 
 
-                                                                                   
+                                                </select>
+                                            </div>
+                                    <?php } ?>                                                                                   
                                                 <label for="image<?php echo $i ?>" class="form-label fw-bold mt-1">Image</label>
                                                 <input name="images[]" class="form-control form-control-sm w-25" id="formFileSm<?php echo $i ?>" type="file">
                                             </div>
                                         </div>
                                     </div>
-                                <?php
-                                }else{
-                                    ?>                       
+                                <?php }else{?>                       
                                     <div class="row mt-2">
                                         <div class=" col-sm-6">
                                             <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $i ?>" aria-expanded="false" aria-controls="collapseExample<?php echo $i ?>">
