@@ -218,4 +218,4 @@
     </script>
     
     
-<?php require('partials/footer.inc.php')?>
+<?php require('../partials/footer.inc.php')?>
