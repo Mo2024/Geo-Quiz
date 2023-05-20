@@ -1,7 +1,7 @@
 <?php 
 require('../functions/functions.inc.php');
 require("../partials/regex.inc.php");
-if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
+if(isset($_SESSION['userId'])){
     $id = $_SESSION['userId'];
     
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])){

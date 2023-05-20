@@ -26,7 +26,16 @@
     $brandName = $_ENV['brandName'];
     //Extends cookie's duration if the user is constantly using it
     if(isset($_COOKIE['session'])){
-      setcookie("session", password_hash($_SESSION["username"], PASSWORD_DEFAULT),time() + 604800 ,'/');
+      if(isset($_SESSION["username"])){
+        setcookie("session", password_hash($_SESSION["username"], PASSWORD_DEFAULT),time() + 604800 ,'/');
+      }else{
+        setcookie("session", "", time() - 604800 ,'/');
+      }
+    }else{
+      if(isset($_SESSION["username"])){
+        session_destroy();
+        session_start();
+      }
     }
   ?>
   <?php require(__DIR__.'/../partials/navbar.inc.php')?>

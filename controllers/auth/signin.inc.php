@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 }      
 
                 // session_start();
-                $_SESSION["userId"] = $row['id'];
+                $_SESSION["userId"] = $row['uid'];
                 $_SESSION["username"] = $row['username'];
 
                 if(!isset($_COOKIE["redirect"])){
