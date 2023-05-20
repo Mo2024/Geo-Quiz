@@ -8,12 +8,12 @@
             <div class="bg-color border card border-color-form shadow">
                 <div class="card-body">
                     <h5 class="card-title text-secondary">Create Questions</h5>
-                    <form class="validated-form" method="POST" novalidate enctype="multipart/form-data">
+                    <form class="validated-form" id="questionsForm" method="POST" novalidate enctype="multipart/form-data">
                         <?php 
                             for($i=0; $i < $_SESSION['noOfQuestions']; $i++){
                                 $nonIndex = $i + 1;
                                 echo '
-                                <div class="row">
+                                <div class="row mt-2">
                                     <div class=" col-sm-6">
                                         <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample'.$i.'" aria-expanded="false" aria-controls="collapseExample'.$i.'">
                                             Question '.$nonIndex.'
@@ -60,7 +60,7 @@
                         
                         ?>
                        
-                        <button type="submit" class="btn btn-primary btn-block" name="submit">Submit</button>
+                        <button id="formButton" type="button" onclick="enableAllCollapses()" class="btn btn-primary btn-block mt-3" name="submit">Submit</button>
                     </form>
                 </div>
             </div>
@@ -70,6 +70,17 @@
 
 
     <script>
+        function enableAllCollapses() {
+            var collapses = document.querySelectorAll('.collapse');
+
+            for (var i = 0; i < collapses.length; i++) {
+                collapses[i].classList.add('show');
+            }
+            let button = document.getElementById('formButton');
+            button.type = "submit";
+            buttonm.click();
+
+        }
         function decreaseValue(value){
             if(document.getElementsByClassName("qMarks")[value].value > 0){
                 document.getElementsByClassName("qMarks")[value].value--;

@@ -28,12 +28,14 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
         //     echoAlertDanger("Please make sure that the entered description is corrcet");
         // }
         // else{
-            $db->beginTransaction();
-            $sql = $db->prepare("insert into quiz (title,description,nQuestions,boxColor,totalTime,uid) values ('".$title."', '".$description."', '".$noOfQuestions."', '".$color."', '".$description."', '".$id."')");
-            $sql->execute();
-            $quizId = $db->lastInsertId();
-            $_SESSION['quizId'] = $quizId;
-            $_SESSION['noOfQuestions'] = $noOfQuestions;
+            $newQuiz = array(
+                'title' => $title,
+                'timer' => $timer,
+                'noOfQuestions' => $noOfQuestions,
+                'color' => $color,
+                'description' => $description,
+            );
+            $_SESSION['newQuiz'] = $newQuiz;
             header("Location: /ITCS333-Project/quiz/createQuestion.php");
         // }
     }
