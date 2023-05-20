@@ -218,5 +218,4 @@
     </script>
     
     
-</body>
-</html>
+<?php require('partials/footer.inc.php')?>

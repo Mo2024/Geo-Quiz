@@ -38,4 +38,6 @@
       }
     }
   ?>
+
+
   <?php require(__DIR__.'/../partials/navbar.inc.php')?>

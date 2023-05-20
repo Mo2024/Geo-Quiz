@@ -16,7 +16,7 @@
               <a class="nav-link h3 px-5" href="/ITCS333-Project/quiz/createQuiz.php">Create Quiz</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link h3 px-5" href="#">Quizzes</a>
+              <a class="nav-link h3 px-5" href="/ITCS333-Project/quiz/quizzesDisplay.php">Quizzes</a>
             </li>
 
 

@@ -32,10 +32,6 @@
                                 <label class="form-label" for="noOfQuestions">Number of Questions</label>
                                 <input class="form-control" placeholder="Number of Questions" type="number" name="noOfQuestions" id="noOfQuestions" value="<?php if (isset($_POST["submit"] )) echo $noOfQuestions ?>" required>
                             </div>
-                            <div class="mb-3 col-sm-6">
-                                <label class="form-label" for="color">Color Display Box</label>
-                                <input style="height: 38px;" class="form-control w-25" placeholder="Color" type="color" name="color" id="color" value="<?php if (isset($_POST["submit"] )) echo $color ?>"  required>
-                            </div>
                         </div>
                         <div class="row">
                             <div class="mb-3 col-sm-12">

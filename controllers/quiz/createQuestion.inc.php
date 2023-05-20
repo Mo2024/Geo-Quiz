@@ -9,10 +9,10 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
             $newQuiz = $_SESSION['newQuiz'];
             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])){
                 $db->beginTransaction();
-                $sql = $db->prepare("insert into quiz (title, description, nQuestions, boxColor, totalTime, uid) values (?, ?, ?, ?, ?, ?)");
-                $sql->execute([$newQuiz['title'], $newQuiz['description'], $newQuiz['noOfQuestions'], $newQuiz['color'], $newQuiz['timer'], $uid]);
+                $sql = $db->prepare("insert into quiz (title, description, nQuestions, totalTime, uid) values (?, ?, ?, ?, ?, ?)");
+                $sql->execute([$newQuiz['title'], $newQuiz['description'], $newQuiz['noOfQuestions'], $newQuiz['timer'], $uid]);
                 $quizId = $db->lastInsertId();
-                
+
                 $qTypes = $_POST['qTypes'];
                 $marks = $_POST['marks'];
                 $questions = $_POST['questions'];

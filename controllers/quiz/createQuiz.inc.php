@@ -9,7 +9,6 @@ if(isset($_SESSION['userId'])){
         $title = $_POST['title'];
         $timer = $_POST['timer'];
         $noOfQuestions = $_POST['noOfQuestions'];
-        $color = $_POST['color'];
         $description = $_POST['description'];
         // if(!preg_match($titleReg, $title)){
         //     echoAlertDanger("Please make sure that is correct");
@@ -21,9 +20,6 @@ if(isset($_SESSION['userId'])){
         // else if(!preg_match($noOfQuestionsReg, $noOfQuestions) ){
         //     echoAlertDanger("Please make sure that the entered number of questions is corrcet");
         // }
-        // else if(!preg_match($colorReg, $color) ){
-        //     echoAlertDanger("Please make sure that the entered hex is corrcet");
-        // }
         // else if(!preg_match($descriptionReg, $description) ){
         //     echoAlertDanger("Please make sure that the entered description is corrcet");
         // }
@@ -32,7 +28,6 @@ if(isset($_SESSION['userId'])){
                 'title' => $title,
                 'timer' => $timer,
                 'noOfQuestions' => $noOfQuestions,
-                'color' => $color,
                 'description' => $description,
             );
             $_SESSION['newQuiz'] = $newQuiz;
