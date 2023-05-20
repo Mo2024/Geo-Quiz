@@ -14,10 +14,11 @@
                         <h4 class="card-title">Created By: <?php echo $quizzes[$i]['username'];?></h4>
                         <br/>
                         <h5 class="card-title">Number of Questions: <?php echo $quizzes[$i]['nQuestions'];?></h5>
+                        <h5 class="card-title">Total Time: <?php echo $quizzes[$i]['totalTime']/60;?> Minutes</h5>
                         <h5 class="card-title">Description:</h5>
                         <p class="card-text"><?php echo $quizzes[$i]['description'];?></p>
                         
-                        <a href="" class="btn  btn-primary">Start Quiz</a>
+                        <a href="" class="btn btn-primary">Start Quiz</a>
                     </div>
                 </div>
             </div>
