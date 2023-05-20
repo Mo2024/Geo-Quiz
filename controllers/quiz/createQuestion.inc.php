@@ -9,15 +9,19 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
         if(isset($_SESSION['quizId'])){
             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])){
                 $newQuiz = $_SESSION['newQuiz'];
-                $db->beginTransaction();
-                $sql = $db->prepare("insert into quiz (title,description,nQuestions,boxColor,totalTime,uid) values ('".$newQuiz['title']."', '".$newQuiz['description']."', '".$newQuiz['noOfQuestions']."', '".$newQuiz['color']."', '".$newQuiz['description']."', '".$uid."')");
-                $sql->execute();
-                $quizId = $db->lastInsertId();
+                // $db->beginTransaction();
+                // $sql = $db->prepare("insert into quiz (title,description,nQuestions,boxColor,totalTime,uid) values ('".$newQuiz['title']."', '".$newQuiz['description']."', '".$newQuiz['noOfQuestions']."', '".$newQuiz['color']."', '".$newQuiz['timer']."', '".$uid."')");
+                // $sql->execute();
+                // $quizId = $db->lastInsertId();
 
                 $qTypes = $_POST['qTypes'];
                 $marks = $_POST['marks'];
                 $questions = $_POST['questions'];
                 $answers = $_POST['answers'];
+                var_dump($qTypes);
+                var_dump($marks);
+                var_dump($questions);
+                var_dump($answers);
                 // $images = $_POST['images'];
                 if(isset($_POST['options'])){
                     
@@ -26,7 +30,7 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
                 
                 $mcqCounter = 0;
 
-                for($i=0; $i < $_SESSION['noOfQuestions']; $i++){
+                for($i=0; $i < $newQuiz['noOfQuestions']; $i++){
                     $sql = $db->prepare("insert into questions (quizId,type,score,question,answer) values ('".$quizId."', '".$qTypes[$i]."', '".$marks[$i]."', '".$questions[$i]."', '".$answers[$i]."')");
                     $sql->execute();
                     $questionId = $db->lastInsertId();
