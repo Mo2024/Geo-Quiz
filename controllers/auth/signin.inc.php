@@ -1,7 +1,6 @@
 <?php 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     require('../functions/functions.inc.php');
-    require('../functions/encrypt.inc.php');
     require('../partials/regex.inc.php');
 
     $uid = $_POST['uid'];
@@ -30,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                     $data = base64_encode($data);
                     setcookie("session", $data,time() + 604800, '/', '', true, true);
                 }   
-                
+
                 if(!isset($_COOKIE["redirect"])){
                     $_SESSION['success'] = "Login Successful";
                     header("Location: /ITCS333-Project/mainpage.php");

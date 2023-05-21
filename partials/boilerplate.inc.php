@@ -23,7 +23,6 @@
     $dotenv->load();
 
     require(__DIR__ ."/../functions/connection.inc.php");
-    require(__DIR__ ."/../functions/decrypt.inc.php");
     $brandName = $_ENV['brandName'];
     //Extends cookie's duration if the user is constantly using it
     if(isset($_COOKIE['session'])){
