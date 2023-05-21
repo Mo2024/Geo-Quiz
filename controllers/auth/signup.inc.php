@@ -51,21 +51,21 @@ if (isset($_POST['submit'])) {
 
                 $verificationStatus = false;
                 $hash = password_hash($password, PASSWORD_DEFAULT);
+                $token = bin2hex(random_bytes(16)); 
+                $hashedToken = password_hash($token, PASSWORD_DEFAULT);
 
-                $sql = "INSERT INTO users (username, email, fName, hash, verified, vcode, pcode) 
-                        VALUES('$username', '$email', '$fullname', '$hash', '$verificationStatus', 0, 0)";
+                $sql = "INSERT INTO users (username, email, fName, hash, verified, vcode, pcode, token) 
+                        VALUES('$username', '$email', '$fullname', '$hash', '$verificationStatus', 0, 0, '$hashedToken')";
                 $result = $db->query($sql);
          
                 $_SESSION["userId"] = $db->lastInsertId();
                 $_SESSION["username"] = $username;
 
                 if(isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'rememberMe'){
-                    setcookie("session", password_hash($username, PASSWORD_DEFAULT),time() + 604800 ,'/');
-                }else{
-                    //cookie that deletes on browser close
-                    setcookie("session", password_hash($username, PASSWORD_DEFAULT),0 ,'/');
-                }     
-                var_dump($_SESSION);
+                    $data = $_SESSION["userId"].'#'.$_SESSION["username"];
+                    $data = base64_encode($data);
+                    setcookie("session", $data,time() + 604800, '/', '', true, true);
+                }
                 
                 if(!isset($_COOKIE["redirect"])){
                     $_SESSION['success'] = "Sign Up Successful";

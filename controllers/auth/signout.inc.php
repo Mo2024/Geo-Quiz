@@ -1,5 +1,5 @@
 <?php 
-setcookie("session", password_hash($_SESSION["username"], PASSWORD_DEFAULT),time() - 3600 ,'/');
+setcookie("session", "",time() - 604800 ,'/');
 session_start();
 session_destroy();
 session_start();

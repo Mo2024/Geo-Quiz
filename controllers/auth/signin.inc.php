@@ -1,6 +1,7 @@
 <?php 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     require('../functions/functions.inc.php');
+    require('../functions/encrypt.inc.php');
     require('../partials/regex.inc.php');
 
     $uid = $_POST['uid'];
@@ -19,17 +20,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             if (password_verify($formPassword, $row['hash'])) {
                 //password match and login in user
                 
-                if(isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'rememberMe'){
-                    setcookie("session", password_hash($row["username"], PASSWORD_DEFAULT),time() + 604800 ,'/');
-                } else{
-                    //cookie that deletes on browser close
-                    setcookie("session", password_hash($row["username"], PASSWORD_DEFAULT),0 ,'/');
-                }      
-    
+                
                 // session_start();
                 $_SESSION["userId"] = $row['uid'];
                 $_SESSION["username"] = $row['username'];
-    
+                
+                if(isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'rememberMe'){
+                    $data = $row['uid'].'#'.$row['username'];
+                    $data = base64_encode($data);
+                    setcookie("session", $data,time() + 604800, '/', '', true, true);
+                }   
+                
                 if(!isset($_COOKIE["redirect"])){
                     $_SESSION['success'] = "Login Successful";
                     header("Location: /ITCS333-Project/mainpage.php");

@@ -23,18 +23,18 @@
     $dotenv->load();
 
     require(__DIR__ ."/../functions/connection.inc.php");
+    require(__DIR__ ."/../functions/decrypt.inc.php");
     $brandName = $_ENV['brandName'];
     //Extends cookie's duration if the user is constantly using it
     if(isset($_COOKIE['session'])){
-      if(isset($_SESSION["username"])){
-      }else{
+      if(!isset($_SESSION["username"])){
         // setcookie("session", "", time() - 604800 ,'/');
-        setcookie("session", password_hash($_SESSION["username"], PASSWORD_DEFAULT),time() + 604800 ,'/');
-      }
-    }else{
-      if(isset($_SESSION["username"])){
-        session_destroy();
-        session_start();
+        $dataCookie = $_COOKIE['session'];
+        $data = base64_decode($dataCookie);
+        $data = explode('#', $data);
+        $_SESSION['userId'] = $data[0];
+        $_SESSION['username'] = $data[1];
+        setcookie("session", $dataCookie,time() + 604800, '/', '', true, true);
       }
     }
   ?>
