@@ -27,9 +27,9 @@
     //Extends cookie's duration if the user is constantly using it
     if(isset($_COOKIE['session'])){
       if(isset($_SESSION["username"])){
-        setcookie("session", password_hash($_SESSION["username"], PASSWORD_DEFAULT),time() + 604800 ,'/');
       }else{
-        setcookie("session", "", time() - 604800 ,'/');
+        // setcookie("session", "", time() - 604800 ,'/');
+        setcookie("session", password_hash($_SESSION["username"], PASSWORD_DEFAULT),time() + 604800 ,'/');
       }
     }else{
       if(isset($_SESSION["username"])){
