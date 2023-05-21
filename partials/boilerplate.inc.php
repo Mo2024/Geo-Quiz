@@ -28,7 +28,6 @@
     //Extends cookie's duration if the user is constantly using it
     if(isset($_COOKIE['session'])){
       if(!isset($_SESSION["username"])){
-        // setcookie("session", "", time() - 604800 ,'/');
         $dataCookie = $_COOKIE['session'];
         $data = base64_decode($dataCookie);
         $data = explode('#', $data);
