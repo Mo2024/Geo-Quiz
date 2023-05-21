@@ -29,19 +29,23 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
             header("Location: /ITCS333-Project/profile/profile.php");           
         }else if(isset($_POST['vcode'])){
             $vCode = $_POST['vcode'];
-            var_dump($vCode);
-            var_dump($row['vcode']);
             if($vCode == $row['vcode']){
-                $insertQuery = "UPDATE users SET vcode = :vcode, verified = :verified WHERE uid = :uid";
-                $stmt = $db->prepare($insertQuery);
-                $stmt->bindParam(':uid', $row['uid']);
-                $stmt->bindValue(':vcode', 0);
-                $stmt->bindValue(':verified', true);
-                $stmt->execute();
-                $_SESSION['Success'] = "Account Verified!";
-                header("Location: /ITCS333-Project/profile/profile.php");           
+                if(!preg_match($pcodeReg, $vCode)){
+                    $_SESSION['error'] = "Invalid Verification code";
+                    header("Location: /ITCS333-Project/profile/profile.php");           
+                }else{
+                    $insertQuery = "UPDATE users SET vcode = :vcode, verified = :verified WHERE uid = :uid";
+                    $stmt = $db->prepare($insertQuery);
+                    $stmt->bindParam(':uid', $row['uid']);
+                    $stmt->bindValue(':vcode', 0);
+                    $stmt->bindValue(':verified', true);
+                    $stmt->execute();
+                    $_SESSION['Success'] = "Account Verified!";
+                    header("Location: /ITCS333-Project/profile/profile.php");           
+                }
             }else{
                 $_SESSION['error'] = "Incorrect Verification Code";
+                header("Location: /ITCS333-Project/profile/profile.php");           
             }
         } else {
 
