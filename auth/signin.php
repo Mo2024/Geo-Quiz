@@ -9,8 +9,8 @@
                     <h5 class="card-title text-secondary">Sign In</h5>
                     <form class="validated-form" method="POST" novalidate>
                             <div class="mb-3">
-                                <label class="form-label" for="uid">Email or Username</label>
-                                <input placeholder="Email or Username" class="form-control" type="text" name="uid" id="uid" value="<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo $uid ?>" required autofocus>
+                                <label class="form-label" for="uid">Username</label>
+                                <input placeholder="Username" class="form-control" type="text" name="uid" id="uid" value="<?php if (isset($_GET["uid"])) echo $_GET["uid"] ?>" required autofocus>
 
                                 <label class="form-label" for="password">Password</label>
                                 <input placeholder="Password" class="form-control" type="password" name="password" id="password" required>
