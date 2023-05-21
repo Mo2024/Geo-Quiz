@@ -27,7 +27,24 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
         } else if(!preg_match($nameReg,$fullname)){
             $_SESSION['error'] = "Please make sure that the entered full name is entered properly";
             header("Location: /ITCS333-Project/profile/profile.php");           
-        } else{
+        }else if(isset($_POST['vcode'])){
+            $vCode = $_POST['vcode'];
+            var_dump($vCode);
+            var_dump($row['vcode']);
+            if($vCode == $row['vcode']){
+                $insertQuery = "UPDATE users SET vcode = :vcode, verified = :verified WHERE uid = :uid";
+                $stmt = $db->prepare($insertQuery);
+                $stmt->bindParam(':uid', $row['uid']);
+                $stmt->bindValue(':vcode', 0);
+                $stmt->bindValue(':verified', true);
+                $stmt->execute();
+                $_SESSION['Success'] = "Account Verified!";
+                header("Location: /ITCS333-Project/profile/profile.php");           
+            }else{
+                $_SESSION['error'] = "Incorrect Verification Code";
+            }
+        } else {
+
 
             $usernameQuery = "SELECT * FROM users WHERE username = '$username'";
             $emailQuery = "SELECT * FROM users WHERE email = '$email'";

@@ -85,15 +85,15 @@
                     header("Location: /ITCS333-Project/auth/forgetPassword.php?display=pwd");
                 }else{
                     $hash = password_hash($pwd1, PASSWORD_DEFAULT);
-                        $insertQuery = "UPDATE users SET hash = :hash WHERE uid = :uid";
-                        $stmt = $db->prepare($insertQuery);
-                        $decodedID = base64_decode($_COOKIE['forgetuid']);
-                        $stmt->bindParam(':uid', $decodedID);
-                        $stmt->bindParam(':hash', $hash);
-                        $stmt->execute();
-                        setcookie("forgetuid", "",time() - 300, '/', '', true, true);
-                        $_SESSION['success'] = 'Password Successfully Updated';
-                        header("Location: /ITCS333-Project/mainpage.php");
+                    $insertQuery = "UPDATE users SET hash = :hash WHERE uid = :uid";
+                    $stmt = $db->prepare($insertQuery);
+                    $decodedID = base64_decode($_COOKIE['forgetuid']);
+                    $stmt->bindParam(':uid', $decodedID);
+                    $stmt->bindParam(':hash', $hash);
+                    $stmt->execute();
+                    setcookie("forgetuid", "",time() - 300, '/', '', true, true);
+                    $_SESSION['success'] = 'Password Successfully Updated';
+                    header("Location: /ITCS333-Project/mainpage.php");
                 }
             } else{
                 //error

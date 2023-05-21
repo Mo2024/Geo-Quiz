@@ -2,6 +2,7 @@
 if (isset($_POST['submit'])) {
     
     require('../functions/functions.inc.php');
+    require('../functions/mailer.inc.php');
     require("../partials/regex.inc.php");
 
     $username = $_POST['username'];
@@ -53,11 +54,18 @@ if (isset($_POST['submit'])) {
                 $hash = password_hash($password, PASSWORD_DEFAULT);
                 // $token = bin2hex(random_bytes(16)); 
                 // $hashedToken = password_hash($token, PASSWORD_DEFAULT);
+                $vCode = random_int(100000, 999999);
 
-                $sql = "INSERT INTO users (username, email, fName, hash, verified, vcode, pcode) 
-                        VALUES('$username', '$email', '$fullname', '$hash', '$verificationStatus', 0, 0)";
+
+                $sql = "INSERT INTO users (username, email, fName, hash, verified, pcode, vcode) 
+                        VALUES('$username', '$email', '$fullname', '$hash', '$verificationStatus', 0, $vCode)";
                 $result = $db->query($sql);
-         
+
+                $message->setTo($email);
+                $message->setSubject('Forget Password Verification Code');
+                $message->setBody('Your verification code is '.$vCode);
+                $mailer->send($message);
+
                 $_SESSION["userId"] = $db->lastInsertId();
                 $_SESSION["username"] = $username;
 
@@ -68,7 +76,7 @@ if (isset($_POST['submit'])) {
                 }
                 
                 if(!isset($_COOKIE["redirect"])){
-                    $_SESSION['success'] = "Sign Up Successful";
+                    $_SESSION['success'] = "Sign Up Successful, check your account for email verification!";
                     header("Location: /ITCS333-Project/mainpage.php");
                 }else{
                     header("Location: ".$_COOKIE["redirect"]);
