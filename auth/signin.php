@@ -10,10 +10,11 @@
                     <form class="validated-form" method="POST" novalidate>
                             <div class="mb-3">
                                 <label class="form-label" for="uid">Username</label>
-                                <input placeholder="Username" class="form-control" type="text" name="uid" id="uid" value="<?php if (isset($_GET["uid"])) echo $_GET["uid"] ?>" required autofocus>
+                                <input placeholder="Username" class="form-control mb-3" type="text" name="uid" id="uid" value="<?php if (isset($_GET["uid"])) echo $_GET["uid"] ?>" required autofocus>
 
                                 <label class="form-label" for="password">Password</label>
                                 <input placeholder="Password" class="form-control" type="password" name="password" id="password" required>
+                                <a href="/ITCS333-Project/auth/forgetPassword.php">Forget Password?</a>
                             </div>
                             <div class="mb-3">
                                 <input class="form-check-input" name="rememberMe" type="checkbox" value="rememberMe" id="flexCheckChecked">

@@ -64,20 +64,7 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
             }
         }
     } 
-    if(isset($_GET['verification']) && $_GET['verification'] == 'sent' && $_SERVER["REQUEST_METHOD"] == "GET"){
-        if(is_null($row['verificationCode']) && $row['verified']){
-            $_SESSION['success'] = 'Email verified';
-            header("Location: /ITCS333-Project/profile/profile.php"); 
-        }
-        else{
-            require('../functions/phpmailer.inc.php');
-            $mail->addAddress($row['email']);    
-            $mail->Subject = 'Email verification';
-            $href = $url.'functions/verifyEmail.inc.php?code='.$row['verificationCode'];
-            $mail->Body    = '<p>Click this <a href="'.$href.'">link</a> to verify your email</p>';
-            $mail->send();
-        }
-    }
+   
 }else{
     $url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
     setcookie("redirect", $url,0,'/');

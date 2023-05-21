@@ -44,7 +44,7 @@
             <li><a class="dropdown-item" href="#">My Quizzes</a></li>
           </ul>
         </li>
-      <a href="/ITCS333-Project/controllers/auth/signout.inc.php" class="nav-link h3">Sign out</a>
+      <a href="/ITCS333-Project/controllers/auth/logout.inc.php" class="nav-link h3">Sign out</a>
         ';
       }
     ?>

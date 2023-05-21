@@ -13,9 +13,10 @@
       <div class="container bg-color border card border-color-form shadow p-3 justify-content-center">
         <form class="validated-form" method="POST" novalidate>
             <div class="row">
-                <div class="mb-3 col-sm-12">
+                <div class="mb-1 col-sm-12">
                     <label class="form-label" for="oldpwd">Old Password</label>
                     <input class="form-control" placeholder="Old Password" type="password" name="oldpwd" id="oldpwd"  >
+                    <a href="/ITCS333-Project/auth/forgetPassword.php">Forget Password?</a>
                 </div>
             </div>
             <div class="row">

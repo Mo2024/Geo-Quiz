@@ -51,11 +51,11 @@ if (isset($_POST['submit'])) {
 
                 $verificationStatus = false;
                 $hash = password_hash($password, PASSWORD_DEFAULT);
-                $token = bin2hex(random_bytes(16)); 
-                $hashedToken = password_hash($token, PASSWORD_DEFAULT);
+                // $token = bin2hex(random_bytes(16)); 
+                // $hashedToken = password_hash($token, PASSWORD_DEFAULT);
 
-                $sql = "INSERT INTO users (username, email, fName, hash, verified, vcode, pcode, token) 
-                        VALUES('$username', '$email', '$fullname', '$hash', '$verificationStatus', 0, 0, '$hashedToken')";
+                $sql = "INSERT INTO users (username, email, fName, hash, verified, vcode, pcode) 
+                        VALUES('$username', '$email', '$fullname', '$hash', '$verificationStatus', 0, 0)";
                 $result = $db->query($sql);
          
                 $_SESSION["userId"] = $db->lastInsertId();
