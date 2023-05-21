@@ -11,7 +11,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     } else if($uid == ''){
         echoAlertDanger('Username/Email');
     }
-    else if(preg_match($emailReg, $uid) || preg_match($usernameReg, $uid)){
+    else if(!preg_match($emailReg, $uid) || !preg_match($usernameReg, $uid)){
+        //invalid username/email
+        $_SESSION['error'] = "Invalid Username/Email";
+        header("Location: /ITCS333-Project/auth/signin.php");
+    }else if(!preg_match($passwordReg, $formPassword)){
+        //invalid password
+        $_SESSION['error'] = "Invalid Username/Email";
+        header("Location: /ITCS333-Project/auth/signin.php");
+    }
+    else{
         $uidQuery = "SELECT * FROM users WHERE email = '$uid' OR username = '$uid'";
         $result = $db->query($uidQuery);
         if ($row = $result->fetch()) {
@@ -24,11 +33,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                     //cookie that deletes on browser close
                     setcookie("session", password_hash($row["username"], PASSWORD_DEFAULT),0 ,'/');
                 }      
-
+    
                 // session_start();
                 $_SESSION["userId"] = $row['uid'];
                 $_SESSION["username"] = $row['username'];
-
+    
                 if(!isset($_COOKIE["redirect"])){
                     header("Location: /ITCS333-Project/mainpage.php?Signin=success");
                 }else{
@@ -39,17 +48,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             }
             else{
                 //Incorrect password
-                echoAlertDanger('Incorrect Password');
+                $_SESSION['error'] = "Incorrect Password";
+                header("Location: /ITCS333-Project/auth/signin.php");
+                // echoAlertDanger('Username/Email does not exist');
+    
             }
         }
         else{
             //User does not exist
-            echoAlertDanger('Username/Email does not exist');
+            $_SESSION['error'] = "Username/Email does not exist";
+            header("Location: /ITCS333-Project/auth/signin.php");
         }
-    }else{
-        //invalid username/email or password
-        echoAlertDanger('Invalid Username/Email');
     }
-
 }
 ?>
