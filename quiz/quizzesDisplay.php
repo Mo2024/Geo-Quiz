@@ -2,7 +2,7 @@
 <?php require('../controllers/quiz/quizzesDisplay.inc.php')?>
 
 <div class="container" >
-    <?php for($i=0; $i < 5; $i++){?>
+    <?php for($i=0; $i < count($quizzes); $i++){?>
         <div class="card mb-3 mt-3">
             <div class="row">
                 <div class="col-md-3">

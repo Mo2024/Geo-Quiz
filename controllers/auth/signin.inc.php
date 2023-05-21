@@ -6,21 +6,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $uid = $_POST['uid'];
     $formPassword = $_POST['password'];
 
-    if($formPassword == ''){
-        echoAlertDanger('Password field are empty');
-    } else if($uid == ''){
-        echoAlertDanger('Username/Email');
-    }
-    else if(!preg_match($emailReg, $uid) || !preg_match($usernameReg, $uid)){
-        //invalid username/email
-        $_SESSION['error'] = "Invalid Username/Email";
+    if($uid == ''){
+        $_SESSION['error'] = "You must enter an email or a password";
         header("Location: /ITCS333-Project/auth/signin.php");
-    }else if(!preg_match($passwordReg, $formPassword)){
-        //invalid password
-        $_SESSION['error'] = "Invalid Username/Email";
+    } else if($formPassword == ''){
+        $_SESSION['error'] = "You must enter a password";
         header("Location: /ITCS333-Project/auth/signin.php");
-    }
-    else{
+    }else if(preg_match($emailReg, $uid) || preg_match($usernameReg, $uid)){
         $uidQuery = "SELECT * FROM users WHERE email = '$uid' OR username = '$uid'";
         $result = $db->query($uidQuery);
         if ($row = $result->fetch()) {
@@ -39,7 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 $_SESSION["username"] = $row['username'];
     
                 if(!isset($_COOKIE["redirect"])){
-                    header("Location: /ITCS333-Project/mainpage.php?Signin=success");
+                    $_SESSION['success'] = "Login Successful";
+                    header("Location: /ITCS333-Project/mainpage.php");
                 }else{
                     header("Location: ".$_COOKIE["redirect"]);
                     setcookie ("redirect", $redirectUrl, time() - 3600,'/');
@@ -50,7 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 //Incorrect password
                 $_SESSION['error'] = "Incorrect Password";
                 header("Location: /ITCS333-Project/auth/signin.php");
-                // echoAlertDanger('Username/Email does not exist');
     
             }
         }
@@ -59,6 +51,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             $_SESSION['error'] = "Username/Email does not exist";
             header("Location: /ITCS333-Project/auth/signin.php");
         }
+
+    }else if(!preg_match($passwordReg, $formPassword)){
+        //invalid password
+        $_SESSION['error'] = "Invalid Password";
+        header("Location: /ITCS333-Project/auth/signin.php");
+    }
+    else if(!preg_match($emailReg, $uid) || !preg_match($usernameReg, $uid)){
+        //invalid username/email
+        $_SESSION['error'] = "Invalid Username/Email";
+        header("Location: /ITCS333-Project/auth/signin.php");
     }
 }
 ?>

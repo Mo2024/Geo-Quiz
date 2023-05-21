@@ -9,7 +9,7 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
             $newQuiz = $_SESSION['newQuiz'];
             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])){
                 $db->beginTransaction();
-                $sql = $db->prepare("insert into quiz (title, description, nQuestions, totalTime, uid) values (?, ?, ?, ?, ?, ?)");
+                $sql = $db->prepare("insert into quiz (title, description, nQuestions, totalTime, uid) values (?, ?, ?, ?, ?)");
                 $sql->execute([$newQuiz['title'], $newQuiz['description'], $newQuiz['noOfQuestions'], $newQuiz['timer'], $uid]);
                 $quizId = $db->lastInsertId();
 
@@ -43,23 +43,23 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
                     //     $valid = false;
                     //     break;
                     // }
-                    if(!preg_match($passwordReg, $qTypes[$i])){
+                    // if(!preg_match($passwordReg, $qTypes[$i])){
 
-                        $valid = false;
-                        break;
-                    }else if(preg_match($passwordReg, $questions[$i])){
+                    //     $valid = false;
+                    //     break;
+                    // }else if(preg_match($passwordReg, $questions[$i])){
 
-                        $valid = false;
-                        break;
-                    }else if(!preg_match($passwordReg, $marks[$i])){
+                    //     $valid = false;
+                    //     break;
+                    // }else if(!preg_match($passwordReg, $marks[$i])){
 
-                        $valid = false;
-                        break;
-                    }else if(!preg_match($passwordReg, $answers[$i])){
+                    //     $valid = false;
+                    //     break;
+                    // }else if(!preg_match($passwordReg, $answers[$i])){
 
-                        $valid = false;
-                        break;
-                    }
+                    //     $valid = false;
+                    //     break;
+                    // }
                     $sql = $db->prepare("insert into questions (quizId, type, score, question, answer) values (?, ?, ?, ?, ?)");
                     $sql->execute([$quizId, $qTypes[$i], $marks[$i], $questions[$i], $answers[$i]]);
                     $questionId = $db->lastInsertId();

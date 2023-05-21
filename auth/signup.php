@@ -11,11 +11,11 @@
                         <div class="row">
                             <div class="mb-3 col-sm-6">
                                 <label class="form-label" for="email">Email</label>
-                                <input class="form-control" placeholder="Email" type="email" name="email" id="email" value="<?php if (isset($_POST["submit"] )) echo $email ?>" required autofocus>
+                                <input class="form-control" placeholder="Email" type="email" name="email" id="email" value="<?php if(isset($_GET['email'])) echo $_GET['email']?>" required>
                             </div>
                             <div class="mb-3 col-sm-6">
                                 <label class="form-label" for="username">Username</label>
-                                <input class="form-control" placeholder="Username" type="text" name="username" id="username" value="<?php if (isset($_POST["submit"] )) echo $username ?>" required>
+                                <input class="form-control" placeholder="Username" type="text" name="username" id="username" value="<?php if(isset($_GET['email'])) echo $_GET['username']?>" required>
                             </div>
                         </div>
                         <div class="row">
@@ -31,7 +31,7 @@
                         <div class="row">
                             <div class="mb-3 col-sm-6">
                                 <label class="form-label" for="fullName">Full Name</label>
-                                <input class="form-control" placeholder="Full Name" type="text" name="fullname" id="fullname" value="<?php if (isset($_POST["submit"] )) echo $fullname ?>" required>
+                                <input class="form-control" placeholder="Full Name" type="text" name="fullname" id="fullname" value="<?php if(isset($_GET['email'])) echo $_GET['fullname']?>" required>
                             </div>
                         </div>
                         <div class="row">
