@@ -38,8 +38,9 @@
                     // Set email body
                     $message->setBody($body);
                     $mailer->send($message);
-                    setcookie("forgetuid", base64_encode($result['uid']),time() + 300, '/', '', true, true);
-                    header("Location: /ITCS333-Project/auth/forgetPassword.php?display=pCode");
+                    $_SESSION['display'] = 'pCode';
+                    $_SESSION['forgetuid'] = $result['uid'];
+                    header("Location: /ITCS333-Project/auth/forgetPassword.php");
                 } else {
                     $_SESSION['error'] = 'Email Does not exist';
                     header("Location: /ITCS333-Project/auth/forgetPassword.php");                
@@ -50,55 +51,49 @@
             $pcode = $_POST['pcode'];
             if(!preg_match($pcodeReg, $pcode)){
                 $_SESSION['error'] = 'Invalid Verification Code';
-                $goToPCode = true;
-                $dontGoToEmail = true;
-                header("Location: /ITCS333-Project/auth/forgetPassword.php?display=pCode");
+                $_SESSION['display'] = 'pCode';
+                header("Location: /ITCS333-Project/auth/forgetPassword.php");
             }else{
-                if(isset($_COOKIE['forgetuid'])){
-                    $decodedID = base64_decode($_COOKIE['forgetuid']);
-                    $row = selectUser($decodedID, $db);
-                    if ($row['pcode'] == $pcode) {                    
-                        $insertQuery = "UPDATE users SET pcode = :pcode WHERE uid = :uid";
-                        $stmt = $db->prepare($insertQuery);
-                        $stmt->bindParam(':uid', $decodedID);
-                        $stmt->bindValue(':pcode', null);
-                        $stmt->execute();
-                        header("Location: /ITCS333-Project/auth/forgetPassword.php?display=pwd");
-                    }else{                       
-                        $_SESSION['error'] = 'Incorrect Verification Code';
-                        header("Location: /ITCS333-Project/auth/forgetPassword.php?display=pCode");
-                    }
-                }else{
-                    //error
-                    setcookie("forgetuid", "",time() - 300, '/', '', true, true);
-                    $_SESSION['error'] = 'Timeout error please try again';
+                $row = selectUser($_SESSION['forgetuid'], $db);
+                if ($row['pcode'] == $pcode) {                    
+                    $insertQuery = "UPDATE users SET pcode = :pcode WHERE uid = :uid";
+                    $stmt = $db->prepare($insertQuery);
+                    $stmt->bindParam(':uid', $decodedID);
+                    $stmt->bindValue(':pcode', null);
+                    $stmt->execute();
+                    $_SESSION['display'] = 'pwd';
+                    header("Location: /ITCS333-Project/auth/forgetPassword.php");
+                }else{                       
+                    $_SESSION['error'] = 'Incorrect Verification Code';
+                    $_SESSION['display'] = 'pCode';
                     header("Location: /ITCS333-Project/auth/forgetPassword.php");
                 }
             }
-        }else if(isset($_POST['password1']) && isset($_POST['password2'])){
+        }else if(isset($_POST['password1']) && isset($_POST['password2']) && isset($_SESSION['display']) && $_SESSION['display'] == 'pwd'){
             $pwd1 = $_POST['password1'];
             $pwd2 = $_POST['password2'];
-            if(isset($_COOKIE['forgetuid'])){
-                if(!preg_match($passwordReg, $pwd1) && !preg_match($passwordReg, $pwd2)){
-                    $goToPwd = true;
-                    $_SESSION['error'] = 'Please make sure that the entered password has one special character, one small letter, one capital letter and at least 8 characters long';
-                    header("Location: /ITCS333-Project/auth/forgetPassword.php?display=pwd");
-                }else{
+            if(!preg_match($passwordReg, $pwd1) && !preg_match($passwordReg, $pwd2)){
+                $_SESSION['error'] = 'Please make sure that the entered password has one special character, one small letter, one capital letter and at least 8 characters long';
+                $_SESSION['display'] = 'pwd';
+                header("Location: /ITCS333-Project/auth/forgetPassword.php");
+            }else{
+                if($pwd1 == $pwd2){
                     $hash = password_hash($pwd1, PASSWORD_DEFAULT);
                     $insertQuery = "UPDATE users SET hash = :hash WHERE uid = :uid";
                     $stmt = $db->prepare($insertQuery);
-                    $decodedID = base64_decode($_COOKIE['forgetuid']);
-                    $stmt->bindParam(':uid', $decodedID);
+                    $uid = $_SESSION['forgetuid'];
+                    $stmt->bindParam(':uid', $uid);
                     $stmt->bindParam(':hash', $hash);
                     $stmt->execute();
-                    setcookie("forgetuid", "",time() - 300, '/', '', true, true);
                     $_SESSION['success'] = 'Password Successfully Updated';
+                    unset($_SESSION['display']);
+                    unset($_SESSION['forgetuid']);
                     header("Location: /ITCS333-Project/mainpage.php");
+                }else{
+                    $_SESSION['error'] = 'Passwords do not match';
+                    $_SESSION['display'] = 'pwd';
+                    header("Location: /ITCS333-Project/auth/forgetPassword.php");
                 }
-            } else{
-                //error
-                $_SESSION['error'] = 'Timeout error please try again';
-                header("Location: /ITCS333-Project/auth/forgetPassword.php");
             }
         }
     }

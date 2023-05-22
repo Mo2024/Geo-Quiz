@@ -1,4 +1,4 @@
-<?php $title = "Sign In"; require('../partials/boilerplate.inc.php')?>
+<?php $title = "Forget Password"; require('../partials/boilerplate.inc.php')?>
 <?php require('../controllers/auth/forgetPassword.inc.php')?>
 
 <div class="container d-flex justify-content-center align-items-center mt-5">
@@ -8,19 +8,19 @@
             <div class="card-body ">
                 <h5 class="card-title text-center" style="font-size:35px;font-weight:bold;color:black;">Forget Password</h5>
                 <form class="validated-form" method="POST" novalidate>
-                    <?php if(empty($_GET)){ ?>
+                    <?php if(!isset($_SESSION['display'])){ ?>
                         <div class="mb-3">
                             <label class="form-label" for="uid">Email</label>
                             <input placeholder="Enter Your Email" class="form-control" type="text" name="uid" id="uid" required autofocus>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block" name="submit">Send Verification Code</button>
-                    <?php }else if(isset($_GET['display']) && $_GET['display'] == 'pCode'){ ?>
+                    <?php }else if(isset($_SESSION['display']) && $_SESSION['display'] == 'pCode'){ ?>
                         <div class="mb-3">
                             <label class="form-label" for="pcode">Verification Code</label>
                             <input class="form-control" placeholder="Verification Code" type="text" name="pcode" required>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block" name="submit">Verify Code</button>
-                    <?php } else if(isset($_GET['display']) && $_GET['display'] == 'pwd'){ ?>
+                    <?php } else if(isset($_SESSION['display']) && $_SESSION['display'] == 'pwd'){ ?>
                         <div class="mb-3">
                             <label class="form-label" for="password">New Password</label>
                             <input class="form-control" placeholder="Enter Your New Password" type="password" name="password1"  id="pass1"  required>

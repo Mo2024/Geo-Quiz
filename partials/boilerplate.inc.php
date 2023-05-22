@@ -1,3 +1,6 @@
+<?php 
+
+// ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +20,11 @@
 <body class="min-vh-100 d-flex flex-column">
   <?php 
     session_start();
+    if((isset($_SESSION['forgetuid']) && $_SERVER['REQUEST_URI'] != '/ITCS333-Project/auth/forgetPassword.php')
+    || (isset($_SESSION['display']) && $_SERVER['REQUEST_URI'] != '/ITCS333-Project/auth/forgetPassword.php')){
+      unset($_SESSION['display']);
+      unset($_SESSION['forgetuid']);
+    }
     require_once(realpath(__DIR__.'/../vendor/autoload.php'));
     use Dotenv\Dotenv;
     $dotenv = Dotenv::createImmutable(__DIR__.'/../');
