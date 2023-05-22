@@ -1,5 +1,5 @@
 <?php $title = "My Quizzes"; require('../partials/boilerplate.inc.php')?>
-<!-- <?php require('../controllers/profile/profile.inc.php')?> -->
+<?php require('../controllers/profile/myQuizzes.inc.php')?>
 <style>
 thead
 {
@@ -12,7 +12,7 @@ thead
    <table class="table table-bordered border border-dark text-center">
        <thead>
          <tr >
-           <th  scope="col" colspan="3">Quizzes Created By: </th>
+           <th  scope="col" colspan="3">Quizzes Created By: <?php echo $_SESSION['username']; ?> </th>
          </tr>
        </thead>
        <tbody>
@@ -21,16 +21,19 @@ thead
            <th>Date Created</th>
            <th>Quiz Edit</th>
          </tr>
-         <tr>
-           <td>Capital Cities</td>
-           <td>March 08, 2023</td>
-           <td><button type="button" class="btn btn-sm btn-outline-secondary">Edit Quiz</button></td>
-         </tr>
+
+        <?php foreach ($rows as $row) { ?>
+            <tr>
+              <td><?php echo $row['title']; ?></td>
+              <td><?php echo $row['dateCreated'];?></td>
+              <td><a type="button" class="btn btn-sm btn-outline-secondary">Edit Quiz</a></td>
+            </tr>
+        <?php } ?>
        </tbody>
      </table>
      <div class="d-flex">
        <button type="button" class="btn btn-sm btn-outline-primary ms-auto">
-        <a href="mainPage.php">Return To Home Page</a></button>
+        <a href="/ITCS333-Project/mainpage.php">Return To Home Page</a></button>
      </div>
    </div>
 
