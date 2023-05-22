@@ -92,7 +92,7 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
         }
     }catch(e){
         // redirect
-        // echoAlertDanger('Error');
+        $_SESSION['error'] = "Error";
         header("Location: /ITCS333-Project/quiz/quizzesDisplay.php");
 
     }
