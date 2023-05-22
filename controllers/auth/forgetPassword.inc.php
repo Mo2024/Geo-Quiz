@@ -29,15 +29,11 @@
                     $subject = 'Forget Password Verification Code';
                     $body = 'Your verification code is '.$pCode;
             
-                    // Set recipient email address
                     $message->setTo($recipientEmail);
-            
-                    // Set email subject
                     $message->setSubject($subject);
-            
-                    // Set email body
                     $message->setBody($body);
                     $mailer->send($message);
+                    
                     $_SESSION['display'] = 'pCode';
                     $_SESSION['forgetuid'] = $result['uid'];
                     header("Location: /ITCS333-Project/auth/forgetPassword.php");
