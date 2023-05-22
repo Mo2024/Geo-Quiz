@@ -1,5 +1,5 @@
 <?php if(isset($_SESSION['success'])){?>
-    <div class="container mt-5">
+    <div class="container mt-5 ">
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <?php echo $_SESSION['success']; ?>
         </div>

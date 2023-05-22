@@ -11,7 +11,6 @@
   <!-- bootstrap 5.0.2 -->
   <link rel="stylesheet" href="/ITCS333-Project/public/css/bootstrap.min.css">
   <script src="/ITCS333-Project/public/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="/ITCS333-Project/public/css/main.css">
   
   <script src="/ITCS333-Project/public/js/main.js"></script>
   <title><?php echo $title;?></title>

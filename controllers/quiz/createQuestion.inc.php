@@ -76,7 +76,8 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
                 if($valid){
                     $db->commit();
                     unset($_SESSION['newQuiz']);
-                    header("Location: /ITCS333-Project/mainpage.php");
+                    $_SESSION['success'] = "Quiz Created Successfully!";
+                    header("Location: /ITCS333-Project/quiz/quizzesDisplay.php");
                 }else{
                     $db->rollback();
                 }
@@ -86,13 +87,13 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
             }
         }else{
             //redirect
-            // echoAlertDanger("You don't have authorization to add questions to this quizz");
-            // header("Location: /ITCS333-Project/mainpage.php");
+            $_SESSION['error'] = "You don't have authorization to add questions to this quizz";
+            header("Location: /ITCS333-Project/quiz/quizzesDisplay.php");
         }
     }catch(e){
         // redirect
         // echoAlertDanger('Error');
-        header("Location: /ITCS333-Project/mainpage.php");
+        header("Location: /ITCS333-Project/quiz/quizzesDisplay.php");
 
     }
 
@@ -100,7 +101,6 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
     $url = 'http://localhost/ITCS333-Project/quiz/createQuiz.php';
     setcookie("redirect", $url,0,'/');
     header("Location: /ITCS333-Project/auth/signin.php");
-    
 }
 
 ?>

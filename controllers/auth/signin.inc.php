@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
                 if(!isset($_COOKIE["redirect"])){
                     $_SESSION['success'] = "Login Successful";
-                    header("Location: /ITCS333-Project/mainpage.php");
+                    header("Location: /ITCS333-Project/quiz/quizzesDisplay.php");
                 }else{
                     header("Location: ".$_COOKIE["redirect"]);
                     setcookie ("redirect", $redirectUrl, time() - 3600,'/');

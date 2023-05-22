@@ -84,7 +84,7 @@
                     $_SESSION['success'] = 'Password Successfully Updated';
                     unset($_SESSION['display']);
                     unset($_SESSION['forgetuid']);
-                    header("Location: /ITCS333-Project/mainpage.php");
+                    header("Location: /ITCS333-Project/quiz/quizzesDisplay.php");
                 }else{
                     $_SESSION['error'] = 'Passwords do not match';
                     $_SESSION['display'] = 'pwd';

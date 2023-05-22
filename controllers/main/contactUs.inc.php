@@ -26,7 +26,8 @@
         $message->setBody($body);
         $mailer->send($message);
         $_SESSION['success'] = 'Thank you for the feedback!';
-        header("Location: /ITCS333-Project/mainpage.php");                
+        $_SESSION['isMainpage'] = true;
+        header("Location: /ITCS333-Project/quiz/quizzesDisplay.php");                
     }
 
 ?>
