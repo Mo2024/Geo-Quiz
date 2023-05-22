@@ -38,7 +38,7 @@ thead
                     <tr>
                         <td><?php echo $row['title'] ?></td>
                         <td><?php echo $row['dateConducted'] ?></td>
-                        <td><?php echo $row['totalTime'] ?></td>
+                        <td><?php echo formatSecondsToMinutes($row['totalTime']) ?></td>
                         <td><?php echo formatSecondsToMinutes($row['timeElapsed']) ?></td>
                         <td>3rd Place</td>
                         <td><?php echo $row['score'].'/'.$totalScore ?></td>
