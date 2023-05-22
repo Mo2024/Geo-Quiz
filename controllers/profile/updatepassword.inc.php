@@ -32,7 +32,6 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
             else{
                 //Updating password using current
                 if($_POST['oldpwd'] == ''){
-                    var_dump($_POST['oldpwd']);
                     $_SESSION['error'] = "Current Password field is empty";
                     // header("Location: /ITCS333-Project/profile/updatePassword.php"); 
                 }else{
@@ -47,19 +46,7 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
     
             } 
         }
-    }else if(isset($_GET['status']) && $_GET['status'] == 'forget'){
-        if(is_null($row['pwdVerificationCode'])){
-            sendVerCode($row, $id, $db);
-            $_SESSION['success'] = "Verification sent to email";
-            header("Location: /ITCS333-Project/profile/updatePassword.php"); 
-        }
-
-    } else if(isset($_GET['status']) && $_GET['status'] == 'resend'){
-        sendVerCode($row, $id, $db);
-        $_SESSION['success'] = "Verification code resent to email";
-        header("Location: /ITCS333-Project/profile/updatePassword.php"); 
-    }
-        
+    }   
 }
 else{
     $url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
