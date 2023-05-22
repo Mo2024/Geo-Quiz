@@ -37,7 +37,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" >
             <li><a class="dropdown-item" href="/ITCS333-Project/profile/profile.php">Manage profile</a></li>
-            <li><a class="dropdown-item" href="/ITCS333-Project/profile/updatepassword.php">My History</a></li>
+            <li><a class="dropdown-item" href="/ITCS333-Project/profile/myHistory.php">My History</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>

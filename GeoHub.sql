@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2023 at 04:16 PM
+-- Generation Time: May 22, 2023 at 08:21 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -78,9 +78,9 @@ INSERT INTO `questions` (`questionId`, `quizId`, `type`, `score`, `question`, `a
 (41, 24, 'FITB', 4, 'what is bahrain', 'twoo sdlkjnff'),
 (42, 24, 'MCQ', 4, 'sadsa', '3'),
 (43, 24, 'TF', 4, 'ewdqdqww', 'true'),
-(44, 25, 'FITB', 0, '', ''),
-(45, 25, 'FITB', 0, '', ''),
-(46, 25, 'FITB', 0, '', ''),
+(44, 25, 'FITB', 3, '', ''),
+(45, 25, 'FITB', 3, '', ''),
+(46, 25, 'FITB', 3, '', ''),
 (47, 26, 'MCQ', 3, 'adsasd', 'asd'),
 (48, 26, 'FITB', 4, 'ads', 'asd'),
 (49, 26, 'TF', 2, 'dsadsa', 'true'),
@@ -114,11 +114,11 @@ CREATE TABLE `quiz` (
 --
 
 INSERT INTO `quiz` (`quizid`, `title`, `description`, `nQuestions`, `totalTime`, `uid`, `dateCreated`) VALUES
-(24, 'Middle east quiz', 'Middle east quiz lolz\r\n', 3, 300, 1, ''),
-(25, 'deew', 'adsasd', 3, 600, 2, ''),
-(26, 'TESTTTT', 'sdaadsasd', 3, 300, 2, ''),
-(27, 'TEST 222', 'asddsaads', 3, 600, 2, ''),
-(48, 'TEST QUIZ 100', 'TEST TES T 4', 4, 300, 2, ''),
+(24, 'Middle east quiz', 'Middle east quiz lolz\r\n', 3, 300, 1, 'May 22, 2023'),
+(25, 'deew', 'adsasd', 3, 600, 2, 'May 22, 2023'),
+(26, 'TESTTTT', 'sdaadsasd', 3, 300, 2, 'May 22, 2023'),
+(27, 'TEST 222', 'asddsaads', 3, 600, 2, 'May 20, 2023'),
+(48, 'TEST QUIZ 100', 'TEST TES T 4', 4, 300, 2, 'May 19, 2023'),
 (49, 'adssad', 'adssadsadasd', 1, 600, 2, 'May 22, 2023');
 
 -- --------------------------------------------------------
@@ -131,9 +131,18 @@ CREATE TABLE `results` (
   `resultId` int(11) NOT NULL,
   `score` int(11) NOT NULL,
   `timeElapsed` int(11) NOT NULL,
-  `questionId` int(11) NOT NULL,
-  `userId` int(11) NOT NULL
+  `userId` int(11) NOT NULL,
+  `quizId` int(11) NOT NULL,
+  `dateConducted` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `results`
+--
+
+INSERT INTO `results` (`resultId`, `score`, `timeElapsed`, `userId`, `quizId`, `dateConducted`) VALUES
+(1, 4, 200, 2, 24, 'March 08, 2023'),
+(2, 3, 100, 2, 25, 'March 08, 2023');
 
 -- --------------------------------------------------------
 
@@ -197,8 +206,8 @@ ALTER TABLE `quiz`
 --
 ALTER TABLE `results`
   ADD PRIMARY KEY (`resultId`),
-  ADD KEY `questionId` (`questionId`),
-  ADD KEY `userId` (`userId`);
+  ADD KEY `userId` (`userId`),
+  ADD KEY `quizId` (`quizId`);
 
 --
 -- Indexes for table `users`
@@ -232,7 +241,7 @@ ALTER TABLE `quiz`
 -- AUTO_INCREMENT for table `results`
 --
 ALTER TABLE `results`
-  MODIFY `resultId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `resultId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -267,7 +276,7 @@ ALTER TABLE `quiz`
 --
 ALTER TABLE `results`
   ADD CONSTRAINT `results_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`uid`),
-  ADD CONSTRAINT `results_ibfk_2` FOREIGN KEY (`questionId`) REFERENCES `questions` (`questionId`);
+  ADD CONSTRAINT `results_ibfk_2` FOREIGN KEY (`quizId`) REFERENCES `quiz` (`quizid`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
