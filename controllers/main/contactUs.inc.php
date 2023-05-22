@@ -19,7 +19,7 @@
         // }
 
         $recipientEmail = 'itcs333projectgroup@gmail.com';
-        $body = 'Sender:'.$email.'<br/>'.$msg;
+        $body = 'Sender:\n'.$email.'\n\n Message:\n'.$msg;
 
         $message->setTo($recipientEmail);
         $message->setSubject($subject);
