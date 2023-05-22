@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2023 at 11:54 PM
+-- Generation Time: May 22, 2023 at 04:16 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -90,7 +90,8 @@ INSERT INTO `questions` (`questionId`, `quizId`, `type`, `score`, `question`, `a
 (53, 48, 'FITB', 3, 'TEST', 'TEST ANSWER'),
 (54, 48, 'MCQ', 4, 'QUESTION ', '4'),
 (55, 48, 'TF', 4, 'HGS', 'true'),
-(56, 48, 'FITB', 4, 'dskljnckjs', 'dfadsfsa');
+(56, 48, 'FITB', 4, 'dskljnckjs', 'dfadsfsa'),
+(57, 49, 'FITB', 3, 'asdasd', 'adsasd');
 
 -- --------------------------------------------------------
 
@@ -104,19 +105,21 @@ CREATE TABLE `quiz` (
   `description` varchar(255) NOT NULL,
   `nQuestions` int(11) NOT NULL,
   `totalTime` int(11) NOT NULL,
-  `uid` int(11) NOT NULL
+  `uid` int(11) NOT NULL,
+  `dateCreated` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `quiz`
 --
 
-INSERT INTO `quiz` (`quizid`, `title`, `description`, `nQuestions`, `totalTime`, `uid`) VALUES
-(24, 'Middle east quiz', 'Middle east quiz lolz\r\n', 3, 300, 1),
-(25, 'deew', 'adsasd', 3, 600, 2),
-(26, 'TESTTTT', 'sdaadsasd', 3, 300, 2),
-(27, 'TEST 222', 'asddsaads', 3, 600, 2),
-(48, 'TEST QUIZ 100', 'TEST TES T 4', 4, 300, 2);
+INSERT INTO `quiz` (`quizid`, `title`, `description`, `nQuestions`, `totalTime`, `uid`, `dateCreated`) VALUES
+(24, 'Middle east quiz', 'Middle east quiz lolz\r\n', 3, 300, 1, ''),
+(25, 'deew', 'adsasd', 3, 600, 2, ''),
+(26, 'TESTTTT', 'sdaadsasd', 3, 300, 2, ''),
+(27, 'TEST 222', 'asddsaads', 3, 600, 2, ''),
+(48, 'TEST QUIZ 100', 'TEST TES T 4', 4, 300, 2, ''),
+(49, 'adssad', 'adssadsadasd', 1, 600, 2, 'May 22, 2023');
 
 -- --------------------------------------------------------
 
@@ -146,16 +149,23 @@ CREATE TABLE `users` (
   `hash` varchar(255) NOT NULL,
   `verified` tinyint(1) NOT NULL,
   `vcode` varchar(255) NOT NULL,
-  `pcode` varchar(255) NOT NULL
+  `pcode` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`uid`, `username`, `email`, `fName`, `hash`, `verified`, `vcode`, `pcode`) VALUES
-(1, 'faisal', 'aksak@gmail.com', 'asdasd', '$2y$10$jIOzK76n0kMnjDTP2TtA9uaoJkapgT3FnH.hKgsj9jjJnTmrLE7Ya', 0, '0', '0'),
-(2, 'mohd', 'asxsax@gmail.com', 'ssadasd', '$2y$10$TWA0MPHFhPskak7Nj.vdoODiJnE/TzyyRgaX3UCVUMlkVcIRqiLGO', 0, '0', '0');
+INSERT INTO `users` (`uid`, `username`, `email`, `fName`, `hash`, `verified`, `vcode`, `pcode`, `token`) VALUES
+(1, 'faisal', 'aksak@gmail.com', 'asdasd', '$2y$10$jIOzK76n0kMnjDTP2TtA9uaoJkapgT3FnH.hKgsj9jjJnTmrLE7Ya', 0, '0', '0', ''),
+(2, 'mohd', 'mohdosama2025@gmail.com', 'ssadasd', '$2y$10$qsXf9mZ.hBeyeBp5bVZofO80RPTXfEm/pKwBuqp9bxE1uUg3FVwkK', 1, '0', '412526', ''),
+(3, 'asddas', 'asdads@gmail.copm', 'saddsa', '$2y$10$ZSf73eOAHoDpPwlfioOisOSK/trwAjbBpNdGKZldQSjTINcco9A4q', 0, '0', '0', ''),
+(4, 'sadsad', 'dafsdsf@gmail.com', 'saddsa', '$2y$10$eGa482H3wNo81cp2U.pI2uXE1yF08eHY.8lMbF4papNHf2W/5IGcK', 0, '0', '0', ''),
+(5, 'wefew', 'sdasd@gams.ced', 'akshjdjkas', '$2y$10$zP1iio3UVCHfEdQgitUsA.rmg0NEss2kpq419jXcpF5gOuTSwI/WK', 0, '0', '0', '$2y$10$//uRkYnXPQ0SEklG3H7L7u82r6m/aKThj4TM59TaGdpnrNI5rDdLu'),
+(10, 'asdsadsad', 'asd', 'sdasd', '$2y$10$oOTvdv7XV3bH5ee5v.EOiOJc1LPZpeG/JoDSojCvQWjCChMJzB/9O', 0, '0', '918237', ''),
+(11, 'asbdsgw89', 'mrkvsbusiness@gmail.com', 'sdasd', '$2y$10$XJvpxSojBLw5DfRmr33.QuvSJq2gGcCck3CdHVBivoQhGm/OC2lWW', 1, '0', '814739', ''),
+(14, 'asasdas', 'mkrfs2002@gmail.com', 'asdasdasd', '$2y$10$3zNQuPOljcIYw8BrQfYESeuyKfJ3PPsQ3A26B4O6ctisb518khCKe', 1, '0', '0', '');
 
 --
 -- Indexes for dumped tables
@@ -210,13 +220,13 @@ ALTER TABLE `choices`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `questionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `questionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `quizid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `quizid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `results`
@@ -228,7 +238,7 @@ ALTER TABLE `results`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables

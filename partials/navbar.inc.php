@@ -41,7 +41,7 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">My Quizzes</a></li>
+            <li><a class="dropdown-item" href="/ITCS333-Project/profile/myQuizzes.php">My Quizzes</a></li>
           </ul>
         </li>
       <a href="/ITCS333-Project/controllers/auth/logout.inc.php" class="nav-link h3">Sign out</a>
