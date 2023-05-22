@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2023 at 08:21 PM
+-- Generation Time: May 23, 2023 at 12:42 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -50,10 +50,18 @@ INSERT INTO `choices` (`choiceId`, `choice`, `questionId`) VALUES
 (30, 'asdads', 50),
 (31, 'asdads', 50),
 (32, 'asddas', 50),
-(33, '2', 54),
-(34, '2', 54),
-(35, '2', 54),
-(36, '2', 54);
+(33, 'choice 1', 54),
+(34, 'choice 2', 54),
+(35, 'chooice 3', 54),
+(36, 'choice 4', 54),
+(38, 'manama', 58),
+(39, 'sitra', 58),
+(40, 'saar', 58),
+(41, 'muharraq', 58),
+(42, 'oman', 60),
+(43, 'kuwait', 60),
+(44, 'qatar', 60),
+(45, 'bahrain', 60);
 
 -- --------------------------------------------------------
 
@@ -91,7 +99,11 @@ INSERT INTO `questions` (`questionId`, `quizId`, `type`, `score`, `question`, `a
 (54, 48, 'MCQ', 4, 'QUESTION ', '4'),
 (55, 48, 'TF', 4, 'HGS', 'true'),
 (56, 48, 'FITB', 4, 'dskljnckjs', 'dfadsfsa'),
-(57, 49, 'FITB', 3, 'asdasd', 'adsasd');
+(57, 49, 'FITB', 3, 'asdasd', 'adsasd'),
+(58, 50, 'MCQ', 6, 'What is the capital city of bahrain?', 'manama'),
+(59, 50, 'TF', 5, 'Bahrain is in Europe', 'false'),
+(60, 50, 'MCQ', 5, 'What is the samllest country in the middle east?', 'bahrain'),
+(61, 50, 'FITB', 5, 'The colors of bahrain\'s flag is white and?', 'red');
 
 -- --------------------------------------------------------
 
@@ -119,7 +131,8 @@ INSERT INTO `quiz` (`quizid`, `title`, `description`, `nQuestions`, `totalTime`,
 (26, 'TESTTTT', 'sdaadsasd', 3, 300, 2, 'May 22, 2023'),
 (27, 'TEST 222', 'asddsaads', 3, 600, 2, 'May 20, 2023'),
 (48, 'TEST QUIZ 100', 'TEST TES T 4', 4, 300, 2, 'May 19, 2023'),
-(49, 'adssad', 'adssadsadasd', 1, 600, 2, 'May 22, 2023');
+(49, 'adssad', 'adssadsadasd', 1, 600, 2, 'May 22, 2023'),
+(50, 'My Country', 'BH', 4, 600, 2, 'May 23, 2023');
 
 -- --------------------------------------------------------
 
@@ -142,7 +155,9 @@ CREATE TABLE `results` (
 
 INSERT INTO `results` (`resultId`, `score`, `timeElapsed`, `userId`, `quizId`, `dateConducted`) VALUES
 (1, 4, 200, 2, 24, 'March 08, 2023'),
-(2, 3, 100, 2, 25, 'March 08, 2023');
+(2, 3, 100, 2, 25, 'March 08, 2023'),
+(3, 3, 200, 2, 24, 'May 22, 2023'),
+(4, 4, 200, 2, 24, 'May 22, 2023');
 
 -- --------------------------------------------------------
 
@@ -223,25 +238,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `choices`
 --
 ALTER TABLE `choices`
-  MODIFY `choiceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `choiceId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `questionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `questionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `quizid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `quizid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `results`
 --
 ALTER TABLE `results`
-  MODIFY `resultId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `resultId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
