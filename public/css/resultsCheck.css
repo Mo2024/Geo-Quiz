@@ -1,0 +1,68 @@
+.resultsCheck .container {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.resultsCheck #timerBox {
+    width: 200px;
+    height: 30px;
+    background-color: green;
+    position: relative;
+    overflow: hidden;
+}
+
+.resultsCheck #remainingTime {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    color: white;
+}
+
+body {
+    padding-top: 70px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #F6F7FB;
+}
+
+
+.content {
+    flex: 1;
+}
+
+footer {
+    background-color: #f8f9fa;
+    padding: 2px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+@media (max-width: 576px) {
+    .d-flex.justify-content-center {
+        flex-wrap: wrap;
+    }
+
+    .card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

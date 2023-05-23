@@ -5,6 +5,15 @@ var paused = false;
 
 document.addEventListener('DOMContentLoaded', function () {
     // Your code here
+    var inputBoxes = document.querySelectorAll('input[name="answers[]"]');
+    inputBoxes.forEach(function (inputBox, index) {
+        var qId = inputBox.getAttribute('q-id');
+        var answerObject = {
+            answer: 'undefined',
+            questionId: qId
+        };
+        inputBoxes[index].value = JSON.stringify(answerObject);
+    });
     startTimer();
 });
 
@@ -75,11 +84,26 @@ function startTimer(time) {
 
 function pauseTimer() {
     paused = !paused;
+    var form = document.getElementById('quizForm');
     var pauseButton = document.getElementById("pauseButton");
     if (paused) {
         pauseButton.textContent = "Resume";
+
+        var inputElements = form.querySelectorAll('input');
+        inputElements.forEach(function (element) {
+            element.disabled = true;
+        });
+        var submitButton = form.getElementById('submitBtn');
+        submitButton.disabled = true;
     } else {
         pauseButton.textContent = "Pause";
+
+        var inputElements = form.querySelectorAll('input');
+        inputElements.forEach(function (element) {
+            element.disabled = false;
+        });
+        var submitButton = form.querySelector('button[name="submit"]');
+        submitButton.disabled = false;
     }
 }
 
