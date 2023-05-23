@@ -60,5 +60,5 @@
 
 
   </body>
-    <script src="bootstrap.min.js" ></script>
+    <script src="/ITCS333-Project/public/js/bootstrap.min.js" ></script>
 </html>

@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="/ITCS333-Project/public/css/bootstrap.min.css">
   <script src="/ITCS333-Project/public/js/bootstrap.min.js"></script>
   
-  <script src="/ITCS333-Project/public/js/main.js"></script>
   <title><?php echo $title;?></title>
 </head>
 
