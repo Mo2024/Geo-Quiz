@@ -47,14 +47,6 @@ body {
     flex: 1;
 }
 
-footer {
-    background-color: #f8f9fa;
-    padding: 2px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
 
 @media (max-width: 576px) {
     .d-flex.justify-content-center {

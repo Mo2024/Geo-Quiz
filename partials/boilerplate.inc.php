@@ -19,9 +19,11 @@
   <?php 
     session_start();
     if((isset($_SESSION['forgetuid']) && $_SERVER['REQUEST_URI'] != '/ITCS333-Project/auth/forgetPassword.php')
-    || (isset($_SESSION['display']) && $_SERVER['REQUEST_URI'] != '/ITCS333-Project/auth/forgetPassword.php')){
+    || (isset($_SESSION['display']) && $_SERVER['REQUEST_URI'] != '/ITCS333-Project/auth/forgetPassword.php')
+    || (isset($_SESSION['markScheme']) && $_SERVER['REQUEST_URI'] != '/ITCS333-Project/quiz/resultsCheck.php')){
       unset($_SESSION['display']);
       unset($_SESSION['forgetuid']);
+      unset($_SESSION['markScheme']);
     }
     require_once(realpath(__DIR__.'/../vendor/autoload.php'));
     use Dotenv\Dotenv;
