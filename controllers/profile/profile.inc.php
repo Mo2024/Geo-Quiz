@@ -26,8 +26,8 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
             header("Location: /ITCS333-Project/profile/profile.php");   
         } else if(!preg_match($nameReg,$fullname)){
             $_SESSION['error'] = "Please make sure that the entered full name is entered properly";
-            header("Location: /ITCS333-Project/profile/profile.php");           
-        }else if(isset($_POST['vcode'])){
+            header("Location: /ITCS333-Project/profile/profile.php");   
+        }else if(isset($_POST['vcode']) && $_POST['vcode'] !== ''){
             $vCode = $_POST['vcode'];
             if($vCode == $row['vcode']){
                 if(!preg_match($pcodeReg, $vCode)){
@@ -48,8 +48,6 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
                 header("Location: /ITCS333-Project/profile/profile.php");           
             }
         } else {
-
-
             $usernameQuery = "SELECT * FROM users WHERE username = '$username'";
             $emailQuery = "SELECT * FROM users WHERE email = '$email'";
     

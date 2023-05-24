@@ -51,7 +51,7 @@
                                 </label>
                             </div>
                         </div>
-                        <button type="button" id="signupButton" class="btn btn-primary btn-block" name="submit">Submit</button>
+                        <button type="submit" id="signupButton" class="btn btn-primary btn-block" name="submit">Submit</button>
                     </form>
                 </div>
             </div>
