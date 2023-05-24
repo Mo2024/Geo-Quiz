@@ -47,6 +47,12 @@
         <?php } ?>
         </div>
     </div>
+    <div class="card border-info mb-3 mx-2" style="max-width: 18rem;">
+        <div style="font-size:21px;font-weight:bold;" class="card-header text-center">Wrong Questions</div>
+        <div class="card-body text-info">
+            <a href="http://localhost/ITCS333-Project/quiz/quizLeaderboard.php?quizId=<?php echo $markScheme['quizId'] ?>">View Leaderboard</a>
+        </div>
+    </div>
 
     </div>
     <!-- <div class="text-end m-5">
@@ -84,14 +90,14 @@
             <?php } else if($markScheme[$i]['type']=="TF") {?>
                     <div class="text-center btn-group-vertical  w-75" role="group" aria-label="Basic radio toggle button group">
 
-                    <?php  $bgClass = getBg('true',$markScheme[$i]['answer']) ?>
-                    <input disabled   type="radio" class="btn-check">
-                    <label class="btn <?php  echo $bgClass ?>  btn-outline-secondary p-2 text-start" style="color:black;">True</label>
-                    
-                    <?php  $bgClass = getBg('false',$markScheme[$i]['answer']) ?>
-                    <input disabled   type="radio" class="btn-check">
-                    <label class="btn <?php  echo $bgClass ?>  btn-outline-secondary p-2 text-start"  style="color:black;">False</label>
-                    
+                        <?php  $bgClass = getBg('true',$markScheme[$i]['answer']) ?>
+                        <input disabled   type="radio" class="btn-check">
+                        <label class="btn <?php  echo $bgClass ?>  btn-outline-secondary p-2 text-start" style="color:black;">True</label>
+                        
+                        <?php  $bgClass = getBg('false',$markScheme[$i]['answer']) ?>
+                        <input disabled   type="radio" class="btn-check">
+                        <label class="btn <?php  echo $bgClass ?>  btn-outline-secondary p-2 text-start"  style="color:black;">False</label>
+                        
                         <br>
                     </div>
                     <?php $btnRadioIndex = $btnRadioIndex + 2; ?>
@@ -103,10 +109,8 @@
                         <label class="btn <?php  echo $bgClass ?>  btn-outline-secondary p-2 text-start"  style="color:black;"><?php echo $markScheme[$i]['userAnswer'] ?></label>
                         <br>
                     </div>
-                </div>
             <?php } ?>
         <?php $questionIndex = $questionIndex + 1;} ?>
-        <button name="submit" id="submitBtn" class="answerbutton btn-lg mb-3" type="button" onclick="submitForm()" style="background-color:#05AA6D;">Submit</button>
     </div>
 </div>
 <?php } else{

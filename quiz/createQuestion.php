@@ -151,28 +151,67 @@
 </div>
 
 
-    <script>
-        function enableAllCollapses() {
-            var collapses = document.querySelectorAll('.collapse');
+<script>
+    function enableAllCollapses() {
+        var collapses = document.querySelectorAll('.collapse');
 
-            for (var i = 0; i < collapses.length; i++) {
-                collapses[i].classList.add('show');
+        for (var i = 0; i < collapses.length; i++) {
+            collapses[i].classList.add('show');
+        }
+        let button = document.getElementById('formButton');
+        button.type = "submit";
+        buttonm.click();
+
+    }
+    function decreaseValue(value){
+        if(document.getElementsByClassName("qMarks")[value].value > 1){
+            document.getElementsByClassName("qMarks")[value].value--;
+        }
+    }
+    function increaseValue(value){
+        document.getElementsByClassName("qMarks")[value].value++;
+    }
+
+    function handleSelectChange(divPosition, value){
+            if(value == "FITB"){
+                let questionType = document.getElementsByClassName('qTypePosition')[divPosition];
+                questionType.innerHTML = 
+                `<label class="form-label mt-1 fw-bold" for="question${divPosition}">Write your answer here
+                </label>
+                <input placeholder="Correct Answer" class="form-control" type="text" name="answers[]" id="answer${divPosition}" required autofocus>`;
+            }else if(value == 'TF'){
+                let questionType = document.getElementsByClassName('qTypePosition')[divPosition];
+                questionType.innerHTML = 
+                `<label class="form-label mt-1 fw-bold" for="answer${divPosition}">Choose the correct answer</label>
+                <select name="answers[]" class="form-select my-select w-50">
+                    <option selected value="">Please select an answer</option>
+                    <option value="true">True</option>
+                    <option value="false">False</option>
+                </select>`;
+            } else if(value == 'MCQ'){
+                let questionType = document.getElementsByClassName('qTypePosition')[divPosition];
+                questionType.innerHTML = 
+                `<h3 class="form-label mt-1 fw-bold">Write your options below</h3>
+                <label class="form-label mt-1 fw-bold" for="option1#${divPosition}">Option 1</label>
+                <input placeholder="Option 1" class="form-control" type="text" name="options[]" required autofocus>
+                
+                <label class="form-label mt-1 fw-bold" for="option2#${divPosition}">Option 2</label>
+                <input placeholder="Option 2" class="form-control" type="text" name="options[]" required autofocus>
+    
+                <label class="form-label mt-1 fw-bold" for="option3#${divPosition}">Option 3</label>
+                <input placeholder="Option 3" class="form-control" type="text" name="options[]" required autofocus>
+                
+                <label class="form-label mt-1 fw-bold" for="option3#${divPosition}">Option 4</label>
+                <input placeholder="Option 4" class="form-control" type="text" name="options[]" required autofocus>
+                
+                    
+                <label class="form-label mt-1 fw-bold" for="answer${divPosition}">Write your answer here</label>
+                <input placeholder="Correct Answer" class="form-control" type="text" name="answers[]" id="answer${divPosition}" required autofocus>`;
             }
-            let button = document.getElementById('formButton');
-            button.type = "submit";
-            buttonm.click();
 
         }
-        function decreaseValue(value){
-            if(document.getElementsByClassName("qMarks")[value].value > 1){
-                document.getElementsByClassName("qMarks")[value].value--;
-            }
-        }
-        function increaseValue(value){
-            document.getElementsByClassName("qMarks")[value].value++;
-        }
-     
-    </script>
+    
+</script>
     
     
 <?php require('../partials/footer.inc.php')?>

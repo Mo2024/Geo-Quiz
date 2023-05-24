@@ -67,7 +67,8 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
         $timeElapsed = $quizRow['totalTime'] - $timeLeft;
         $uid = $_SESSION['userId'];
         $quizId = $_GET['quizId'];
-
+        
+        $markScheme['quizId'] = $_GET['quizId'];
         $markScheme['correctAnswers'] = $correctAnswers;
         $markScheme['wrongAnswers'] = $wrongAnswers;
         $markScheme['timeElapsed'] = $timeElapsed;
