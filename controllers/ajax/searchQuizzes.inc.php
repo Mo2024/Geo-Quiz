@@ -11,7 +11,7 @@ require("../../partials/regex.inc.php");
 if (isset($_GET['searchQuery'])) {
   $searchQuery = $_GET['searchQuery'];
 
-  if($searchQuery == 'all'){
+  if($searchQuery == 'all' && isset($_GET['isSearchBtn'])){
     $query = "SELECT quiz.*, users.username FROM quiz INNER JOIN users ON quiz.uid = users.uid";
     $stmt = $db->prepare($query);
     $stmt->execute();

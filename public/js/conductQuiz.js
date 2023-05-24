@@ -64,7 +64,6 @@ function startTimer(time) {
             if (remainingTimeInSeconds <= 0) {
                 submitForm()
                 clearInterval(countdownInterval);
-                alert("Countdown finished!");
                 startButton.disabled = false;
                 pauseButton.disabled = true;
             } else if (remainingPercentage <= 10) {

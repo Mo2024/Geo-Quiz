@@ -19,7 +19,7 @@
 
           <ul class="list-unstyled mb-0">
             <li>
-              <a href="contactUs.php" class="text-white" >Contact Us</a>
+              <a href="/ITCS333-Project/contactUs.php" class="text-white" >Contact Us</a>
             </li>
           </ul>
         </div>

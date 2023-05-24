@@ -1,11 +1,36 @@
 <?php $title = "Quizzes"; require('../partials/boilerplate.inc.php')?>
 <?php require('../controllers/quiz/quizzesDisplay.inc.php')?>
+<style>
+  #suggestionList {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    /* padding: 10px; */
+    display: none;
+    
+  }
+
+  .suggestion-item {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    background-color: #f2f2f2;
+    transition: background-color 0.3s ease;
+  }
+
+  .suggestion-item:hover,
+  .suggestion-item.hovered {
+    background-color: #dcdcdc;
+  }
+</style>
 
 <div class="container w-50">
-    <form class="d-flex mt-3">
-        <input id="searchQuery" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button id="searchButton" class="btn btn-outline-success" type="button">Search</button>
-    </form>
+<div class="d-flex mt-3">
+    <input id="searchQuery" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button id="searchButton" class="btn btn-outline-success" type="button">Search</button>
+</div>
+<div id="suggestionList"></div>
+
 </div>
 <div id="mainContainer" class="container" >
     <?php if(!isset($_COOKIE['search'])){ ?>
