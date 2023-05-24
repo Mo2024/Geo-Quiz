@@ -5,7 +5,7 @@
   <h1 style="font-weight:bold;">Let's put your Geography <br>skills to the test.</h1>
   <br>
 
-  <a href="signUp.php" class="btn btn-primary btn-lg pt-3 pb-3 border-0" tabindex="-1" role="button" style="margin-left:40px;  font-family: 'Roboto', sans-serif; background-color:#3C486B;  font-size: 25px;
+  <a href="/ITCS333-Project/auth/signup.php" class="btn btn-primary btn-lg pt-3 pb-3 border-0" tabindex="-1" role="button" style="margin-left:40px;  font-family: 'Roboto', sans-serif; background-color:#3C486B;  font-size: 25px;
 ">Get Started Today</a>
 </main>
 <section class="container-fluid px-0">
