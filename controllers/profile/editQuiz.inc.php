@@ -38,6 +38,7 @@ if(isset($_SESSION['userId'])){
                 $mcqCounter = 0;
                 $valid = true;
                 $errorMsg = '';
+                $db->beginTransaction();
 
                 for($i=0; $i < $quizRow['nQuestions']; $i++){
                     // if(preg_match($qTypesReg, $qTypes[$i])){
@@ -61,7 +62,6 @@ if(isset($_SESSION['userId'])){
                     //     $errorMsg = 'Make sure to input a valid answer';
                     //     break;
                     // }
-
                     $insertQuery = "UPDATE questions SET type = :type, score = :score, question = :question, answer = :answer  WHERE questionid = :uid";
                     $stmt = $db->prepare($insertQuery);
                     $stmt->bindParam(':uid', $qIds[$i]);
@@ -86,6 +86,7 @@ if(isset($_SESSION['userId'])){
 
                 }
                 if($valid){
+                    $db->commit();
                     unset($_SESSION['newQuiz']);
                     $_SESSION['success'] = "Quiz Edit Successfully!";
                     header("Location: /ITCS333-Project/quiz/quizzesDisplay.php");

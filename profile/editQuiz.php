@@ -17,7 +17,7 @@
                         ?>                       
                                     <div class="row mt-2">
                                         <div class=" col-sm-6">
-                                            <button name="qId[]" value="<?php echo $questionsRow['questionid'] ?>" class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $i ?>" aria-expanded="false" aria-controls="collapseExample<?php echo $i?>">
+                                            <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $i ?>" aria-expanded="false" aria-controls="collapseExample<?php echo $i?>">
                                                 Question <?php echo $nonIndex ?>
                                             </button>
                                         </div>
@@ -99,6 +99,7 @@
                                             <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $i ?>" aria-expanded="false" aria-controls="collapseExample<?php echo $i ?>">
                                                 Question <?php echo $nonIndex?>
                                             </button>
+                                            <input style="display: none;" type="text"  name="qId[]" value="<?php echo $questionsRow[$i]['questionId'] ?>">
                                         </div>
                                         <div class="collapse" id="collapseExample<?php echo $i ?>">
                                             <div class="card card-body">
@@ -201,11 +202,10 @@
                 collapses[i].classList.add('show');
             }
             let button = document.getElementById('formButton');
-            var elements = document.querySelectorAll('[name="yourName"]');
+            var elements = document.querySelectorAll('input[name="qId[]"]');
             elements.forEach(function(element) {
-            // Perform operations on each element
+                // Perform operations on each element
                 element.style.display = "block";
-
             });
             button.type = "submit";
             buttonm.click();
