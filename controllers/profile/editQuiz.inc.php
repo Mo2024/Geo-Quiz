@@ -75,10 +75,11 @@ if(isset($_SESSION['userId'])){
                     if($qTypes[$i]=="MCQ"){
                         for($j=0; $j < 4; $j++){
 
-                            $insertQuery = "UPDATE choices SET choice = :choice WHERE questionid = :uid";
+                            $insertQuery = "UPDATE choices SET choice = :choice WHERE questionId = :qid AND choiceID = :cid";
                             $stmt = $db->prepare($insertQuery);
-                            $stmt->bindParam(':uid', $cIds[$mcqCounter]);
-                            $stmt->bindParam(':choice', $qTypes[$mcqCounter]);
+                            $stmt->bindParam(':qid', $qIds[$i]);
+                            $stmt->bindParam(':cid', $cIds[$mcqCounter]);
+                            $stmt->bindParam(':choice', $options[$mcqCounter]);
                             $stmt->execute();
                             $mcqCounter++;
                         }
@@ -88,8 +89,8 @@ if(isset($_SESSION['userId'])){
                 if($valid){
                     $db->commit();
                     unset($_SESSION['newQuiz']);
-                    $_SESSION['success'] = "Quiz Edit Successfully!";
-                    header("Location: /ITCS333-Project/quiz/quizzesDisplay.php");
+                    $_SESSION['success'] = "Quiz Edited Successfully!";
+                    header("Location: /ITCS333-Project/profile/myQuizzes.php");
                 }else{
                     $db->rollback();
                     echoAlertDanger($errorMsg);
