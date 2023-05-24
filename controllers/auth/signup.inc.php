@@ -1,9 +1,13 @@
 <?php 
+ require('../functions/functions.inc.php');
+ require('../functions/mailer.inc.php');
+ require("../partials/regex.inc.php");
+ echo "<script> const passwordRegex = ".$passwordReg."</script>";
+ echo "<script> const emailRegex = ".$emailReg."</script>";
+ echo "<script> const usernameRegex = ".$usernameReg."</script>";
+ echo "<script> const fullnameRegex = ".$nameReg."</script>";
 if (isset($_POST['submit'])) {
     
-    require('../functions/functions.inc.php');
-    require('../functions/mailer.inc.php');
-    require("../partials/regex.inc.php");
 
     $username = $_POST['username'];
     $email = $_POST['email'];

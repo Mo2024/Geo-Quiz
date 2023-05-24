@@ -7,7 +7,7 @@ document.getElementById("searchButton").addEventListener("click", function () {
   }
   var now = new Date();
   var time = now.getTime();
-  time += 300000; // 5 minutes in milliseconds
+  time += 300000;
   now.setTime(time);
 
   document.cookie = "search=cookieValue; expires=" + now.toUTCString() + "; path=/";
@@ -58,24 +58,24 @@ var suggestionList = document.getElementById('suggestionList');
 var currentSelectionIndex = -1;
 
 function fetchSuggestions(searchQuery) {
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'http://localhost/ITCS333-Project/controllers/ajax/searchQuizzes.inc.php?searchQuery=' + encodeURIComponent(searchQuery), true);
-  xhr.setRequestHeader('Content-Type', 'application/json');
+  var ajax = new XMLHttpRequest();
+  ajax.open('GET', 'http://localhost/ITCS333-Project/controllers/ajax/searchQuizzes.inc.php?searchQuery=' + encodeURIComponent(searchQuery), true);
+  ajax.setRequestHeader('Content-Type', 'application/json');
 
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      var response = JSON.parse(xhr.responseText);
+  ajax.onreadystatechange = function () {
+    if (ajax.readyState === 4 && ajax.status === 200) {
+      var response = JSON.parse(ajax.responseText);
       var suggestions = response.quizzes;
 
       if (searchQuery === '') {
-        suggestionList.style.display = 'none'; // Hide suggestion list when input is empty
-        suggestionList.innerHTML = ''; // Clear previous suggestions
-        return; // Exit the function
+        suggestionList.style.display = 'none';
+        suggestionList.innerHTML = '';
+        return;
       }
 
       if (suggestions.length > 0) {
-        suggestionList.style.display = 'block'; // Show suggestion list
-        suggestionList.innerHTML = ''; // Clear previous suggestions
+        suggestionList.style.display = 'block';
+        suggestionList.innerHTML = '';
 
         suggestions.forEach(function (suggestion, index) {
           var suggestionItem = document.createElement('a');
@@ -91,20 +91,16 @@ function fetchSuggestions(searchQuery) {
             this.classList.remove('hovered');
           });
 
-          suggestionItem.addEventListener('click', function () {
-            // Perform any actions when a suggestion is clicked
-          });
-
           suggestionList.appendChild(suggestionItem);
         });
 
-        currentSelectionIndex = -1; // Reset the current selection index
+        currentSelectionIndex = -1;
       } else {
-        suggestionList.style.display = 'none'; // Hide suggestion list
+        suggestionList.style.display = 'none';
       }
     }
   };
-  xhr.send();
+  ajax.send();
 }
 
 function handleKeyboardNavigation(event) {
@@ -135,9 +131,7 @@ function handleKeyboardNavigation(event) {
 }
 
 searchInput.addEventListener('input', function (event) {
-  var searchQuery = event.target.value.trim(); // Trim whitespace
-
-  // Fetch and display suggestions
+  var searchQuery = event.target.value.trim();
   fetchSuggestions(searchQuery);
 });
 

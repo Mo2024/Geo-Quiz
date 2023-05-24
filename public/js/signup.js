@@ -42,3 +42,33 @@ email.addEventListener('input', function () {
     };
     ajax.send("email=" + encodeURIComponent(email));
 });
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    validateInputs()
+});
+
+function validateInputs() {
+    const emailInput = document.getElementById('email');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const password2Input = document.getElementById('password2');
+    const fullnameInput = document.getElementById('fullname');
+    const submitButton = document.getElementById('signupButton');
+
+    const isEmailValid = emailRegex.test(emailInput.value);
+    const isUsernameValid = usernameRegex.test(usernameInput.value);
+    const isPasswordValid = passwordRegex.test(passwordInput.value);
+    const isPassword2Valid = passwordRegex.test(password2Input.value);
+    const isFullnameValid = fullnameRegex.test(fullnameInput.value);
+
+    submitButton.disabled = !(isEmailValid && isUsernameValid && isPasswordValid && isPassword2Valid && isFullnameValid);
+}
+
+document.getElementById('email').addEventListener('input', validateInputs);
+document.getElementById('username').addEventListener('input', validateInputs);
+document.getElementById('password').addEventListener('input', validateInputs);
+document.getElementById('password2').addEventListener('input', validateInputs);
+document.getElementById('fullname').addEventListener('input', validateInputs);
