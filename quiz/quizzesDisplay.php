@@ -25,7 +25,7 @@
                             <h5 class="card-title">Description:</h5>
                             <p class="card-text"><?php echo $quizzes[$i]['description'];?></p>
                             
-                            <a href="/ITCS333-Project/quiz/conductQuiz.php?quizId=<?php echo $quizzes[$i]['quizid']?>" class="btn btn-primary">Start Quiz</a>
+                            <a href="/ITCS333-Project/quiz/viewQuiz.php?quizId=<?php echo $quizzes[$i]['quizid']?>" class="btn btn-primary">View Quiz</a>
                         </div>
                     </div>
                 </div>
