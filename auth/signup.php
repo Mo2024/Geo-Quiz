@@ -42,12 +42,14 @@
                                 </label>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block" name="submit">Submit</button>
+                        <button type="button" id="signupButton" class="btn btn-primary btn-block" name="submit">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script src="/ITCS333-Project/public/js/signup.js"></script>
 
 <?php require('../partials/footer.inc.php')?>
