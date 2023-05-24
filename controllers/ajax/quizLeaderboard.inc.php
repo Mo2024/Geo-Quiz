@@ -9,6 +9,7 @@ require('../../functions/functions.inc.php');
 require("../../partials/regex.inc.php");
 
 try {
+    $quizId = $_GET['quizId']; 
 
     $query = "
         SELECT leaderboard.*
@@ -16,12 +17,14 @@ try {
           SELECT results.*, users.username, ROW_NUMBER() OVER (PARTITION BY results.userId ORDER BY results.score DESC, results.timeElapsed ASC) AS row_num
           FROM results
           INNER JOIN users ON results.userId = users.uid
-          WHERE results.quizId = 50
+          WHERE results.quizId = :quizId
         ) leaderboard
         WHERE leaderboard.row_num = 1
         ORDER BY leaderboard.score DESC, leaderboard.timeElapsed ASC, leaderboard.username ASC;
     ";
-    $stmt = $db->query($query);
+    $stmt = $db->prepare($query);
+    $stmt->bindParam(':quizId', $quizId, PDO::PARAM_INT);
+    $stmt->execute();
     $leaderboardData = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $response = array('leaderboard' => $leaderboardData);

@@ -1,6 +1,6 @@
 <?php $title = "Leaderboard"; require('../partials/boilerplate.inc.php')?>
 
-
+<?php if(isset($_GET['quizId'])) { ?>
 <div class="container my-4 border border-dark">
   <h1 class="text-center mb-4 mt-4">Top 3</h1>
   <div id="mainDiv" class="row">
@@ -39,17 +39,22 @@
 
     <h3>Remaining Users</h3>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item mb-2 username">Username4 <br> Points: #</li>
-      <li class="list-group-item mb-2 username">Username5 <br> Points: #</li>
-      <li class="list-group-item mb-2 username">Username6 <br> Points: #</li>
-      <li class="list-group-item mb-2 username">Username7 <br> Points: #</li>
-      <li class="list-group-item mb-2 username">Username8 <br> Points: #</li>
-      <li class="list-group-item mb-2 username">Username9 <br> Points: #</li>
-      <li class="list-group-item mb-2 username">Username10 <br> Points: #</li>
+      <li class="list-group-item mb-2 username">Username4<br>Points: #</li>
+      <li class="list-group-item mb-2 username">Username5<br>Points: #</li>
+      <li class="list-group-item mb-2 username">Username6<br>Points: #</li>
+      <li class="list-group-item mb-2 username">Username7<br>Points: #</li>
+      <li class="list-group-item mb-2 username">Username8<br>Points: #</li>
+      <li class="list-group-item mb-2 username">Username9<br>Points: #</li>
+      <li class="list-group-item mb-2 username">Username10<br>Points: #</li>
     </ul>
 </div>
 </div>
 <script src="/ITCS333-Project/public/js/leaderboard.js"></script>
+<?php } else {
+  $_SESSION['error'] = "You must enter a valid quiz id";
+  header("Location: /ITCS333-Project/quiz/quizzesDisplay.php");
+} 
+?>
 
 
 <?php require('../partials/footer.inc.php')?>
