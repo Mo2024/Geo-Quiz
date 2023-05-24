@@ -12,7 +12,7 @@
         <div class="col-xl-12 ">
             <div class="bg-color border card border-color-form shadow">
                 <div class="card-body">
-                    <h5 class="card-title text-secondary">Create Quiz</h5>
+                    <h5 class="card-title text-secondary">Quiz Details</h5>
                     <form class="validated-form" method="POST" novalidate>
                         <div class="row">
                             <div class="mb-3 col-sm-6">

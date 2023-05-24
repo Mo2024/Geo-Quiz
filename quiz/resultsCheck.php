@@ -40,10 +40,10 @@
     <div class="card border-danger mb-3 mx-2" style="max-width: 18rem;">
         <div style="font-size:21px;font-weight:bold;" class="card-header text-center">Wrong Questions</div>
         <div class="card-body text-danger">
-        <?php if($markScheme['correctAnswers'] > 1 || $markScheme['correctAnswers'] == 0){ ?> 
-            <h5 class="card-title text-center"><?php echo $markScheme['correctAnswers'] ?> Questions</h5>
+        <?php if($markScheme['wrongAnswers'] > 1 || $markScheme['wrongAnswers'] == 0){ ?> 
+            <h5 class="card-title text-center"><?php echo $markScheme['wrongAnswers'] ?> Questions</h5>
         <?php } else {?>
-            <h5 class="card-title text-center"><?php echo $markScheme['correctAnswers'] ?> Question</h5>
+            <h5 class="card-title text-center"><?php echo $markScheme['wrongAnswers'] ?> Question</h5>
         <?php } ?>
         </div>
     </div>
