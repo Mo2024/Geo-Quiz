@@ -41,6 +41,27 @@ if(isset($_SESSION['userId'])){
                 $db->beginTransaction();
 
                 for($i=0; $i < $quizRow['nQuestions']; $i++){
+                    // if(preg_match($passwordReg, $qTypes[$i])){
+
+                    //     $valid = false;
+                    //     $errorMsg = 'Make sure to input a valid question type';
+                    //     break;
+                    // }else if(!preg_match($passwordReg, $questions[$i])){
+
+                    //     $valid = false;
+                    //     $errorMsg = 'Make sure to input a valid question';
+                    //     break;
+                    // }else if(!preg_match($passwordReg, $marks[$i])){
+
+                    //     $valid = false;
+                    //     $errorMsg = 'Make sure to input a valid mark';
+                    //     break;
+                    // }else if(!preg_match($passwordReg, $answers[$i])){
+
+                    //     $valid = false;
+                    //     $errorMsg = 'Make sure to input a valid answer';
+                    //     break;
+                    // }
                     // if(preg_match($qTypesReg, $qTypes[$i])){
 
                     //     $valid = false;

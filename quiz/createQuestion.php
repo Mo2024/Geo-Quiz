@@ -59,7 +59,7 @@
                                                     <h3 class="form-label mt-1 fw-bold">Write your options below</h3>
                                                     <?php
                                                         for($j=0; $j < $newQuiz['noOfQuestions']; $j++){
-                                                            $optionsCounter = $i+1 ?>
+                                                            $optionsCounter = $j+1 ?>
                                                             <label class="form-label mt-1 fw-bold" for="option<?php echo $j ?>#<?php echo $optionsCounter ?>">Option <?php echo $optionsCounter ?></label>
                                                             <input placeholder="Option <?php echo $optionsCounter ?>" value="<?php echo $options[$i] ?>" class="form-control" type="text" name="options[]" required autofocus>
                                                     <?php $mcqChoices; ?>
@@ -67,7 +67,7 @@
                                                     
                                                         
                                                     <label class="form-label mt-1 fw-bold" for="answer<?php echo $i ?>">Write your answer here</label>
-                                                    <input placeholder="Correct Answer" class="form-control" type="text" name="answers[]" value="<?php echo $marks[$i] ?>" id="answer<?php echo $i ?>" required autofocus> 
+                                                    <input placeholder="Correct Answer" class="form-control" type="text" name="answers[]" value="<?php echo $answers[$i] ?>" id="answer<?php echo $i ?>" required autofocus> 
                                                 </div>
                                     <?php }else if($qTypes[$i] == 'FITB'){?>                       
                                         <div class="qTypePosition">
@@ -171,45 +171,7 @@
         function increaseValue(value){
             document.getElementsByClassName("qMarks")[value].value++;
         }
-
-        function handleSelectChange(divPosition, value){
-            if(value == "FITB"){
-                let questionType = document.getElementsByClassName('qTypePosition')[divPosition];
-                questionType.innerHTML = 
-                `<label class="form-label mt-1 fw-bold" for="question${divPosition}">Write your answer here
-                </label>
-                <input placeholder="Correct Answer" class="form-control" type="text" name="answers[]" id="answer${divPosition}" required autofocus>`;
-            }else if(value == 'TF'){
-                let questionType = document.getElementsByClassName('qTypePosition')[divPosition];
-                questionType.innerHTML = 
-                `<label class="form-label mt-1 fw-bold" for="answer${divPosition}">Choose the correct answer</label>
-                <select name="answers[]" class="form-select my-select w-50">
-                    <option selected value="">Please select an answer</option>
-                    <option value="true">True</option>
-                    <option value="false">False</option>
-                </select>`;
-            } else if(value == 'MCQ'){
-                let questionType = document.getElementsByClassName('qTypePosition')[divPosition];
-                questionType.innerHTML = 
-                `<h3 class="form-label mt-1 fw-bold">Write your options below</h3>
-                <label class="form-label mt-1 fw-bold" for="option1#${divPosition}">Option 1</label>
-                <input placeholder="Option 1" class="form-control" type="text" name="options[]" required autofocus>
-                
-                <label class="form-label mt-1 fw-bold" for="option2#${divPosition}">Option 2</label>
-                <input placeholder="Option 2" class="form-control" type="text" name="options[]" required autofocus>
-    
-                <label class="form-label mt-1 fw-bold" for="option3#${divPosition}">Option 3</label>
-                <input placeholder="Option 3" class="form-control" type="text" name="options[]" required autofocus>
-                
-                <label class="form-label mt-1 fw-bold" for="option3#${divPosition}">Option 4</label>
-                <input placeholder="Option 4" class="form-control" type="text" name="options[]" required autofocus>
-                
-                    
-                <label class="form-label mt-1 fw-bold" for="answer${divPosition}">Write your answer here</label>
-                <input placeholder="Correct Answer" class="form-control" type="text" name="answers[]" id="answer${divPosition}" required autofocus>`;
-            }
-
-        }
+     
     </script>
     
     

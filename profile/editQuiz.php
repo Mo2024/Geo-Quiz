@@ -20,6 +20,7 @@
                                             <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample<?php echo $i ?>" aria-expanded="false" aria-controls="collapseExample<?php echo $i?>">
                                                 Question <?php echo $nonIndex ?>
                                             </button>
+                                            <input style="display: none;" type="text"  name="qId[]" value="<?php echo $questionsRow[$i]['questionId'] ?>">
                                         </div>
                                         <div class="collapse" id="collapseExample<?php echo $i ?>">
                                             <div class="card card-body">
@@ -58,16 +59,18 @@
                                         <div class="qTypePosition">
                                                     <h3 class="form-label mt-1 fw-bold">Write your options below</h3>
                                                     <?php
-                                                        for($j=0; $j < $newQuiz['noOfQuestions']; $j++){
-                                                            $optionsCounter = $i+1 ?>
+                                                        for($j=0; $j < 4; $j++){
+                                                            $optionsCounter = $j+1 ?>
                                                             <label class="form-label mt-1 fw-bold" for="option<?php echo $j ?>#<?php echo $optionsCounter ?>">Option <?php echo $optionsCounter ?></label>
-                                                            <input placeholder="Option <?php echo $optionsCounter ?>" value="<?php echo $options[$i] ?>" class="form-control" type="text" name="options[]" required autofocus>
-                                                    <?php $mcqChoices++; ?>
+                                                            <input placeholder="Option <?php echo $optionsCounter ?>" value="<?php echo $options[$mcqChoices] ?>" class="form-control" type="text" name="options[]" required autofocus>
+                                                            <input style="display: none;"  name="cId[]" value="<?php echo $cIds[$mcqChoices]; ?>"> 
+
+                                                        <?php $mcqChoices++; ?>
                                                     <?php } ?>
                                                     
                                                         
                                                     <label class="form-label mt-1 fw-bold" for="answer<?php echo $i ?>">Write your answer here</label>
-                                                    <input placeholder="Correct Answer" class="form-control" type="text" name="answers[]" value="<?php echo $marks[$i] ?>" id="answer<?php echo $i ?>" required autofocus> 
+                                                    <input placeholder="Correct Answer" class="form-control" type="text" name="answers[]" value="<?php echo $answers[$i] ?>" id="answer<?php echo $i ?>" required autofocus> 
                                                 </div>
                                     <?php }else if($qTypes[$i] == 'FITB'){?>                       
                                         <div class="qTypePosition">
@@ -138,7 +141,7 @@
                                                     <div class="qTypePosition">
                                                                 <h3 class="form-label mt-1 fw-bold">Write your options below</h3>
                                                                 <?php
-                                                                    for($j=0; $j < $quizRow['nQuestions']; $j++){
+                                                                    for($j=0; $j < 4; $j++){
                                                                         $optionsCounter = $j+1 ?>
                                                                         <label class="form-label mt-1 fw-bold" for="option<?php echo $j ?>#<?php echo $optionsCounter ?>">Option <?php echo $optionsCounter ?></label>
                                                                         <input placeholder="Option <?php echo $optionsCounter ?>" value="<?php echo $choicesRow[$mcqChoices]['choice'] ?>" class="form-control" type="text" name="options[]" required autofocus>
@@ -202,6 +205,11 @@
                 collapses[i].classList.add('show');
             }
             let button = document.getElementById('formButton');
+            var elements = document.querySelectorAll('input[name="cId[]"]');
+            elements.forEach(function(element) {
+                // Perform operations on each element
+                element.style.display = "block";
+            });
             var elements = document.querySelectorAll('input[name="qId[]"]');
             elements.forEach(function(element) {
                 // Perform operations on each element
@@ -219,17 +227,6 @@
         function increaseValue(value){
             document.getElementsByClassName("qMarks")[value].value++;
         }
-
-        document.addEventListener('DOMContentLoaded', function () {
-        // Your code here
-        var inputBoxes = document.querySelectorAll('label[qId]');
-        inputBoxes.forEach(function (inputBox, index) {
-            var qId = inputBox.getAttribute('qId');
-            var elements = document.getElementsByName('qId[]');
-
-            elements[index].value = qId;
-        });
-    });
     </script>
     
     
