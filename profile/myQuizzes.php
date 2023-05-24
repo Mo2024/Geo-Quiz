@@ -29,7 +29,7 @@ thead
           <tr>
             <td><?php echo $row['title']; ?></td>
             <td><?php echo $row['dateCreated'];?></td>
-            <td><a type="button" class="btn btn-sm btn-outline-secondary">Edit Quiz</a></td>
+            <td><a type="button" href="/ITCS333-Project/profile/editQuiz.php?quizId=<?php echo $row['quizid'] ?>" class="btn btn-sm btn-outline-secondary">Edit Quiz</a></td>
           </tr>
         <?php } ?>
 
