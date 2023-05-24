@@ -17,7 +17,8 @@
     <div class="card border-primary mb-3 mx-2" style="max-width: 18rem;">
         <div style="font-size:21px;font-weight:bold;" class="card-header text-center">Time Elasped</div>
         <div class="card-body text-primary">
-        <h5 class="card-title text-center">09:56 Minutes</h5>
+        <?php $timeElapsed = formatSecondsToMinutes($markScheme['timeElapsed']); ?>
+        <h5 class="card-title text-center"><?php echo $timeElapsed ?> Minutes</h5>
         </div>
     </div>
     <div class="card border-secondary mb-3 mx-2" style="max-width: 18rem;">
@@ -83,9 +84,11 @@
             <?php } else if($markScheme[$i]['type']=="TF") {?>
                     <div class="text-center btn-group-vertical  w-75" role="group" aria-label="Basic radio toggle button group">
 
+                    <?php  $bgClass = getBg('true',$markScheme[$i]['answer']) ?>
                     <input disabled   type="radio" class="btn-check">
                     <label class="btn <?php  echo $bgClass ?>  btn-outline-secondary p-2 text-start" style="color:black;">True</label>
-
+                    
+                    <?php  $bgClass = getBg('false',$markScheme[$i]['answer']) ?>
                     <input disabled   type="radio" class="btn-check">
                     <label class="btn <?php  echo $bgClass ?>  btn-outline-secondary p-2 text-start"  style="color:black;">False</label>
                     

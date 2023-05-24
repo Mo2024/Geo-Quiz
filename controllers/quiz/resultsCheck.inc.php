@@ -10,5 +10,11 @@ function getSvg($userAnswer, $answer){
     else{return '<img style="height:30px; width:30px;" src="/ITCS333-Project/public/333 Icons-Fonts-Colors/wrong-svgrepo-com.svg" alt="Check SVG">';}
 }
 
+function formatSecondsToMinutes($durationInSeconds) {
+    $minutes = floor($durationInSeconds / 60);
+    $seconds = $durationInSeconds % 60;
+    $timeFormatted = sprintf("%d:%02d", $minutes, $seconds);
+    return $timeFormatted;
+}
 
 ?>
