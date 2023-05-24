@@ -48,17 +48,14 @@
         </div>
     </div>
     <div class="card border-info mb-3 mx-2" style="max-width: 18rem;">
-        <div style="font-size:21px;font-weight:bold;" class="card-header text-center">Wrong Questions</div>
-        <div class="card-body text-info">
+        <div style="font-size:21px;font-weight:bold;" class="card-header text-center">View Leaderboard</div>
+        <div class="card-body text-info text-center">
             <a href="http://localhost/ITCS333-Project/quiz/quizLeaderboard.php?quizId=<?php echo $markScheme['quizId'] ?>">View Leaderboard</a>
         </div>
     </div>
 
     </div>
-    <!-- <div class="text-end m-5">
-    <button type="button" class="btn btn-lg btn-secondary">Cancel</button>
-    <button type="button" class="btn btn-lg btn-primary">Return to Quizzes</button>
-    </div> -->
+
 <div class="resultsCheck">
     <div class="container align-items-center">
         <?php $mcqIndex = 0; $btnRadioIndex = 0; $questionIndex = 1;
