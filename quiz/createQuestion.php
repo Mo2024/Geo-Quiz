@@ -92,8 +92,6 @@
                                                 </select>
                                             </div>
                                     <?php } ?>                                                                                   
-                                                <label for="image<?php echo $i ?>" class="form-label fw-bold mt-1">Image</label>
-                                                <input name="images[]" class="form-control form-control-sm w-25" id="formFileSm<?php echo $i ?>" type="file">
                                             </div>
                                         </div>
                                     </div>
@@ -119,7 +117,7 @@
                                                     <span class="input-group-btn">
                                                         <button type="button" class="btn btn-outline-secondary" onclick="decreaseValue(<?php echo $i ?>)">-</button>
                                                     </span>
-                                                    <input type="number" name="marks[]" class="form-control text-center qMarks" id="mark<?php echo $i ?>" value="0" min="0">
+                                                    <input type="number" name="marks[]" class="form-control text-center qMarks" id="mark<?php echo $i ?>" value="1" min="0">
                                                     <span class="input-group-btn">
                                                         <button type="button" class="btn btn-outline-secondary" onclick="increaseValue(<?php echo $i ?>)">+</button>
                                                     </span>
@@ -132,9 +130,6 @@
                                                     <label class="form-label mt-1 fw-bold" for="answer<?php echo $i ?>">Write your answer here</label>
                                                     <input placeholder="Correct Answer" class="form-control" type="text" name="answers[]" id="answer<?php echo $i ?>" required autofocus> 
                                                 </div>
-                                                
-                                                <label for="image<?php echo $i ?>" class="form-label fw-bold mt-1">Image</label>
-                                                <input name="images[]" class="form-control form-control-sm w-25" id="formFileSm<?php echo $i ?>" type="file">
                                             </div>
                                         </div>
                                     </div> 
@@ -169,7 +164,7 @@
 
         }
         function decreaseValue(value){
-            if(document.getElementsByClassName("qMarks")[value].value > 0){
+            if(document.getElementsByClassName("qMarks")[value].value > 1){
                 document.getElementsByClassName("qMarks")[value].value--;
             }
         }
