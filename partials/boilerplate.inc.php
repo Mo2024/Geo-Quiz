@@ -10,6 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- bootstrap 5.0.2 -->
   <link rel="stylesheet" href="/ITCS333-Project/public/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/ITCS333-Project/public/css/main.css">
   <script src="/ITCS333-Project/public/js/bootstrap.min.js"></script>
   
   <title><?php echo $title;?></title>

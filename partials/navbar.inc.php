@@ -10,13 +10,13 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active h3 px-5" aria-current="page" href="/ITCS333-Project/mainpage.php">Home</a>
+              <a class="nav-link active h3 px-lg-5" aria-current="page" href="/ITCS333-Project/mainpage.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link h3 px-5" href="/ITCS333-Project/quiz/createQuiz.php">Create Quiz</a>
+              <a class="nav-link h3 px-lg-5" href="/ITCS333-Project/quiz/createQuiz.php">Create Quiz</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link h3 px-5" href="/ITCS333-Project/quiz/quizzesDisplay.php">Quizzes</a>
+              <a class="nav-link h3 px-lg-5" href="/ITCS333-Project/quiz/quizzesDisplay.php">Quizzes</a>
             </li>
 
 
