@@ -1,8 +1,14 @@
 <?php $title = "Quizzes"; require('../partials/boilerplate.inc.php')?>
 <?php require('../controllers/quiz/quizzesDisplay.inc.php')?>
 
-<div class="container" >
-    <?php if(!isset($_GET['searchQuery'])){ ?>
+<div class="container w-50">
+    <form class="d-flex mt-3">
+        <input id="searchQuery" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button id="searchButton" class="btn btn-outline-success" type="button">Search</button>
+    </form>
+</div>
+<div id="mainContainer" class="container" >
+    <?php if(!isset($_COOKIE['search'])){ ?>
         <?php for($i=0; $i < count($quizzes); $i++){?>
             <div class="card mb-3 mt-3">
                 <div class="row">
@@ -27,5 +33,8 @@
         <?php }?>
     <?php }?>
 </div>
+
+<script src="/ITCS333-Project/public/js/searchQuery.js"></script>
+
 
 <?php require('../partials/footer.inc.php')?>

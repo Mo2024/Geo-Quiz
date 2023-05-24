@@ -4,12 +4,12 @@ username.addEventListener('input', function () {
     var username = document.getElementById("username").value;
     var usernameTakenAlert = document.getElementById("usernameTakenAlert");
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://localhost/ITCS333-Project/controllers/ajax/checkUsernameEmail.inc.php", true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var response = JSON.parse(xhr.responseText);
+    var ajax = new XMLHttpRequest();
+    ajax.open("POST", "http://localhost/ITCS333-Project/controllers/ajax/checkUsernameEmail.inc.php", true);
+    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState === 4 && ajax.status === 200) {
+            var response = JSON.parse(ajax.responseText);
             if (response.isRegistered) {
                 usernameTakenAlert.style.display = "block";
             } else {
@@ -17,7 +17,7 @@ username.addEventListener('input', function () {
             }
         }
     };
-    xhr.send("username=" + encodeURIComponent(username));
+    ajax.send("username=" + encodeURIComponent(username));
 });
 
 
@@ -27,12 +27,12 @@ email.addEventListener('input', function () {
     var email = document.getElementById("email").value;
     var emailTakenAlert = document.getElementById("emailTakenAlert");
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://localhost/ITCS333-Project/controllers/ajax/checkUsernameEmail.inc.php", true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var response = JSON.parse(xhr.responseText);
+    var ajax = new XMLHttpRequest();
+    ajax.open("POST", "http://localhost/ITCS333-Project/controllers/ajax/checkUsernameEmail.inc.php", true);
+    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    ajax.onreadystatechange = function () {
+        if (ajax.readyState === 4 && ajax.status === 200) {
+            var response = JSON.parse(ajax.responseText);
             if (response.isRegistered) {
                 emailTakenAlert.style.display = "block";
             } else {
@@ -40,5 +40,5 @@ email.addEventListener('input', function () {
             }
         }
     };
-    xhr.send("email=" + encodeURIComponent(email));
+    ajax.send("email=" + encodeURIComponent(email));
 });
