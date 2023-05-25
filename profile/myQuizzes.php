@@ -13,7 +13,7 @@ thead
 
       <thead>
         <tr >
-          <th  scope="col" colspan="3">Quizzes Created By: <?php echo $_SESSION['username']; ?> </th>
+          <th  scope="col" colspan="3">Quizzes Created By <?php echo $_SESSION['username']; ?> </th>
         </tr>
       </thead>
 

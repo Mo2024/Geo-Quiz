@@ -25,11 +25,14 @@
 </style>
 
 <div class="container w-50">
-<div class="d-flex mt-3">
+  <div class="d-flex mt-3">
     <input id="searchQuery" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
     <button id="searchButton" class="btn btn-outline-success" type="button">Search</button>
+  </div>
+  <div id="suggestionList"></div>
+  <p id="noResultsMessage" style="display: none;">No quizzes found</p>
 </div>
-<div id="suggestionList"></div>
+
 
 </div>
 <div id="mainContainer" class="container" >
@@ -49,7 +52,7 @@
                             <br/>
                             <br/> -->
                             
-                            <a href="/ITCS333-Project/quiz/viewQuiz.php?quizId=<?php echo $quizzes[$i]['quizid']?>" class="btn mt-5 btn-primary">View Quiz</a>
+                            <a href="/ITCS333-Project/quiz/viewQuiz.php?quizId=<?php echo $quizzes[$i]['quizid']?>" class="btn mt-5 btn-primary">View Quiz Details</a>
                         </div>
                     </div>
                 </div>

@@ -92,7 +92,7 @@ function pauseTimer() {
         inputElements.forEach(function (element) {
             element.disabled = true;
         });
-        var submitButton = form.getElementById('submitBtn');
+        var submitButton = document.getElementById('submitBtn');
         submitButton.disabled = true;
     } else {
         pauseButton.textContent = "Pause";
@@ -107,8 +107,8 @@ function pauseTimer() {
 }
 
 function handleRadioClick(value, id, questionId) {
+    // console.log(id)
     var inputBoxes = document.getElementsByName("answers[]");
-    console.log(questionId)
     let questionIdSplit = questionId.split('q');
     questionId = questionIdSplit[1]
     var answerObject = {
@@ -129,11 +129,9 @@ function submitForm() {
     for (i = 0; i < textInputBox.length; i++) {
         let id = textInputBox[i].getAttribute('answer-id')
         let questionId = textInputBox[i].name
-        console.log(questionId)
         if (textInputBox[i].type == "text") {
             handleRadioClick(textInputBox[i].value, id, questionId)
         } else if (textInputBox[i].type == "radio" && textInputBox[i].checked) {
-            let id = textInputBox[i].name
             handleRadioClick(textInputBox[i].value, id, questionId)
         }
     }

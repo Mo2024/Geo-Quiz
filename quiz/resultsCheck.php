@@ -5,16 +5,8 @@
 <?php if(isset($_SESSION['markScheme'])) { ?>
 
     <?php $markScheme = $_SESSION['markScheme']; ?>
-
-    <?php $percentage = ($markScheme['score']/$markScheme['quizScore'])*100; 
-    if($percentage > 90) { ?>
-        <h1 class="mt-5" style="text-align:center;">Excellent well done<?php echo $_SESSION['username'] ?>! Your Score is <?php echo $markScheme['score'].'/'.$markScheme['quizScore']; ?> </h1><br>
+        <h1 class="mt-5" style="text-align:center;">Your Score is <?php echo $markScheme['score'].'/'.$markScheme['quizScore']; ?> </h1><br>
         
-    <?php } else if($percentage < 50) {?> 
-        <h1 class="mt-5" style="text-align:center;">You can do better<?php echo $_SESSION['username'] ?>! Your Score is <?php echo $markScheme['score'].'/'.$markScheme['quizScore']; ?> </h1><br>
-    <?php } else if($percentage < 70) {?> 
-        <h1 class="mt-5" style="text-align:center;">Very good <?php echo $_SESSION['username'] ?>! Your Score is <?php echo $markScheme['score'].'/'.$markScheme['quizScore']; ?> </h1><br>
-    <?php } ?>
     <div class="text-end">
     <a href="leaderboard.php" style="position: relative; top: -35px; left: -55px;">
         <i class="fa-solid fa-award fa-2xl" style="color: #ffd700; font-size: 10em;"></i>

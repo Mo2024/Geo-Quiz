@@ -29,10 +29,10 @@
 
           <ul class="list-unstyled mb-0">
             <li>
-              <a href="terms.php" class="text-white">Terms and Conditions</a>
+              <a href="/ITCS333-Project/terms.php" class="text-white">Terms and Conditions</a>
             </li>
           </ul>
-                        <br>
+          <br>
         </div>
 
 

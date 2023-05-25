@@ -16,7 +16,7 @@
                             <div class="mb-3 col-sm-6">
                                 <label class="form-label" for="timer">Timer</label>
                                 <select name="timer" class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
+                                    <option selected>Choose time</option>
                                     <option value="300">5 Minutes</option>
                                     <option value="600">10 Minutes</option>
                                     <option value="1200">20 Minutes</option>

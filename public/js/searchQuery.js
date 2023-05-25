@@ -66,16 +66,19 @@ function fetchSuggestions(searchQuery) {
     if (ajax.readyState === 4 && ajax.status === 200) {
       var response = JSON.parse(ajax.responseText);
       var suggestions = response.quizzes;
+      var noResultsMessage = document.getElementById('noResultsMessage');
 
       if (searchQuery === '') {
         suggestionList.style.display = 'none';
         suggestionList.innerHTML = '';
+        noResultsMessage.style.display = 'none';
         return;
       }
 
       if (suggestions.length > 0) {
         suggestionList.style.display = 'block';
         suggestionList.innerHTML = '';
+        noResultsMessage.style.display = 'none';
 
         suggestions.forEach(function (suggestion, index) {
           var suggestionItem = document.createElement('a');
@@ -97,6 +100,7 @@ function fetchSuggestions(searchQuery) {
         currentSelectionIndex = -1;
       } else {
         suggestionList.style.display = 'none';
+        noResultsMessage.style.display = 'block';
       }
     }
   };

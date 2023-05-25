@@ -36,8 +36,9 @@
                 <?php } ?>
                 
             </div>
-            <a href="/ITCS333-Project/mainpage.php" class="btn btn-secondary mb-2">Cancel</a>
-            <button name="submit" type="submit" class="btn btn-primary mb-2">Save Changes</button>
+            <a href="/ITCS333-Project/mainpage.php" class="btn btn-secondary mb-2 ms-auto">Cancel</a>
+            <button name="submit" type="submit" class="btn btn-primary mb-2 ms-auto">Save Changes</button>
+            
         </form>
       </div>
 </div>
