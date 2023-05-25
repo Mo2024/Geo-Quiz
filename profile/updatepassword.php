@@ -29,6 +29,10 @@
                 <div class="mb-3 col-sm-12">
                     <label class="form-label" for="newpwd2">Confirm New Password</label>
                     <input class="form-control" placeholder="Confirm New Password" type="password" name="newpwd2" id="newpwd2"  >
+                    <input class="form-check-input"type="checkbox" onclick="showPassword()">
+                    <label class="form-check-label" for="flexCheckChecked">
+                        Show Password
+                    </label>
                 </div>
             </div>
             <a href="/ITCS333-Project/mainpage.php" class="btn btn-secondary mb-2">Cancel</a>
@@ -36,4 +40,21 @@
         </form>
       </div>
 </div>
+
+<script>
+function showPassword() {
+  var x = document.getElementById("oldpwd");
+  var y = document.getElementById("newpwd1");
+  var z = document.getElementById("newpwd2");
+  if (x.type === "password" && y.type === "password" && z.type === "password") {
+    x.type = "text";
+    y.type = "text";
+    z.type = "text";
+  } else {
+    x.type = "password";
+    y.type = "password";
+    z.type = "password";
+  }
+}
+</script>
 <?php require('../partials/footer.inc.php')?>
