@@ -48,7 +48,5 @@
       We reserve the right to modify or update these Terms and Conditions at any time, without prior notice. Your continued use of our website after any such changes constitutes your acceptance of the new Terms and Conditions.
     </div>
   </li>
-<br>
-  <p class="fw-bold ms-4 me-auto">If you have any questions or concerns about these Terms and Conditions, Please <a href="contactUs.php" style="color:#0000EE; text-decoration:none;">Contact Us.</a></p>
 </div>
-<?php $title = "Quizzes"; require('partials/footer.inc.php')?>
+<?php require('partials/footer.inc.php')?>

@@ -4,7 +4,11 @@
 
 <?php if(isset($_SESSION['markScheme'])) { ?>
 
-    <?php $markScheme = $_SESSION['markScheme']; ?>
+    <?php $markScheme = $_SESSION['markScheme']; 
+    
+    echo "<script> let usernameSession = '".$_SESSION['username']."'; </script>";
+    echo "<script> let quizId = '".$markScheme['quizId']."'; </script>";
+    ?>
 
    
 
@@ -34,7 +38,7 @@
     <div class="card border-secondary mb-3 mx-2" style="max-width: 18rem;">
         <div style="font-size:21px;font-weight:bold;" class="card-header text-center">Rank</div>
         <div class="card-body text-secondary">
-        <h5 class="card-title text-center">3rd Place</h5>
+        <h5 id="rankDiv" class="card-title text-center"></h5>
         </div>
     </div>
     <div class="card border-success mb-3 mx-2" style="max-width: 18rem;">
@@ -120,6 +124,8 @@
         <?php $questionIndex = $questionIndex + 1;} ?>
     </div>
 </div>
+<script src="/ITCS333-Project/public/js/resultsCheck.js"></script>
+
 <?php } else{
 
 $_SESSION['error'] = "You must conduct a quiz first";

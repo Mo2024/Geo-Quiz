@@ -12,7 +12,7 @@ thead
         <table class="table table-bordered border border-dark text-center">
             <thead>
                 <tr>
-                    <th  scope="col" colspan="6">Quizzes History</th>
+                    <th  scope="col" colspan="5">Quizzes History</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,7 +21,6 @@ thead
                     <th>Date Conducted</th>
                     <th>Total Time</th>
                     <th>Time Elapsed</th>
-                    <th>Rank</th>
                     <th>Score</th>
                     
                 </tr>
@@ -40,7 +39,6 @@ thead
                         <td><?php echo $row['dateConducted'] ?></td>
                         <td><?php echo formatSecondsToMinutes($row['totalTime']) ?></td>
                         <td><?php echo formatSecondsToMinutes($row['timeElapsed']) ?></td>
-                        <td>3rd Place</td>
                         <td><?php echo $row['score'].'/'.$totalScore ?></td>
                     </tr>
                 <?php } ?>

@@ -28,50 +28,29 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
                 $errorMsg = '';
 
                 for($i=0; $i < $newQuiz['noOfQuestions']; $i++){
-                    // if(preg_match($passwordReg, $qTypes[$i])){
+                    if(!preg_match($qTypesReg, $qTypes[$i])){
 
-                    //     $valid = false;
-                    //     $errorMsg = 'Make sure to input a valid question type';
-                    //     break;
-                    // }else if(!preg_match($passwordReg, $questions[$i])){
+                        $valid = false;
+                        $errorMsg = 'Make sure to input a valid question type';
+                        break;
+                    }else if(!preg_match($questionsReg, $questions[$i])){
 
-                    //     $valid = false;
-                    //     $errorMsg = 'Make sure to input a valid question';
-                    //     break;
-                    // }else if(!preg_match($passwordReg, $marks[$i])){
+                        $valid = false;
+                        $errorMsg = 'Make sure to input a valid question';
+                        break;
+                    }else if(!preg_match($marksReg, $marks[$i])){
 
-                    //     $valid = false;
-                    //     $errorMsg = 'Make sure to input a valid mark';
-                    //     break;
-                    // }else if(!preg_match($passwordReg, $answers[$i])){
+                        $valid = false;
+                        $errorMsg = 'Make sure to input a valid mark';
+                        break;
+                    }else if(!preg_match($answersReg, $answers[$i])){
 
-                    //     $valid = false;
-                    //     $errorMsg = 'Make sure to input a valid answer';
-                    //     break;
-                    // }
-                    // if(preg_match($qTypesReg, $qTypes[$i])){
+                        $valid = false;
+                        $errorMsg = 'Make sure to input a valid answer';
+                        break;
+                    }
 
-                    //     $valid = false;
-                    //     $errorMsg = 'Make sure to input a valid question type';
-                    //     break;
-                    // }else if(!preg_match($questionsReg, $questions[$i])){
-
-                    //     $valid = false;
-                    //     $errorMsg = 'Make sure to input a valid question';
-                    //     break;
-                    // }else if(!preg_match($marksReg, $marks[$i])){
-
-                    //     $valid = false;
-                    //     $errorMsg = 'Make sure to input a valid mark';
-                    //     break;
-                    // }else if(!preg_match($answersReg, $answers[$i])){
-
-                    //     $valid = false;
-                    //     $errorMsg = 'Make sure to input a valid answer';
-                    //     break;
-                    // }
-
-                    $sqlQuestions->execute([$quizId, $qTypes[$i], $marks[$i], $questions[$i], $answers[$i]]);
+                    $sqlQuestions->execute([$quizId, $qTypes[$i], $marks[$i], $questions[$i], strtolower($answers[$i])]);
                     $questionId = $db->lastInsertId();
                     
                     $answerCorrect = false;

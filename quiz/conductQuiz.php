@@ -26,16 +26,16 @@
             <?php if($questionsRow[$i]['type']=="MCQ"){ ?>
                 <div class="text-center btn-group-vertical  w-75" role="group" aria-label="Basic radio toggle button group">
                     <input answer-id="<?php echo $i ?>"  onclick="handleRadioClick(this.value, <?php echo $i ?>,this.name)" id="<?php echo "btnradio".$btnRadioIndex ?>" value="<?php echo $choicesRow[$mcqIndex]['choice'] ?>"  type="radio" class="btn-check" name="<?php echo "q".$questionsRow[$i]['questionId'] ?>" autocomplete="off">
-                    <label class="btn btn-outline-secondary p-2 text-start" for="btnradio<?php echo $btnRadioIndex ?>" style="color:black;"><?php echo $choicesRow[$mcqIndex]['choice'] ?></label>
+                    <label class="btn btn-outline-primary p-2 text-start" for="btnradio<?php echo $btnRadioIndex ?>" style="color:black;"><?php echo $choicesRow[$mcqIndex]['choice'] ?></label>
         
                     <input answer-id="<?php echo $i ?>"  onclick="handleRadioClick(this.value, <?php echo $i ?>,this.name)" id="<?php echo "btnradio".$btnRadioIndex+1 ?>" value="<?php echo $choicesRow[$mcqIndex+1]['choice'] ?>"  type="radio" class="btn-check  w-75" name="<?php echo "q".$questionsRow[$i]['questionId'] ?>" autocomplete="off">
-                    <label class="btn btn-outline-secondary p-2 text-start" for="btnradio<?php echo $btnRadioIndex+1 ?>" style="color:black;"><?php echo $choicesRow[$mcqIndex+1]['choice'] ?></label>
+                    <label class="btn btn-outline-primary p-2 text-start" for="btnradio<?php echo $btnRadioIndex+1 ?>" style="color:black;"><?php echo $choicesRow[$mcqIndex+1]['choice'] ?></label>
         
                     <input answer-id="<?php echo $i ?>"  onclick="handleRadioClick(this.value, <?php echo $i ?>,this.name)" id="<?php echo "btnradio".$btnRadioIndex+2 ?>" value="<?php echo $choicesRow[$mcqIndex+2]['choice'] ?>"  type="radio" class="btn-check w-75" name="<?php echo "q".$questionsRow[$i]['questionId'] ?>" autocomplete="off">
-                    <label class="btn btn-outline-secondary p-2 text-start" for="btnradio<?php echo $btnRadioIndex+2 ?>" style="color:black;"><?php echo $choicesRow[$mcqIndex+2]['choice'] ?></label>
+                    <label class="btn btn-outline-primary p-2 text-start" for="btnradio<?php echo $btnRadioIndex+2 ?>" style="color:black;"><?php echo $choicesRow[$mcqIndex+2]['choice'] ?></label>
 
                     <input answer-id="<?php echo $i ?>"  onclick="handleRadioClick(this.value, <?php echo $i ?>,this.name)" id="<?php echo "btnradio".$btnRadioIndex+3 ?>" value="<?php echo $choicesRow[$mcqIndex+3]['choice'] ?>"  type="radio" class="btn-check w-75" name="<?php echo "q".$questionsRow[$i]['questionId'] ?>" autocomplete="off">
-                    <label class="btn btn-outline-secondary p-2 text-start" for="btnradio<?php echo $btnRadioIndex+3 ?>" style="color:black;"><?php echo $choicesRow[$mcqIndex+3]['choice'] ?></label>
+                    <label class="btn btn-outline-primary p-2 text-start" for="btnradio<?php echo $btnRadioIndex+3 ?>" style="color:black;"><?php echo $choicesRow[$mcqIndex+3]['choice'] ?></label>
         
                     <input  q-id="<?php echo $questionsRow[$i]['questionId'] ?>" style="display: none;" name="answers[]" id="<?php echo "answer#".$i ?>" placeholder="Answer" class="form-control" type="text" name="answer" id="answee" required autofocus>
                     <br>
@@ -45,10 +45,10 @@
                     <div class="text-center btn-group-vertical  w-75" role="group" aria-label="Basic radio toggle button group">
 
                     <input answer-id="<?php echo $i ?>"  onclick="handleRadioClick(this.value, <?php echo $i ?>,this.name)" id="<?php echo "btnradio".$btnRadioIndex ?>" value="true"  type="radio" class="btn-check w-75" name="<?php echo "q".$questionsRow[$i]['questionId'] ?>" autocomplete="off">
-                    <label class="btn btn-outline-secondary p-2 text-start" for="btnradio<?php echo $btnRadioIndex ?>" style="color:black;">True</label>
+                    <label class="btn btn-outline-primary p-2 text-start" for="btnradio<?php echo $btnRadioIndex ?>" style="color:black;">True</label>
 
                     <input answer-id="<?php echo $i ?>"  onclick="handleRadioClick(this.value, <?php echo $i ?>,this.name)" id="<?php echo "btnradio".$btnRadioIndex+1 ?>" value="false"  type="radio" class="btn-check w-75" name="<?php echo "q".$questionsRow[$i]['questionId'] ?>" autocomplete="off">
-                    <label class="btn btn-outline-secondary p-2 text-start" for="btnradio<?php echo $btnRadioIndex+1 ?>" style="color:black;">False</label>
+                    <label class="btn btn-outline-primary p-2 text-start" for="btnradio<?php echo $btnRadioIndex+1 ?>" style="color:black;">False</label>
                     
                         <input q-id="<?php echo $questionsRow[$i]['questionId'] ?>" style="display: none;" name="answers[]" id="<?php echo "answer#".$i ?>" placeholder="Answer" class="form-control" type="text" required autofocus>
                         <br>

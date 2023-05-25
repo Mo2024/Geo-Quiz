@@ -12,29 +12,17 @@
 
         </div>
 
-
-
-        <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase"  style="font-size:15px;font-weight:bold;">Contact</h5>
-
-          <ul class="list-unstyled mb-0">
-            <li>
-              <a href="/ITCS333-Project/contactUs.php" class="text-white" >Contact Us</a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase" style="font-size:15px;font-weight:bold;">Terms And Conditions</h5>
-
-          <ul class="list-unstyled mb-0">
-            <li>
-              <a href="/ITCS333-Project/terms.php" class="text-white">Terms and Conditions</a>
-            </li>
-          </ul>
-          <br>
-        </div>
-
+        <div class="d-flex justify-content-center">
+  <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+    <h5 class="text-uppercase" style="font-size:15px;font-weight:bold;">Terms And Conditions</h5>
+    <ul class="list-unstyled mb-0">
+      <li>
+        <a href="/ITCS333-Project/terms.php" class="text-white">Terms and Conditions</a>
+      </li>
+    </ul>
+    <br>
+  </div>
+</div>
 
       </div>
 

@@ -6,7 +6,7 @@
         <div class="col-xl-12">
             <div class="bg-color border card border-color-form shadow">
                 <div class="card-body">
-                    <h5 class="card-title text-secondary">Create Quiz</h5>
+                    <h2 class="card-title text-black">Create Quiz</h2>
                     <form class="validated-form" method="POST" novalidate>
                         <div class="row">
                             <div class="mb-3 col-sm-6">
@@ -30,7 +30,7 @@
                         <div class="row">
                             <div class="mb-3 col-sm-6">
                                 <label class="form-label" for="noOfQuestions">Number of Questions</label>
-                                <input class="form-control" placeholder="Number of Questions" type="number" name="noOfQuestions" id="noOfQuestions" value="<?php if (isset($_POST["submit"] )) echo $noOfQuestions ?>" required>
+                                <input class="form-control" placeholder="No. of Questions" type="number" name="noOfQuestions" id="noOfQuestions" value="<?php if (isset($_POST["submit"] )) echo $noOfQuestions ?>" required>
                             </div>
                         </div>
                         <div class="row">

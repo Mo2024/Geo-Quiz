@@ -10,7 +10,6 @@ require("../../partials/regex.inc.php");
 
 if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
     if(isset($_POST['submit']) && isset($_GET['quizId'])){
-        // $answers = $_POST['answers'][0];
         $timeLeft = $_POST['timeLeft'];
         $quizId = $_GET['quizId'];
 
@@ -39,7 +38,7 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
             $markScheme[$i]['question'] = $answerRow['question'];
             $markScheme[$i]['type'] = $answerRow['type'];
             $markScheme[$i]['score'] = $answerRow['score'];
-            $markScheme[$i]['answer'] = $answerRow['answer'];
+            $markScheme[$i]['answer'] = strtolower($answerRow['answer']);
             $markScheme[$i]['userAnswer'] = $answerObject['answer'];
             if($answerRow['type'] == "MCQ"){
                 $query = "SELECT choice FROM choices WHERE questionId = ?";

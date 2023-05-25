@@ -38,13 +38,8 @@
         if(preg_match($passwordReg, $newPwd) && preg_match($passwordReg, $confirmPwd)){
             if ($newPwd == $confirmPwd){
                 $newHash = password_hash($newPwd, PASSWORD_DEFAULT);
-                // $updateQuery = "UPDATE users SET hash = ?, pcode = NULL WHERE uid = ?";
-                // $stmt = $db->prepare($updateQuery);
-                // $stmt->bind_param("si", $newHash, $id);
-                // $stmt->execute();
                 $updateQuery = "UPDATE users SET hash = '$newHash', pcode = NULL WHERE uid = '$id'";
                 $result = $db->query($updateQuery);
-                // echoAlertSuccess('Password Updated');
                 $_SESSION['success'] = 'Password Updated';
                 header("Location: /ITCS333-Project/profile/updatePassword.php"); 
             } else{
