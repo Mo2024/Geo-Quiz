@@ -5,8 +5,7 @@
   <h1 style="font-weight:bold;">Let's put your Geography <br>skills to the test.</h1>
   <br>
 
-  <a href="/ITCS333-Project/auth/signup.php" class="btn btn-primary btn-lg pt-3 pb-3 border-0" tabindex="-1" role="button" style="margin-left:40px;  font-family: 'Roboto', sans-serif; background-color:#3C486B;  font-size: 25px;
-">Get Started Today</a>
+  <a href="/ITCS333-Project/auth/signup.php" class="btn btn-primary btn-lg pt-3 pb-3 border-0" tabindex="-1" role="button" style="margin-left:40px;  font-family: 'Roboto', sans-serif; background-color:#3C486B;  font-size: 25px;">Get Started Today</a>
 </main>
 <section class="container-fluid px-0">
 
@@ -36,13 +35,13 @@
 <br><br>
 
 
-<div class="pt-3 justify-content-center" style="background-color:#F0F0F0; ">
+<div class="pt-3 justify-content-center" style="background-color:#F0F0F0;">
 <div class="text-center">
 <h1 class="fw-bold">How does Geo Hub Works?</h1>
 </div>
   <aside class="card-group justify-content-center d-flex py-5 flex-md-row flex-column">
     <div class="card text-dark bg-light me-md-5 col-md-6 mx-auto" style="max-width: 28rem;">
-      <div class="card-header text-center h3" style="background-color:#F9D949;"> <a href="#" style="text-decoration:underline;color:#0000EE;">Create</a></div>
+      <div class="card-header text-center h3" style="background-color:#F9D949;"> <a href="/ITCS333-Project/quiz/createQuiz.php" style="text-decoration:underline;color:#0000EE;">Create</a></div>
       <div class="card-body">
         <div class="d-flex flex-row">
           <div class="col-6">
@@ -59,7 +58,7 @@
       </div>
     </div>
     <div class="card text-dark bg-light ms-md-5 col-md-6 mx-auto" style="max-width: 28rem;">
-      <div class="card-header text-center h3" style="background-color:#F9D949;"><a href="quizzespgD.php" style="text-decoration:underline;color:#0000EE;">Conduct</a></div>
+      <div class="card-header text-center h3" style="background-color:#F9D949;"><a href="/ITCS333-Project/quiz/quizzesDisplay.php" style="text-decoration:underline;color:#0000EE;">Conduct</a></div>
       <div class="card-body">
         <div class="d-flex flex-row">
           <div class="col-6">

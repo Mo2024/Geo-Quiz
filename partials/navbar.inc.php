@@ -1,6 +1,6 @@
 <header>
 
-      <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#F9D949;">
+      <nav class="navbar navbar-expand-lg navbar-light <?php if($_SERVER['REQUEST_URI'] == '/ITCS333-Project/mainpage.php') echo 'fixed-top' ?>" style="background-color:#F9D949;">
       <div class="container-fluid">
         <a class="navbar-brand" href="/ITCS333-Project/mainpage.php"><img style="margin-top:-11px;"width="170px" src="/ITCS333-Project/public/333 Icons-Fonts-Colors/Screenshot_2023-05-06_at_3.23.41_PM-removebg-preview.png" alt="Logo for website">
     </a>

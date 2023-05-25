@@ -36,6 +36,7 @@
                     
                     $_SESSION['display'] = 'pCode';
                     $_SESSION['forgetuid'] = $result['uid'];
+                    $_SESSION['forgetusername'] = $result['username'];
                     header("Location: /ITCS333-Project/auth/forgetPassword.php");
                 } else {
                     $_SESSION['error'] = 'Email Does not exist';
@@ -82,8 +83,11 @@
                     $stmt->bindParam(':hash', $hash);
                     $stmt->execute();
                     $_SESSION['success'] = 'Password Successfully Updated';
+                    $_SESSION['username'] = $_SESSION['forgetusername'];
+                    $_SESSION['userId'] = $_SESSION['forgetuid'];
                     unset($_SESSION['display']);
                     unset($_SESSION['forgetuid']);
+                    unset($_SESSION['forgetusername']);
                     header("Location: /ITCS333-Project/quiz/quizzesDisplay.php");
                 }else{
                     $_SESSION['error'] = 'Passwords do not match';
