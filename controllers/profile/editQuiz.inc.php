@@ -39,6 +39,9 @@ if(isset($_SESSION['userId'])){
                 $valid = true;
                 $errorMsg = '';
                 $db->beginTransaction();
+                $updateQuestions = $db->prepare("UPDATE questions SET type = :type, score = :score, question = :question, answer = :answer  WHERE questionid = :uid");
+                $updateChoices = $db->prepare("UPDATE choices SET choice = :choice WHERE questionId = :qid AND choiceID = :cid");
+
 
                 for($i=0; $i < $quizRow['nQuestions']; $i++){
                     // if(preg_match($passwordReg, $qTypes[$i])){
@@ -83,28 +86,27 @@ if(isset($_SESSION['userId'])){
                     //     $errorMsg = 'Make sure to input a valid answer';
                     //     break;
                     // }
-                    $insertQuery = "UPDATE questions SET type = :type, score = :score, question = :question, answer = :answer  WHERE questionid = :uid";
-                    $stmt = $db->prepare($insertQuery);
-                    $stmt->bindParam(':uid', $qIds[$i]);
-                    $stmt->bindParam(':type', $qTypes[$i]);
-                    $stmt->bindParam(':score', $marks[$i]);
-                    $stmt->bindParam(':question', $questions[$i]);
-                    $stmt->bindParam(':answer', $answers[$i]);
-                    $stmt->execute();
+                    $updateQuestions->bindParam(':uid', $qIds[$i]);
+                    $updateQuestions->bindParam(':type', $qTypes[$i]);
+                    $updateQuestions->bindParam(':score', $marks[$i]);
+                    $updateQuestions->bindParam(':question', $questions[$i]);
+                    $updateQuestions->bindParam(':answer', $answers[$i]);
+                    $updateQuestions->execute();
 
-
+                    $answerCorrect = false;
                     if($qTypes[$i]=="MCQ"){
                         for($j=0; $j < 4; $j++){
+                            if($options[$mcqCounter] == $answers[$i]) {$answerCorrect = true;}
 
-                            $insertQuery = "UPDATE choices SET choice = :choice WHERE questionId = :qid AND choiceID = :cid";
-                            $stmt = $db->prepare($insertQuery);
-                            $stmt->bindParam(':qid', $qIds[$i]);
-                            $stmt->bindParam(':cid', $cIds[$mcqCounter]);
-                            $stmt->bindParam(':choice', $options[$mcqCounter]);
-                            $stmt->execute();
+                            $updateChoices->bindParam(':qid', $qIds[$i]);
+                            $updateChoices->bindParam(':cid', $cIds[$mcqCounter]);
+                            $updateChoices->bindParam(':choice', $options[$mcqCounter]);
+                            $updateChoices->execute();
                             $mcqCounter++;
+                            if($j == 3 && !$answerCorrect){$valid = false; $errorMsg = "Please check your MCQ questions and make sure the answers match at least one choice";}
                         }
                     } 
+                    if(!$valid){break;}
 
                 }
                 if($valid){
