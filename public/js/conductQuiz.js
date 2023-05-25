@@ -108,6 +108,7 @@ function pauseTimer() {
 
 function handleRadioClick(value, id, questionId) {
     var inputBoxes = document.getElementsByName("answers[]");
+    console.log(questionId)
     let questionIdSplit = questionId.split('q');
     questionId = questionIdSplit[1]
     var answerObject = {
@@ -124,6 +125,19 @@ function submitForm() {
         answerBoxes[i].style.display = 'block';
     }
     timeleftinput.style.display = 'block';
+    let textInputBox = document.querySelectorAll('[answer-id]');
+    for (i = 0; i < textInputBox.length; i++) {
+        let id = textInputBox[i].getAttribute('answer-id')
+        let questionId = textInputBox[i].name
+        console.log(questionId)
+        if (textInputBox[i].type == "text") {
+            handleRadioClick(textInputBox[i].value, id, questionId)
+        } else if (textInputBox[i].type == "radio" && textInputBox[i].checked) {
+            let id = textInputBox[i].name
+            handleRadioClick(textInputBox[i].value, id, questionId)
+        }
+    }
+
     var submitBtn = document.getElementById('submitBtn');
     submitBtn.type = 'submit';
     submitBtn.click();

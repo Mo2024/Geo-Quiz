@@ -103,7 +103,7 @@
 
                         <?php  $bgClass = getBg($markScheme[$i]['userAnswer'],$markScheme[$i]['answer']) ?>
                         <input disabled   type="radio" class="btn-check">
-                        <label class="btn <?php  echo $bgClass ?>  btn-outline-secondary p-2 text-start"  style="color:black;"><?php echo $markScheme[$i]['userAnswer'] ?></label>
+                        <label style="height: 41.33px; color:black;" class="btn <?php  echo $bgClass ?>  btn-outline-secondary p-2 text-start"><?php  if($markScheme[$i]['userAnswer'] !== 'undefined') {echo $markScheme[$i]['userAnswer'];} else{ echo "Unanswered Question";} ?></label>
                         <br>
                     </div>
             <?php } ?>
