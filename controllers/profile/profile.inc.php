@@ -40,7 +40,7 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
                     $stmt->bindValue(':vcode', 0);
                     $stmt->bindValue(':verified', true);
                     $stmt->execute();
-                    $_SESSION['Success'] = "Account Verified!";
+                    $_SESSION['success'] = "Account Verified!";
                     header("Location: /ITCS333-Project/profile/profile.php");           
                 }
             }else{

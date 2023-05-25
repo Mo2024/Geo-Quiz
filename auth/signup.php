@@ -13,7 +13,7 @@
         <div class="col-xl-12">
             <div class="bg-color border card border-color-form shadow">
                 <div class="card-body">
-                    <h5 class="card-title text-secondary">Sign Up</h5>
+                <h5 class="card-title text-center" style="font-size:35px;font-weight:bold;color:black;">Sign Up</h5>
                     <form class="validated-form" method="POST" novalidate>
                         <div class="row">
                             <div class="mb-3 col-sm-6">
@@ -31,6 +31,10 @@
                             <div class="mb-3 col-sm-6">
                                 <label class="form-label" for="password">Password</label>
                                 <input class="form-control" placeholder="Password" type="password" name="password" id="password" required>
+                                <input class="form-check-input"type="checkbox" onclick="showPassword()">
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    Show Password
+                                </label>
                             </div>
                             <div class="mb-3 col-sm-6">
                                 <label class="form-label" for="password">Confirm Password</label>
@@ -58,6 +62,21 @@
         </div>
     </div>
 </div>
+
+<script>
+function showPassword() {
+  var x = document.getElementById("password");
+  var y = document.getElementById("password2");
+  if (x.type === "password" && y.type === "password") {
+    x.type = "text";
+    y.type = "text";
+  } else {
+    x.type = "password";
+    y.type = "password";
+  }
+}
+</script>
+
 
 <script src="/ITCS333-Project/public/js/signup.js"></script>
 

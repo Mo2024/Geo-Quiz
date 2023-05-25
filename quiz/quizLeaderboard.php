@@ -2,7 +2,7 @@
 
 <?php if(isset($_GET['quizId'])) { ?>
 <div class="container my-4 border border-dark">
-  <h1 class="text-center mb-4 mt-4">Top 3</h1>
+  <h1 class="text-center mb-4 mt-4">Leaderboard</h1>
   <div id="mainDiv" class="row">
     <div class="col-sm-4">
       <div class="card mt-4 mb-4" style="background-color: #f6fba2;background-image: linear-gradient(315deg, #f6fba2 0%, #20ded3 74%);">
