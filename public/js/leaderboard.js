@@ -14,32 +14,29 @@ ajax.onload = function () {
         let usernameElemnt = document.getElementsByClassName('username')
         let pointsElemnt = document.getElementsByClassName('points')
 
-        for (var i = 0; i < leaderboard.length; i++) {
+        for (var i = 0; i < 10; i++) {
             if (typeof leaderboard[i] === 'undefined') {
                 break;
             } else {
-                if (i == 1) {
-                    usernameElemnt[1].innerHTML = leaderboard[1].username
-                    pointsElemnt[1].innerHTML = "Points: " + leaderboard[1].score
-                } else if (i == 0) {
-                    usernameElemnt[0].innerHTML = leaderboard[0].username
-                    pointsElemnt[0].innerHTML = "Points: " + leaderboard[0].score
-                } else if (i == 2) {
-                    usernameElemnt[2].innerHTML = leaderboard[2].username
-                    pointsElemnt[2].innerHTML = "Points: " + leaderboard[2].score
+                if (i < 3) {
+                    usernameElemnt[i].innerHTML = leaderboard[0].username
+                    pointsElemnt[i].innerHTML = "Points: " + leaderboard[0].score
                 } else {
                     usernameElemnt[i].innerHTML = leaderboard[i].username + "<br>" + leaderboard[i].score
                 }
             }
+        }
+        if (!(typeof leaderboard[0] === 'undefined')) {
+            usernameElemnt[1].innerHTML = leaderboard[0].username
+            pointsElemnt[1].innerHTML = "Points: " + leaderboard[0].score
 
-            var entry = leaderboard[i];
-            var username = entry.username;
-            var score = entry.score;
-            var timeElapsed = entry.timeElapsed;
-
-            console.log('Username:', username);
-            console.log('Score:', score);
-            console.log('Time Elapsed:', timeElapsed);
+            if (!(typeof leaderboard[1] === 'undefined')) {
+                usernameElemnt[0].innerHTML = leaderboard[1].username
+                pointsElemnt[0].innerHTML = "Points: " + leaderboard[1].score
+            } else {
+                usernameElemnt[0].innerHTML = "Username2"
+                pointsElemnt[0].innerHTML = "Points: #"
+            }
         }
     } else {
         console.log('Request failed. Status:', ajax.status);
