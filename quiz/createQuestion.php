@@ -58,11 +58,11 @@
                                         <div class="qTypePosition">
                                                     <h3 class="form-label mt-1 fw-bold">Write your options below</h3>
                                                     <?php
-                                                        for($j=0; $j < $newQuiz['noOfQuestions']; $j++){
+                                                        for($j=0; $j < 4; $j++){
                                                             $optionsCounter = $j+1 ?>
                                                             <label class="form-label mt-1 fw-bold" for="option<?php echo $j ?>#<?php echo $optionsCounter ?>">Option <?php echo $optionsCounter ?></label>
-                                                            <input placeholder="Option <?php echo $optionsCounter ?>" value="<?php echo $options[$i] ?>" class="form-control" type="text" name="options[]" required autofocus>
-                                                    <?php $mcqChoices; ?>
+                                                            <input placeholder="Option <?php echo $optionsCounter ?>" value="<?php echo $options[$mcqChoices] ?>" class="form-control" type="text" name="options[]" required autofocus>
+                                                    <?php $mcqChoices++; ?>
                                                     <?php } ?>
                                                     
                                                         

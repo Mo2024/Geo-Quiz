@@ -20,12 +20,35 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
                 if(isset($_POST['options'])){
                     $options = $_POST['options'];
                 }
-                
+
+                $sqlQuestions = $db->prepare("insert into questions (quizId, type, score, question, answer) values (?, ?, ?, ?, ?)");
+                $sqlChoices = $db->prepare("insert into choices (choice, questionId) values (?, ?)");
                 $mcqCounter = 0;
                 $valid = true;
                 $errorMsg = '';
 
                 for($i=0; $i < $newQuiz['noOfQuestions']; $i++){
+                    // if(preg_match($passwordReg, $qTypes[$i])){
+
+                    //     $valid = false;
+                    //     $errorMsg = 'Make sure to input a valid question type';
+                    //     break;
+                    // }else if(!preg_match($passwordReg, $questions[$i])){
+
+                    //     $valid = false;
+                    //     $errorMsg = 'Make sure to input a valid question';
+                    //     break;
+                    // }else if(!preg_match($passwordReg, $marks[$i])){
+
+                    //     $valid = false;
+                    //     $errorMsg = 'Make sure to input a valid mark';
+                    //     break;
+                    // }else if(!preg_match($passwordReg, $answers[$i])){
+
+                    //     $valid = false;
+                    //     $errorMsg = 'Make sure to input a valid answer';
+                    //     break;
+                    // }
                     // if(preg_match($qTypesReg, $qTypes[$i])){
 
                     //     $valid = false;
@@ -48,17 +71,19 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
                     //     break;
                     // }
 
-                    $sql = $db->prepare("insert into questions (quizId, type, score, question, answer) values (?, ?, ?, ?, ?)");
-                    $sql->execute([$quizId, $qTypes[$i], $marks[$i], $questions[$i], $answers[$i]]);
+                    $sqlQuestions->execute([$quizId, $qTypes[$i], $marks[$i], $questions[$i], $answers[$i]]);
                     $questionId = $db->lastInsertId();
-
+                    
+                    $answerCorrect = false;
                     if($qTypes[$i]=="MCQ"){
                         for($j=0; $j < 4; $j++){
-                            $sql = $db->prepare("insert into choices (choice, questionId) values (?, ?)");
-                            $sql->execute([$options[$mcqCounter], $questionId]);
+                            if($options[$mcqCounter] == $answers[$i]) {$answerCorrect = true;}
+                            $sqlChoices->execute([$options[$mcqCounter], $questionId]);
                             $mcqCounter++;
+                            if($j == 3 && !$answerCorrect){$valid = false; $errorMsg = "Please check your MCQ questions and make sure the answers match at least one choice";}
                         }
                     } 
+                    if(!$valid){break;}
 
                 }
                 if($valid){
