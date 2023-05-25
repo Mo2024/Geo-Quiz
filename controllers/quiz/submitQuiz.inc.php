@@ -64,7 +64,7 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
             $quizScore += $answerRow['score'];
         }
         $dateConducted = date("F d\, Y");
-        $timeElapsed = $quizRow['totalTime'] - $timeLeft;
+        $timeElapsed = (int)$quizRow['totalTime'] - (int)$timeLeft;
         $uid = $_SESSION['userId'];
         $quizId = $_GET['quizId'];
         
