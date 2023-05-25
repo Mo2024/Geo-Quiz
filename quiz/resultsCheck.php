@@ -5,7 +5,17 @@
 <?php if(isset($_SESSION['markScheme'])) { ?>
 
     <?php $markScheme = $_SESSION['markScheme']; ?>
-        <h1 class="mt-5" style="text-align:center;">Your Score is <?php echo $markScheme['score'].'/'.$markScheme['quizScore']; ?> </h1><br>
+
+   
+
+    <h1 class="mt-5" style="text-align:center;">Your Score is <?php echo $markScheme['score'].'/'.$markScheme['quizScore']; ?> </h1>     
+    <div class="container">
+  <div class="d-flex justify-content-lg-end justify-content-center mt-3">
+    <a href="/ITCS333-Project/quiz/conductQuiz.php?quizId=<?php echo $markScheme['quizId']?>" class="btn btn-primary">Retake Quiz</a>
+  </div>
+</div>
+
+    <br>
         
     <div class="text-end">
     <a href="leaderboard.php" style="position: relative; top: -35px; left: -55px;">
