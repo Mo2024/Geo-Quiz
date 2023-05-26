@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2023 at 04:46 PM
+-- Generation Time: May 26, 2023 at 10:07 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -144,7 +144,72 @@ INSERT INTO `results` (`resultId`, `score`, `timeElapsed`, `userId`, `quizId`, `
 (15, 0, 1, 2, 2, 'May 25, 2023'),
 (16, 15, 15, 3, 2, 'May 25, 2023'),
 (17, 3, 13, 3, 7, 'May 25, 2023'),
-(18, 0, 4, 3, 7, 'May 25, 2023');
+(18, 0, 4, 3, 7, 'May 25, 2023'),
+(19, 6, 23, 3, 7, 'May 26, 2023'),
+(20, 0, 300, 3, 2, 'May 26, 2023'),
+(21, 0, 300, 3, 2, 'May 26, 2023'),
+(22, 0, 300, 3, 2, 'May 26, 2023'),
+(23, 0, 300, 3, 2, 'May 26, 2023'),
+(24, 0, 1, 3, 2, 'May 26, 2023'),
+(25, 0, 300, 3, 2, 'May 26, 2023'),
+(26, 0, 1, 3, 2, 'May 26, 2023'),
+(27, 0, 2, 3, 2, 'May 26, 2023'),
+(28, 0, 300, 3, 2, 'May 26, 2023'),
+(29, 0, 1, 3, 2, 'May 26, 2023'),
+(30, 5, 4, 3, 2, 'May 26, 2023'),
+(31, 5, 3, 3, 2, 'May 26, 2023'),
+(32, 5, 2, 3, 2, 'May 26, 2023'),
+(33, 5, 6, 1, 2, 'May 26, 2023'),
+(34, 5, 14, 1, 2, 'May 26, 2023'),
+(35, 15, 5, 1, 2, 'May 26, 2023'),
+(36, 0, 1, 1, 2, 'May 26, 2023'),
+(37, 0, 1, 1, 2, 'May 26, 2023'),
+(38, 0, 1, 1, 2, 'May 26, 2023'),
+(39, 0, 7, 1, 2, 'May 26, 2023'),
+(40, 0, 1, 1, 2, 'May 26, 2023'),
+(41, 0, 5, 1, 2, 'May 26, 2023'),
+(42, 0, 3, 1, 2, 'May 26, 2023'),
+(43, 0, 2, 1, 2, 'May 26, 2023'),
+(44, 0, 10, 1, 2, 'May 26, 2023'),
+(45, 0, 1, 1, 2, 'May 26, 2023'),
+(46, 0, 1, 1, 2, 'May 26, 2023'),
+(47, 0, 1, 1, 2, 'May 26, 2023'),
+(48, 0, 4, 1, 2, 'May 26, 2023'),
+(49, 0, 300, 1, 2, 'May 26, 2023'),
+(50, 0, 7, 1, 2, 'May 26, 2023'),
+(51, 0, 1, 1, 2, 'May 26, 2023'),
+(52, 0, 300, 1, 2, 'May 26, 2023'),
+(53, 0, 300, 1, 2, 'May 26, 2023'),
+(54, 0, 300, 1, 2, 'May 26, 2023'),
+(55, 0, 59, 1, 2, 'May 26, 2023'),
+(56, 5, 3, 1, 6, 'May 26, 2023'),
+(57, 0, 300, 1, 2, 'May 26, 2023'),
+(58, 0, 6, 1, 6, 'May 26, 2023'),
+(59, 0, 3, 1, 6, 'May 26, 2023'),
+(60, 0, 22, 1, 6, 'May 26, 2023'),
+(61, 0, 1, 1, 6, 'May 26, 2023'),
+(62, 0, 600, 1, 6, 'May 26, 2023'),
+(63, 0, 600, 1, 6, 'May 26, 2023'),
+(64, 0, 600, 1, 6, 'May 26, 2023'),
+(65, 0, 11, 1, 6, 'May 26, 2023'),
+(66, 0, 8, 1, 6, 'May 26, 2023'),
+(67, 0, 1, 1, 6, 'May 26, 2023'),
+(68, 0, 1, 1, 6, 'May 26, 2023'),
+(69, 0, 1, 1, 6, 'May 26, 2023'),
+(70, 0, 6, 1, 6, 'May 26, 2023'),
+(71, 0, 2, 1, 6, 'May 26, 2023'),
+(72, 0, 2, 1, 6, 'May 26, 2023'),
+(73, 0, 1, 1, 6, 'May 26, 2023'),
+(74, 0, 600, 1, 6, 'May 26, 2023'),
+(75, 0, 2, 1, 6, 'May 26, 2023'),
+(76, 15, 4, 1, 2, 'May 26, 2023'),
+(77, 0, 2, 1, 6, 'May 26, 2023'),
+(78, 0, 300, 1, 2, 'May 26, 2023'),
+(79, 0, 1, 1, 2, 'May 26, 2023'),
+(80, 0, 2, 1, 2, 'May 26, 2023'),
+(81, 0, 11, 1, 2, 'May 26, 2023'),
+(82, 0, 11, 1, 2, 'May 26, 2023'),
+(83, 20, 11, 1, 2, 'May 26, 2023');
 
 -- --------------------------------------------------------
 
@@ -158,7 +223,6 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `fName` varchar(255) NOT NULL,
   `hash` varchar(255) NOT NULL,
-  `vcode` varchar(255) NOT NULL,
   `pcode` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -166,13 +230,12 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`uid`, `username`, `email`, `fName`, `hash`, `vcode`, `pcode`) VALUES
-(1, 'mohd', 'mohdosama2025@gmail.com', 'mohd', '$2y$10$pT/qDmhaJCUj4GfoVRPcC.LcJkZHKGBNjocanG4mIsO7TvNuigKP6', '363861', '0'),
-(2, 'mohd1', 'mrkvsbusiness@gmail.com', 'mohd', '$2y$10$pT/qDmhaJCUj4GfoVRPcC.LcJkZHKGBNjocanG4mIsO7TvNuigKP6', '0', '727981'),
-(3, 'hassanJ', 'mkrfs2002@gmail.omc', 'Hassan', '$2y$10$pT/qDmhaJCUj4GfoVRPcC.LcJkZHKGBNjocanG4mIsO7TvNuigKP6', '226526', ''),
-(4, 'naeem123', 'mohammednaeem3636@gmail.com', 'naeem mohd', '$2y$10$IwLKbmbjzLbKluPWRLa12u1VrfYMt3ujA12.prRzPOPUKqzG4p.nu', '117300', '0'),
-(5, 'dsasad', 'adjkh@gmail.com', 'asdsa s', '$2y$10$tSmvWgfZXgPSVEAkfRkVduxeF0TGxPpxBjvifV6tsRJ2kauWZBmni', '706291', '0'),
-(6, 'assad', 'sdfjkh@gamil.com', 'asa Asd', '$2y$10$w0Lt4k4Ufp2CfK.MqCMME.oFernB4Qto/P149Ynk.xjvMzU44dpBi', '903969', '0');
+INSERT INTO `users` (`uid`, `username`, `email`, `fName`, `hash`, `pcode`) VALUES
+(1, 'mohd', 'mohdosama2025@gmail.com', 'mohd', '$2y$10$p9lfVNtOiEBMk9hmx0/WCu6koVo/HrP7jltcE.4fdQjMgHbVY26ya', '481383'),
+(2, 'mohd1', 'mrkvsbusiness@gmail.com', 'mohd', '$2y$10$pT/qDmhaJCUj4GfoVRPcC.LcJkZHKGBNjocanG4mIsO7TvNuigKP6', '727981'),
+(3, 'hassanJ', 'mkrfs2002@gmail.omc', 'Hassan', '$2y$10$pT/qDmhaJCUj4GfoVRPcC.LcJkZHKGBNjocanG4mIsO7TvNuigKP6', ''),
+(4, 'naeem123', 'mohammednaeem3636@gmail.com', 'naeem mohd', '$2y$10$IwLKbmbjzLbKluPWRLa12u1VrfYMt3ujA12.prRzPOPUKqzG4p.nu', '0'),
+(7, 'asdsa', 'asd@gmail.com', 'asokld asjkl', '$2y$10$cO4d29/YvMYxmWhUuMehZ.qR3UV2rmHSo2BBcSXTa.JLY0asvc5E2', '0');
 
 --
 -- Indexes for dumped tables
@@ -239,13 +302,13 @@ ALTER TABLE `quiz`
 -- AUTO_INCREMENT for table `results`
 --
 ALTER TABLE `results`
-  MODIFY `resultId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `resultId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

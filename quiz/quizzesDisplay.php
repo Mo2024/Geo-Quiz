@@ -47,11 +47,6 @@
                         <div class="card-body">
                             <h3 class="card-title"><?php echo $quizzes[$i]['title'];?></h3>
                             <h4 class="card-title">Created By: <?php echo $quizzes[$i]['username'];?></h4>
-                            <!-- <br/>
-                            <br/>
-                            <br/>
-                            <br/> -->
-                            
                             <a href="/ITCS333-Project/quiz/viewQuiz.php?quizId=<?php echo $quizzes[$i]['quizid']?>" class="btn mt-5 btn-primary">View Quiz Details</a>
                         </div>
                     </div>
