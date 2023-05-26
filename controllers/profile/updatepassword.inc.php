@@ -13,24 +13,6 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
         } else{
             $newPwd = $_POST['newpwd1'];
             $confirmPwd = $_POST['newpwd2'];
-
-            if(isset($_GET['status']) && ($_GET['status'] == 'forget' || $_GET['status'] == 'resend') ){
-                //updating password using verification code
-                if($_POST['VerificationCode'] == ''){
-                    $_SESSION['error'] = "Verification Code field is empty";
-                    header("Location: /ITCS333-Project/profile/updatePassword.php"); 
-                }else{
-                    $vCode = $_POST['VerificationCode'];
-                    if($row['verificationCode']==$vCode){
-                        updatePassword($passwordReg, $newPwd, $confirmPwd, $id, $db);
-                    }else{
-                        $_SESSION['error'] = "Invalid verification code";
-                        header("Location: /ITCS333-Project/profile/updatePassword.php"); 
-                    }
-                }
-            } 
-            else{
-                //Updating password using current
                 if($_POST['oldpwd'] == ''){
                     $_SESSION['error'] = "Current Password field is empty";
                     // header("Location: /ITCS333-Project/profile/updatePassword.php"); 
@@ -44,7 +26,6 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
                     }
                 }
     
-            } 
         }
     }   
 }

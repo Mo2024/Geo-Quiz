@@ -56,8 +56,6 @@ if (isset($_POST['submit'])) {
 
                 $verificationStatus = false;
                 $hash = password_hash($password, PASSWORD_DEFAULT);
-                // $token = bin2hex(random_bytes(16)); 
-                // $hashedToken = password_hash($token, PASSWORD_DEFAULT);
                 $vCode = random_int(100000, 999999);
 
 
@@ -86,7 +84,6 @@ if (isset($_POST['submit'])) {
                     header("Location: ".$_COOKIE["redirect"]);
                     setcookie ("redirect", $redirectUrl, time() - 3600,'/');
                 }
-                // die();        
             }
         }
     }
