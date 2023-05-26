@@ -36,8 +36,8 @@ if (isset($_POST['submit'])) {
             header("Location: /ITCS333-Project/auth/signup.php?email=".$email."&username=".$username."&fullname=".$fullname);   
         }else{
             
-            $usernameQuery = "SELECT * FROM users WHERE username = '$username'";
-            $emailQuery = "SELECT * FROM users WHERE email = '$email'";
+            $usernameQuery = "SELECT * FROM users WHERE BINARY username = '$username'";
+            $emailQuery = "SELECT * FROM users WHERE BINARY email = '$email'";
             
             $usernameResult = ($db->query($usernameQuery)->rowCount());
             $emailResult = ($db->query($emailQuery)->rowCount());

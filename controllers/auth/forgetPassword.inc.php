@@ -10,7 +10,7 @@
                 $_SESSION['error'] = 'Invalid Email Address';
                 header("Location: /ITCS333-Project/auth/forgetPassword.php");
             }else{
-                $uidQuery = "SELECT * FROM users WHERE email = :email";
+                $uidQuery = "SELECT * FROM users WHERE BINARY email = :email";
                 $stmt = $db->prepare($uidQuery);
                 $stmt->bindParam(':email', $userEmail);
                 $stmt->execute();

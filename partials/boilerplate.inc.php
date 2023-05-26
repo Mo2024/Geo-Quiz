@@ -18,7 +18,7 @@
     session_start();
     if((isset($_SESSION['forgetuid']) && $_SERVER['REQUEST_URI'] != '/ITCS333-Project/auth/forgetPassword.php')
     || (isset($_SESSION['display']) && $_SERVER['REQUEST_URI'] != '/ITCS333-Project/auth/forgetPassword.php')
-    || (isset($_SESSION['markScheme']) && $_SERVER['REQUEST_URI'] != '/ITCS333-Project/quiz/resultsCheck.php')){
+    || (isset($_SESSION['markScheme']) && ($_SERVER['REQUEST_URI'] != '/ITCS333-Project/quiz/resultsCheck.php' && $_SERVER['REQUEST_URI'] != '/ITCS333-Project/quiz/quizLeaderboard.php?quizId='.$_SESSION['markScheme']['quizId']))){
       unset($_SESSION['display']);
       unset($_SESSION['forgetuid']);
       unset($_SESSION['markScheme']);
@@ -40,9 +40,6 @@
         $_SESSION['username'] = $data[1];
         setcookie("session", $dataCookie,time() + 604800, '/', '', true, true);
       }
-    }else{
-      unset($_SESSION['userId']);
-      unset($_SESSION['username']);
     }
   ?>
 

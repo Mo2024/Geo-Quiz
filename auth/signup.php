@@ -22,10 +22,16 @@
                 <h5 class="card-title text-center" style="font-size:35px;font-weight:bold;color:black;">Sign Up</h5>
                     <form class="validated-form" method="POST" novalidate>
                         <div class="row">
-                            <div class="mb-3 col-sm-6">
+                            <div class="mb-3 col-sm-12">
                                 <label class="form-label" for="email">Email</label>
                                 <input class="form-control" placeholder="Email" type="email" name="email" id="email" value="<?php if(isset($_GET['email'])) echo $_GET['email']?>" required>
                                 <p id="emailTakenAlert" class="email-username-alert" style="display: none;">Email is already taken.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-sm-6">
+                                <label class="form-label" for="fullName">Full Name</label>
+                                <input class="form-control" placeholder="Full Name" type="text" name="fullname" id="fullname" value="<?php if(isset($_GET['email'])) echo $_GET['fullname']?>" required>
                             </div>
                             <div class="mb-3 col-sm-6">
                                 <label class="form-label" for="username">Username</label>
@@ -45,12 +51,6 @@
                             <div class="mb-3 col-sm-6">
                                 <label class="form-label" for="password">Confirm Password</label>
                                 <input class="form-control" placeholder="Password" type="password" name="password2" id="password2" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="mb-3 col-sm-6">
-                                <label class="form-label" for="fullName">Full Name</label>
-                                <input class="form-control" placeholder="Full Name" type="text" name="fullname" id="fullname" value="<?php if(isset($_GET['email'])) echo $_GET['fullname']?>" required>
                             </div>
                         </div>
                         <div class="row">

@@ -20,11 +20,12 @@
         ';
     }
     
-    function updatePassword($passwordReg, $newPwd, $confirmPwd, $id, $db){
+    function updatePassword($passwordReg, $newPwd, $confirmPwd, $id, $db, $oldpwd){
         if(preg_match($passwordReg, $newPwd) && preg_match($passwordReg, $confirmPwd)){
             if ($newPwd == $confirmPwd){
                 if($newPwd == $oldpwd){
-
+                    $_SESSION['error'] = 'New and old password are the same';
+                    header("Location: /ITCS333-Project/profile/updatePassword.php"); 
                 }else{
                     $newHash = password_hash($newPwd, PASSWORD_DEFAULT);
                     $updateQuery = "UPDATE users SET hash = '$newHash' WHERE uid = '$id'";

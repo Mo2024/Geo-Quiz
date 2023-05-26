@@ -2,8 +2,8 @@
 <?php require('../controllers/profile/profile.inc.php')?>
 <div class="container w-50 my-3">
       <ul class="nav nav-underline">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">My Profile</a>
+        <li class="nav-item text-decoration-underline text-primary">
+          <a class="nav-link" aria-current="page" href="profile.php">My Profile</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="updatePassword.php">Change Password</a>

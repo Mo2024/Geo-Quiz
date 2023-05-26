@@ -1,6 +1,10 @@
 <?php $title = "Conduct Quiz"; require('../partials/boilerplate.inc.php')?>
 <?php require('../controllers/quiz/conductQuiz.inc.php')?>
-
+<script>
+    if (window.performance && window.performance.navigation.type === 2) {
+      location.reload();
+    }
+</script>
 <link rel="stylesheet" href="/ITCS333-Project/public/css/conductQuiz.css">
 <button style="display: none;" id="startButton" onclick="startTimer()">Start</button>
     
@@ -57,7 +61,7 @@
                     <?php } else if($questionsRow[$i]['type']=="FITB") {?>
                         <div class="text-center btn-group-vertical  w-75" role="group" aria-label="Basic radio toggle button group">
                         <input answer-id="<?php echo $i ?>"  onchange="handleRadioClick(this.value,<?php echo $i ?>, this.name)" name="<?php echo "q".$questionsRow[$i]['questionId'] ?>"  placeholder="Answer" class="form-control" type="text" required autofocus>
-                        <input q-id="<?php echo $questionsRow[$i]['questionId'] ?>" style="display: none;" name="answers[]" id="<?php echo "answer#".$i ?>" placeholder="Answer" class="form-control" type="text" required autofocus>
+                        <input q-id="<?php echo $questionsRow[$i]['questionId'] ?>" style="display: none;" name="answers[]" autocomplete="off" id="<?php echo "answer#".$i ?>" placeholder="Answer" class="form-control" type="text" required autofocus>
                     <br>
                 </div>
             <?php } ?>
@@ -67,7 +71,12 @@
     </div>
 
 </form> 
-
 <script src="/ITCS333-Project/public/js/conductQuiz.js"></script>
 
 <?php require('../partials/footer.inc.php')?>
+<script>
+    window.history.pushState(null, null, window.location.href);
+    window.onpopstate = function () {
+        window.history.pushState(null, null, window.location.href);
+    };
+</script>

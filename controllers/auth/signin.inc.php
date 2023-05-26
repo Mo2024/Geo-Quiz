@@ -28,12 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                     $data = $_SESSION["userId"].'#'.$_SESSION["username"];
                     $data = base64_encode($data);
                     setcookie("session", $data,time() + 604800, '/', '', true, true);
-                }else{
-                    $data = "false";
-                    $data = base64_encode($data);
-                    setcookie("session", $data,time() + 604800, '/', '', true, true);
                 }
-
+                
                 if(!isset($_COOKIE["redirect"])){
                     $_SESSION['success'] = "Login Successful";
                     header("Location: /ITCS333-Project/quiz/quizzesDisplay.php");

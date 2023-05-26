@@ -26,9 +26,9 @@
                             <input class="form-control" placeholder="Enter Your New Password" type="password" name="password1"  id="pass1"  required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="password">New Password</label>
+                            <label class="form-label" for="password">Confirm New Password</label>
                             <input class="form-control" placeholder="Enter Your New Password" type="password" name="password2"  id="pass2"  required>
-                            <input class="form-check-input"type="checkbox" onclick="showPassword()">
+                            <input class="form-check-input" type="checkbox" onclick="showPassword()">
                             <label class="form-check-label" for="flexCheckChecked">
                                 Show Password
                             </label>

@@ -14,7 +14,7 @@ try {
     $isRegistered = false; 
     if(isset( $_POST['email'])){
         $email = $_POST['email'];
-        $emailQuery = "SELECT * FROM users WHERE email = :email";
+        $emailQuery = "SELECT * FROM users WHERE BINARY email = :email";
         $emailStatement = $db->prepare($emailQuery);
         $emailStatement->bindParam(':email', $email);
         $emailStatement->execute();
@@ -25,7 +25,7 @@ try {
 
     }else if(isset($_POST['username'])){
         $username = $_POST['username'];
-        $usernameQuery = "SELECT * FROM users WHERE username = :username";
+        $usernameQuery = "SELECT * FROM users WHERE BINARY username = :username";
         $usernameStatement = $db->prepare($usernameQuery);
         $usernameStatement->bindParam(':username', $username);
         $usernameStatement->execute();

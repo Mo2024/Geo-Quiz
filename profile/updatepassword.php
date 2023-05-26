@@ -5,7 +5,7 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="profile.php">My Profile</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item text-decoration-underline text-primary">
           <a class="nav-link" href="updatePassword.php">Change Password</a>
         </li>
       </ul>

@@ -3,8 +3,10 @@ var remainingTimeInSeconds;
 var totalTimeInSeconds;
 var paused = false;
 
+
+
 document.addEventListener('DOMContentLoaded', function () {
-    // Your code here
+
     var inputBoxes = document.querySelectorAll('input[name="answers[]"]');
     inputBoxes.forEach(function (inputBox, index) {
         var qId = inputBox.getAttribute('q-id');

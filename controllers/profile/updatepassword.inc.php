@@ -19,7 +19,7 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
                 }else{
                     $currentPwd = $_POST['oldpwd'];
                     if (password_verify($currentPwd, $row['hash'])) {
-                        updatePassword($passwordReg, $newPwd, $confirmPwd, $id, $db);
+                        updatePassword($passwordReg, $newPwd, $confirmPwd, $id, $db, $currentPwd);
                     }else{
                         $_SESSION['error'] = "Incorrect current password";
                         header("Location: /ITCS333-Project/profile/updatePassword.php"); 

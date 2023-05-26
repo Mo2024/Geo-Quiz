@@ -26,14 +26,17 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
         $wrongAnswers = 0;
         $markScheme = array();
         $mcqIndex = 0;
+        
+        $selectQuery = "SELECT * FROM questions WHERE questionId = ?";
+        $stmt1 = $db->prepare($selectQuery);
+        $query = "SELECT choice FROM choices WHERE questionId = ?";
+        $stmt2 = $db->prepare($query);
         for($i = 0; $i < $quizRow['nQuestions']; $i++){
             $answerObject = json_decode($_POST['answers'][$i], true);
            
-            $selectQuery = "SELECT * FROM questions WHERE questionId = ?";
-            $stmt = $db->prepare($selectQuery);
-            $stmt->bindValue(1, $answerObject['questionId'], PDO::PARAM_INT);
-            $stmt->execute();
-            $answerRow = $stmt->fetch();
+            $stmt1->bindValue(1, $answerObject['questionId'], PDO::PARAM_INT);
+            $stmt1->execute();
+            $answerRow = $stmt1->fetch();
 
             $markScheme[$i]['question'] = $answerRow['question'];
             $markScheme[$i]['type'] = $answerRow['type'];
@@ -41,11 +44,9 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
             $markScheme[$i]['answer'] = strtolower($answerRow['answer']);
             $markScheme[$i]['userAnswer'] = $answerObject['answer'];
             if($answerRow['type'] == "MCQ"){
-                $query = "SELECT choice FROM choices WHERE questionId = ?";
-                $stmt = $db->prepare($query);
-                $stmt->bindValue(1, $answerRow['questionId'], PDO::PARAM_INT);
-                $stmt->execute();
-                $choicesRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $stmt2->bindValue(1, $answerRow['questionId'], PDO::PARAM_INT);
+                $stmt2->execute();
+                $choicesRow = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
                 $markScheme[$i]['choices'][$mcqIndex] = $choicesRow [0]['choice'];
                 $markScheme[$i]['choices'][$mcqIndex+1] = $choicesRow [1]['choice'];
