@@ -19,29 +19,19 @@
         </div>
         ';
     }
-
-    function sendVerCode($row, $id, $db){
-            require(__DIR__ .'/../functions/phpmailer.inc.php');
-            $verificationCode = substr(number_format(time() * rand(), 0, '', ''), 0, 6);   
-            $mail->addAddress($row['email']);                 
-            $mail->Subject = 'Forget Password Verification';
-            $mail->Body    = '<p>Your verification code is <b>'.$verificationCode.'</b></p>';
-        
-            $updateQuery = "UPDATE user SET pwdVerificationCode = '$verificationCode' WHERE id = '$id'";
-            $result = $db->query($updateQuery);
-        
-            $mail->send();
-
-    }
     
     function updatePassword($passwordReg, $newPwd, $confirmPwd, $id, $db){
         if(preg_match($passwordReg, $newPwd) && preg_match($passwordReg, $confirmPwd)){
             if ($newPwd == $confirmPwd){
-                $newHash = password_hash($newPwd, PASSWORD_DEFAULT);
-                $updateQuery = "UPDATE users SET hash = '$newHash', pcode = NULL WHERE uid = '$id'";
-                $result = $db->query($updateQuery);
-                $_SESSION['success'] = 'Password Updated';
-                header("Location: /ITCS333-Project/profile/updatePassword.php"); 
+                if($newPwd == $oldpwd){
+
+                }else{
+                    $newHash = password_hash($newPwd, PASSWORD_DEFAULT);
+                    $updateQuery = "UPDATE users SET hash = '$newHash' WHERE uid = '$id'";
+                    $result = $db->query($updateQuery);
+                    $_SESSION['success'] = 'Password Updated';
+                    header("Location: /ITCS333-Project/profile/updatePassword.php"); 
+                }
             } else{
                 $_SESSION['error'] = 'New Passwords do not match';
                 header("Location: /ITCS333-Project/profile/updatePassword.php"); 

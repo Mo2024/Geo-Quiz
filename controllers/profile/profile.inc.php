@@ -27,27 +27,7 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
         } else if(!preg_match($nameReg,$fullname)){
             $_SESSION['error'] = "Please make sure that the entered full name is entered properly";
             header("Location: /ITCS333-Project/profile/profile.php");   
-        }else if(isset($_POST['vcode']) && $_POST['vcode'] !== ''){
-            $vCode = $_POST['vcode'];
-            if($vCode == $row['vcode']){
-                if(!preg_match($pcodeReg, $vCode)){
-                    $_SESSION['error'] = "Invalid Verification code";
-                    header("Location: /ITCS333-Project/profile/profile.php");           
-                }else{
-                    $insertQuery = "UPDATE users SET vcode = :vcode, verified = :verified WHERE uid = :uid";
-                    $stmt = $db->prepare($insertQuery);
-                    $stmt->bindParam(':uid', $row['uid']);
-                    $stmt->bindValue(':vcode', 0);
-                    $stmt->bindValue(':verified', true);
-                    $stmt->execute();
-                    $_SESSION['success'] = "Account Verified!";
-                    header("Location: /ITCS333-Project/profile/profile.php");           
-                }
-            }else{
-                $_SESSION['error'] = "Incorrect Verification Code";
-                header("Location: /ITCS333-Project/profile/profile.php");           
-            }
-        } else {
+        }else {
             $usernameQuery = "SELECT * FROM users WHERE username = '$username'";
             $emailQuery = "SELECT * FROM users WHERE email = '$email'";
     
@@ -64,10 +44,6 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
                 header("Location: /ITCS333-Project/profile/profile.php");   
             }
             else{
-                // $verificationStatus = $row['verified'];                
-                // if ($row['email'] != $email){
-                //     $verificationStatus = false;
-                // }
                 $updateQuery = "UPDATE users SET username = :username, email = :email, fName = :fName WHERE uid = :uid";
                 $stmt = $db->prepare($updateQuery);
                 

@@ -27,14 +27,6 @@
                     <label class="form-label" for="email">Email</label>
                     <input class="form-control" placeholder="Email" type="email" name="email" id="email" value="<?php if($redirect) echo $email?>" required>
                 </div>
-                <?php if(!$row['verified']) { ?>
-                  <div class="mb-3 col-sm-6">
-                    <label class="form-label" for="vcode">Verification Code</label>
-                    <input class="form-control" placeholder="Verification Code" type="text" name="vcode" id="vcode" required>
-                    <a href="/ITCS333-Project/functions/sendVCode.inc.php">Resend Verification?</a>
-                  </div>
-                <?php } ?>
-                
             </div>
             <a href="/ITCS333-Project/mainpage.php" class="btn btn-secondary mb-2 ms-auto">Cancel</a>
             <button name="submit" type="submit" class="btn btn-primary mb-2 ms-auto">Save Changes</button>

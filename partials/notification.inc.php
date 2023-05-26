@@ -6,7 +6,7 @@
     </div>
     <?php unset($_SESSION['success']) ?>
 <?php } else if(isset($_SESSION['error'])){?>
-    <div class="container mt-5">
+    <div id="notificationPartial" class="container mt-5">
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <?php echo $_SESSION['error']; ?>
         </div>

@@ -40,6 +40,9 @@
         $_SESSION['username'] = $data[1];
         setcookie("session", $dataCookie,time() + 604800, '/', '', true, true);
       }
+    }else{
+      unset($_SESSION['userId']);
+      unset($_SESSION['username']);
     }
   ?>
 

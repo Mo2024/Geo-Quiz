@@ -1,6 +1,5 @@
 <?php 
  require('../functions/functions.inc.php');
- require('../functions/mailer.inc.php');
  require("../partials/regex.inc.php");
  echo "<script> const passwordRegex = ".$passwordReg."</script>";
  echo "<script> const emailRegex = ".$emailReg."</script>";
@@ -54,19 +53,11 @@ if (isset($_POST['submit'])) {
             }
             else{
 
-                $verificationStatus = false;
                 $hash = password_hash($password, PASSWORD_DEFAULT);
-                $vCode = random_int(100000, 999999);
 
-
-                $sql = "INSERT INTO users (username, email, fName, hash, verified, pcode, vcode) 
-                        VALUES('$username', '$email', '$fullname', '$hash', '$verificationStatus', 0, $vCode)";
+                $sql = "INSERT INTO users (username, email, fName, hash, pcode) 
+                        VALUES('$username', '$email', '$fullname', '$hash', 0)";
                 $result = $db->query($sql);
-
-                $message->setTo($email);
-                $message->setSubject('Forget Password Verification Code');
-                $message->setBody('Your verification code is '.$vCode);
-                $mailer->send($message);
 
                 $_SESSION["userId"] = $db->lastInsertId();
                 $_SESSION["username"] = $username;

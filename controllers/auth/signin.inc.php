@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
         $_SESSION['error'] = "You must enter a password";
         header("Location: /ITCS333-Project/auth/signin.php?uid=".$uid);
     }else if(preg_match($usernameReg, $uid) && preg_match($passwordReg, $formPassword)){
-        $uidQuery = "SELECT * FROM users WHERE username = '$uid'";
+        $uidQuery = "SELECT * FROM users WHERE BINARY username = '$uid'";
         $result = $db->query($uidQuery);
         if ($row = $result->fetch()) {
             if (password_verify($formPassword, $row['hash'])) {
@@ -25,10 +25,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 $_SESSION["username"] = $row['username'];
                 
                 if(isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'rememberMe'){
-                    $data = $row['uid'].'#'.$row['username'];
+                    $data = $_SESSION["userId"].'#'.$_SESSION["username"];
                     $data = base64_encode($data);
                     setcookie("session", $data,time() + 604800, '/', '', true, true);
-                }   
+                }else{
+                    $data = "false";
+                    $data = base64_encode($data);
+                    setcookie("session", $data,time() + 604800, '/', '', true, true);
+                }
 
                 if(!isset($_COOKIE["redirect"])){
                     $_SESSION['success'] = "Login Successful";

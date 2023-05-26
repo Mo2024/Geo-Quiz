@@ -45,12 +45,11 @@ email.addEventListener('input', function () {
 
 
 
-
-document.addEventListener('DOMContentLoaded', function () {
-    validateInputs()
-});
-
 function validateInputs() {
+    let notificationPartial = document.getElementById("notificationPartial")
+    if (notificationPartial) {
+        notificationPartial.style.display = "none";
+    }
     const emailInput = document.getElementById('email');
     const usernameInput = document.getElementById('username');
     const passwordInput = document.getElementById('password');
@@ -64,11 +63,28 @@ function validateInputs() {
     const isPassword2Valid = passwordRegex.test(password2Input.value);
     const isFullnameValid = fullnameRegex.test(fullnameInput.value);
 
-    submitButton.disabled = !(isEmailValid && isUsernameValid && isPasswordValid && isPassword2Valid && isFullnameValid);
+    let notificationDisplay = document.getElementById("notificationId")
+    let message = document.getElementById("messageId")
+
+    if (!isEmailValid) {
+        notificationDisplay.style.display = "block"
+        message.innerHTML = "Please make sure that the entered email is valid"
+    } else if (!isUsernameValid) {
+        notificationDisplay.style.display = "block"
+        message.innerHTML = "Please make sure that Username is 4 to 20 characters long, only contains alphabet letters and 0 to 9 numerics"
+    } else if (!isPasswordValid) {
+        notificationDisplay.style.display = "block"
+        message.innerHTML = "Please make sure that the entered password has one special character, one small letter, one capital letter and at least 8 characters long"
+    } else if (!isPassword2Valid) {
+        notificationDisplay.style.display = "block"
+        message.innerHTML = "Please make sure that the entered password has one special character, one small letter, one capital letter and at least 8 characters long"
+    } else if (!isFullnameValid) {
+        notificationDisplay.style.display = "block"
+        message.innerHTML = "Please make sure that the entered full name is entered properly"
+    } else {
+        submitButton.type = "submit";
+        submitButton.click();
+
+    }
 }
 
-document.getElementById('email').addEventListener('input', validateInputs);
-document.getElementById('username').addEventListener('input', validateInputs);
-document.getElementById('password').addEventListener('input', validateInputs);
-document.getElementById('password2').addEventListener('input', validateInputs);
-document.getElementById('fullname').addEventListener('input', validateInputs);

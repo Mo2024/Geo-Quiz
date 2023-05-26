@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2023 at 08:12 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: May 26, 2023 at 04:46 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -158,20 +158,21 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `fName` varchar(255) NOT NULL,
   `hash` varchar(255) NOT NULL,
-  `verified` tinyint(1) NOT NULL,
   `vcode` varchar(255) NOT NULL,
-  `pcode` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL
+  `pcode` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`uid`, `username`, `email`, `fName`, `hash`, `verified`, `vcode`, `pcode`, `token`) VALUES
-(1, 'mohd', 'mohdosama2025@gmail.com', 'mohd', '$2y$10$pT/qDmhaJCUj4GfoVRPcC.LcJkZHKGBNjocanG4mIsO7TvNuigKP6', 0, '363861', '0', ''),
-(2, 'mohd1', 'mrkvsbusiness@gmail.com', 'mohd', '$2y$10$pT/qDmhaJCUj4GfoVRPcC.LcJkZHKGBNjocanG4mIsO7TvNuigKP6', 1, '0', '727981', ''),
-(3, 'hassanJ', 'mkrfs2002@gmail.omc', 'Hassan', '$2y$10$pT/qDmhaJCUj4GfoVRPcC.LcJkZHKGBNjocanG4mIsO7TvNuigKP6', 0, '226526', '', '');
+INSERT INTO `users` (`uid`, `username`, `email`, `fName`, `hash`, `vcode`, `pcode`) VALUES
+(1, 'mohd', 'mohdosama2025@gmail.com', 'mohd', '$2y$10$pT/qDmhaJCUj4GfoVRPcC.LcJkZHKGBNjocanG4mIsO7TvNuigKP6', '363861', '0'),
+(2, 'mohd1', 'mrkvsbusiness@gmail.com', 'mohd', '$2y$10$pT/qDmhaJCUj4GfoVRPcC.LcJkZHKGBNjocanG4mIsO7TvNuigKP6', '0', '727981'),
+(3, 'hassanJ', 'mkrfs2002@gmail.omc', 'Hassan', '$2y$10$pT/qDmhaJCUj4GfoVRPcC.LcJkZHKGBNjocanG4mIsO7TvNuigKP6', '226526', ''),
+(4, 'naeem123', 'mohammednaeem3636@gmail.com', 'naeem mohd', '$2y$10$IwLKbmbjzLbKluPWRLa12u1VrfYMt3ujA12.prRzPOPUKqzG4p.nu', '117300', '0'),
+(5, 'dsasad', 'adjkh@gmail.com', 'asdsa s', '$2y$10$tSmvWgfZXgPSVEAkfRkVduxeF0TGxPpxBjvifV6tsRJ2kauWZBmni', '706291', '0'),
+(6, 'assad', 'sdfjkh@gamil.com', 'asa Asd', '$2y$10$w0Lt4k4Ufp2CfK.MqCMME.oFernB4Qto/P149Ynk.xjvMzU44dpBi', '903969', '0');
 
 --
 -- Indexes for dumped tables
@@ -244,7 +245,7 @@ ALTER TABLE `results`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

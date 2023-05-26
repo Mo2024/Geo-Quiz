@@ -69,7 +69,7 @@ if(isset($_SESSION['userId'])){
                     $updateQuestions->bindParam(':type', $qTypes[$i]);
                     $updateQuestions->bindParam(':score', $marks[$i]);
                     $updateQuestions->bindParam(':question', $questions[$i]);
-                    $updateQuestions->bindParam(':answer', $answers[$i]);
+                    $updateQuestions->bindParam(':answer', strtolower($answers[$i]));
                     $updateQuestions->execute();
 
                     $answerCorrect = false;

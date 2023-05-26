@@ -37,10 +37,11 @@ thead
 
       </table>
     </div>
-<div class="d-flex">
-<button type="button" class="btn btn-sm btn-outline-primary ms-auto">
-<a href="/ITCS333-Project/mainpage.php">Return To Home Page</a></button>
-</div>
+    <div class="d-flex mb-3">
+      <button type="button" class="ms-auto border-0">
+      <a class="text-decoration-none btn btn-sm btn-outline-primary ms-auto" href="/ITCS333-Project/mainpage.php">Return To Home Page</a>
+      </button>
+    </div>
 </div>
 
 <?php require('../partials/footer.inc.php')?>

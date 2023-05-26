@@ -8,6 +8,12 @@
 }
 
 </style>
+
+<div id="notificationId" style="display: none;" class="container mt-5 ">
+    <div id="messageId" class="alert alert-danger alert-dismissible fade show" role="alert">
+
+    </div>
+</div>
 <div class="container d-flex justify-content-center align-items-center my-5">
     <div class="row">
         <div class="col-xl-12">
@@ -31,8 +37,8 @@
                             <div class="mb-3 col-sm-6">
                                 <label class="form-label" for="password">Password</label>
                                 <input class="form-control" placeholder="Password" type="password" name="password" id="password" required>
-                                <input class="form-check-input"type="checkbox" onclick="showPassword()">
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <input class="form-check-input" id="showPassword" type="checkbox" onclick="showPassword()">
+                                <label class="form-check-label" for="showPassword">
                                     Show Password
                                 </label>
                             </div>
@@ -55,7 +61,7 @@
                                 </label>
                             </div>
                         </div>
-                        <button type="submit" id="signupButton" class="btn btn-primary btn-block" name="submit">Submit</button>
+                        <button type="button" id="signupButton" class="btn btn-primary btn-block" onclick="validateInputs()" name="submit">Submit</button>
                     </form>
                 </div>
             </div>

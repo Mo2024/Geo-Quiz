@@ -15,7 +15,7 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
             $confirmPwd = $_POST['newpwd2'];
                 if($_POST['oldpwd'] == ''){
                     $_SESSION['error'] = "Current Password field is empty";
-                    // header("Location: /ITCS333-Project/profile/updatePassword.php"); 
+                    header("Location: /ITCS333-Project/profile/updatePassword.php"); 
                 }else{
                     $currentPwd = $_POST['oldpwd'];
                     if (password_verify($currentPwd, $row['hash'])) {

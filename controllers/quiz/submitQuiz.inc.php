@@ -54,7 +54,9 @@ if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
                 $mcqIndex += 4;
             } 
 
-            if(strval($answerObject['answer']) == strval($answerRow['answer'])){
+            $answerResult = strcasecmp($answerObject['answer'], $answerRow['answer']); 
+
+            if($answerResult == 0){
                 $correctAnswers++;
                 $score += $answerRow['score'];
             }else{
